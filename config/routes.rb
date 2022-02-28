@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  root to: 'profile#home'
-  get "/profile/new", to: "profile#new"
-  post "/profile", to: "profile#create"
-  get "/profile/:id", to: "profile#show"
-  patch "/profile", to: "profile#update"
-  get "/bank_info", to: "profile#bank_info"
-  get "/confirmation", to: "profile#confirm"
+  root to: 'profiles#home'
+  get "/profile/new", to: "profiles#new"
+  post "/profile", to: "profiles#create"
+  get "/profile/:id", to: "profiles#show"
+  patch "/profile", to: "profiles#update"
+  get "/bank_info", to: "profiles#bank_info"
+  get "/confirmation", to: "profiles#confirm"
 
   get "/cues", to: "cues#index"
 
