@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'ui_kit', to: 'pages#ui_kit'
 
   devise_for :users
-  root to: 'profiles#home'
   get "/profile/new", to: "profiles#new"
   post "/profile", to: "profiles#create"
   get "/profile/:id", to: "profiles#show"
