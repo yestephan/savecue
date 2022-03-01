@@ -1,15 +1,21 @@
 
 // card-container
-
+.card-cue-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
 
 
 // each cards
-.card-rainy .card-starburks .card-wine .card-sunny{
+.card-cue{
+  width: 147px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 24px 8px;
-  background-color: $white;
-  border: $black;
+  border: $border;
+  border-radius: $border-radius;
 }
