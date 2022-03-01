@@ -1,6 +1,8 @@
 
 // card-container
 .card-cue-container {
+  justify-content: center;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
@@ -8,9 +10,9 @@
 
 
 // each cards
-.card-cue{
-  width: 147px;
-  height: 150px;
+.card-cue {
+  width: 220px;
+  height: 230px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,4 +20,7 @@
   padding: 24px 8px;
   border: $border;
   border-radius: $border-radius;
+   &:hover {
+    opacity: 0.4;
+  }
 }
