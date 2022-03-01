@@ -1,0 +1,15 @@
+
+// card-container
+
+
+
+// each cards
+.card-rainy .card-starburks .card-wine .card-sunny{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 8px;
+  background-color: $white;
+  border: $black;
+}
