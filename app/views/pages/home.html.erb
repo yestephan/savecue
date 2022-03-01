@@ -1,2 +1,17 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-fluid">
+
+  <div class="container center-content">
+    <div>
+      <h1>Shake that penny jar, start saving now!</h1>
+    </div>
+
+    <div>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+    </div>
+
+    <div>
+      <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+</div>
