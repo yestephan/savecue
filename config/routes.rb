@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  root to: 'pages#home'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get 'ui_kit', to: 'pages#ui_kit'
+
   devise_for :users
   root to: 'profiles#home'
   get "/profile/new", to: "profiles#new"
@@ -18,4 +23,5 @@ Rails.application.routes.draw do
   get "/user_cues/:id/edit", to: "user_cues#edit"
   patch "/user_cues/:id", to: "user_cues#update"
   post "/user_cues/:id/transactions", to: "transactions#create"
+
 end
