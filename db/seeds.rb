@@ -45,12 +45,34 @@ User.destroy_all
 # create_transactions(user, spenda_user_cue, 2)
 
 
+# NL06 4815 1623 0000 0014 77
+# Debit Account
+
+
 auth_url = "https://api.mockbank.io/oauth/token"
+customers_url = "https://api.mockbank.io/customers"
+
+
+
+# Generate Access Token
 auth_query = { "client_id" => "stephanye", "client_secret" => "secret",
                 "grant_type" => "password",
-                "username" => "contact@stephanye.io", "password" => "legation-ALVEOLUS-mischief-curse" }
+                "username" => "contact@stephanye.io", "password" => "testmock" }
 auth_headers = { "content-type" => "application/json" }
-user = HTTParty.post(auth_url,
+mockbank_admin = HTTParty.post(auth_url,
                       query: auth_query,
                       headers: auth_headers)
-p user["access_token"]
+access_token = mockbank_admin["access_token"]
+
+# Get customers
+auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+customers = HTTParty.get(customers_url,
+  headers: auth_headers
+)
+
+p customers.class
+
+# Get customer id
+
+
+# Get user accounts
