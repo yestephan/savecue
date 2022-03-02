@@ -1,6 +1,8 @@
-
+// card-cue style
 // card-container
 .card-cue-container {
+  justify-content: center;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
@@ -8,8 +10,37 @@
 
 
 // each cards
-.card-cue{
-  width: 147px;
+.card-cue {
+  width: 220px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 8px;
+  border: $border;
+  border-radius: $border-radius;
+   &:hover {
+    opacity: 0.4;
+  }
+}
+
+// card-total-amount style
+.card-total-amount {
+  width: 430px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 8px;
+  border: $border;
+  border-radius: $border-radius;
+}
+
+//card-no-transaction
+.card-no-transaction {
+  width: 430px;
   height: 150px;
   display: flex;
   flex-direction: column;
@@ -18,4 +49,49 @@
   padding: 24px 8px;
   border: $border;
   border-radius: $border-radius;
+  h2 {
+    font-weight: bolder;
+  }
+}
+
+//card-transaction
+.card-transaction {
+  overflow: hidden;
+  width: 430px;
+  height: 150px;
+  background: white;
+  display: flex;
+  align-items: center;
+  border: $border;
+  border-radius: $border-radius;
+  justify-content: space-around;
+}
+
+.card-transaction-img {
+  padding-left: 2px;
+}
+
+.card-transaction-infos {
+  h2 {
+    font-weight: bolder;
+  }
+}
+
+.card-transaction-money {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  h2 {
+    font-weight: bolder;
+  }
+}
+
+.card-transaction-mark {
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
 }

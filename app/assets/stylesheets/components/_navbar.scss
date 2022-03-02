@@ -1,12 +1,27 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+// savecue--logo
+.logo-large {
+  width: 56px;
+  border-radius: 50%;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+
+
+
+
+// avatar--with--logo
+.avatar-large {
+  width: 56px;
+  border-radius: 50%;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.border-none {
+  border: none;
+}
+
+.border-black {
+  border: $border;
+}
+
+.border-top-black {
+  border-top: $border;
 }
