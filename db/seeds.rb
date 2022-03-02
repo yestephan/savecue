@@ -17,10 +17,10 @@ user = User.new({full_name: "Bibi Ferreira", email: "bibi@email.com", password: 
 user.save
 
 # accounts
-checking = Account.new({user: user, name: "Checking account", account_type: "checking", iban: "NL 00 ABNA 0000000000"})
+checking = Account.new({user: user, name: "Checking account", account_type: "checking", iban: "NL 00 ABNA 0000000000", owner_name: "Bibi Ferreira"})
 checking.save
 
-savings = Account.new({user: user, name: "Savings account", account_type: "savings", iban: "NL 00 ABNA 0004561111"})
+savings = Account.new({user: user, name: "Savings account", account_type: "savings", iban: "NL 00 ABNA 0004561111", owner_name: "Bibi Ferreira"})
 savings.save
 
 # user cues
