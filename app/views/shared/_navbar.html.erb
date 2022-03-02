@@ -1,0 +1,47 @@
+
+<div class="navbar navbar-light bg-white">
+  <div class="container-fluid">
+  <% if user_signed_in? %>
+    <a class="navbar-toggler navbar-brand border-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+    </a>
+    <div class="offcanvas offcanvas-start border-black" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+      <div class="offcanvas-header">
+        <div class="offcanvas-title" id="offcanvasNavbarLabel">
+          <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+          <h3 class="my-3"><%= current_user.full_name %></h3>
+        </div>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body border-top-black">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <%= link_to "Home", home_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Profile Settings", profile_edit_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <!-- Will replace when we have the accounts done -->
+            <a class="nav-link" href="#">Payment settings</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <%= link_to home_path, class: "navbar-brand" do %>
+      <%= image_tag "logo-icon.png", class: "logo-large", alt: "logo-large" %>
+    <% end %>
+
+  <% else %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo.png", class: "logo-xllarge", alt: "logo-large" %>
+    <% end %>
+  <% end %>
+  </div>
+</div>

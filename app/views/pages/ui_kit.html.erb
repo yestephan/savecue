@@ -58,11 +58,6 @@
     <div class="card-transaction-money">
     <h2>+5€</h2>
     </div>
-    <div class="card-transaction-mark">
-      <a href="#">
-        <h1 class="arrow">▶️</h1>
-      </a>
-    </div>
 </div>
 <hr>
 <!--================navbar================-->
@@ -72,8 +67,7 @@
 <nav class="navbar navbar-light bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img class="logo-large" alt="logo-large" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png">
-      Savecue
+      <%= image_tag "logo.png", class: "logo-xllarge", alt: "logo-large" %>
     </a>
   </div>
 </nav>
@@ -112,18 +106,27 @@
       </div>
     </div>
     <a class="navbar-brand" href="#">
-      <img class="logo-large" alt="logo-large" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png">
+      <%= image_tag "logo-icon.png", class: "logo-large", alt: "logo-large" %>
     </a>
   </div>
 </div>
 
+
+
 <hr>
 <!--================button================-->
+<h1>Buttons</h1>
 
+ <div class="buttons-container">
+<%= link_to "Sign up", "#", class: "btn-primary" %>
+<%= link_to "Login", "#", class: "btn-secondary" %>
 
+<%= link_to "#", class: "btn-small" do %>
+<i class="fas fa-undo"></i>
+<% end %>
 
-
-
+<%= link_to "dashboard", "#", class: "btn-dashboard" %>
+<%= link_to "transactions", "#", class: "btn-transactions" %>
 
 
 
