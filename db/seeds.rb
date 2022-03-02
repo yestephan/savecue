@@ -3,7 +3,6 @@ UserCue.destroy_all
 Cue.destroy_all
 User.destroy_all
 
-
 # cues
 rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
 burger_cue = Cue.new({title: "Burger day!", description: "Save money each time you eat a burger", category: "burger"})
@@ -14,20 +13,32 @@ burger_cue.save
 spenda_cue.save
 
 # users/
-
-user = User.new({full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234", bank_account: "NL 00 ABNA 0000000000"})
+user = User.new({full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234"})
 user.save
+
+# accounts
+checking = Account.new({user: user, name: "Checking account", account_type: "checking", iban: "NL 00 ABNA 0000000000"})
+checking.save
+
+savings = Account.new({user: user, name: "Savings account", account_type: "savings", iban: "NL 00 ABNA 0004561111"})
+savings.save
 
 # user cues
 amsterdam_metadata = {location: "Amsterdam, NL"}
 rain_amsterdam_cue = UserCue.new({user: user, cue: rain_cue, cue_amount: 5, metadata: amsterdam_metadata})
+rain_amsterdam_cue.creditor_account = savings
+rain_amsterdam_cue.debtor_account = checking
 rain_amsterdam_cue.save
 
 burger_user_cue = UserCue.new({user: user, cue: burger_cue, cue_amount: 2})
+burger_user_cue.creditor_account = savings
+burger_user_cue.debtor_account = checking
 burger_user_cue.save
 
 spenda_metadata = {limit: 50}
 spenda_user_cue = UserCue.new({user: user, cue: spenda_cue, metadata: spenda_metadata})
+spenda_user_cue.creditor_account = savings
+spenda_user_cue.debtor_account = checking
 spenda_user_cue.save
 
 # transactions
