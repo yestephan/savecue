@@ -13,17 +13,17 @@ burger_cue.save
 spenda_cue.save
 
 # accounts
-checking = Account.new({name: "Checking account", account_type: "checking", iban: "NL 00 ABNA 0000000000"})
-checking.save
+# checking = Account.new({name: "Checking account", account_type: "checking", iban: "NL 00 ABNA 0000000000"})
+# checking.save
 
-savings = Account.new({name: "Savings account", account_type: "savings", iban: "NL 00 ABNA 0004561111"})
-savings.save
+# savings = Account.new({name: "Savings account", account_type: "savings", iban: "NL 00 ABNA 0004561111"})
+# savings.save
 
 # users
 user = User.new({full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234"})
-user.debtor_account = checking
-user.creditor_account = savings
-user.save
+# user.debtor_account = checking
+# user.creditor_account = savings
+user.save!
 
 
 # user cues

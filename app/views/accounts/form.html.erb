@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="login-container-text"><%= @page_title %></h2>
+
+  <%= simple_form_for @account, url: @form_path do |f| %>
+    <%= f.hidden_field :id unless @account.id.nil? %>
+    <%= f.hidden_field :page_title, value: @page_title %>
+    <%= f.hidden_field :form_path, value: @form_path %>
+    <div class="form-inputs">
+      <div class="form-floating mb-3">
+        <%= f.text_field :name,
+                      required: false,
+                      placeholder: "account name",
+                      class: "form-control" %>
+        <%= f.label :name, "Account name" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.select :account_type, @account_types, {}, {class: "form-select mb-3"} %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= f.text_field :iban,
+                      required: false,
+                      placeholder: "iban",
+                      class: "form-control" %>
+        <%= f.label :iban, "IBAN number" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Save", class: "btn btn-primary login-medium mb-2" %>
+      </div>
+      <% unless @account.id.nil? %>
+      <div class="form-actions">
+        <%= link_to "Remove account", destroy_account_path(@account), method: :delete, class: "btn btn-secondary login-medium mb-2" %>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

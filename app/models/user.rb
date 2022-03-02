@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :transactions
   has_many :accounts
 
-  belongs_to :creditor_account, class_name: "Account", foreign_key: "creditor_account_id", dependent: :destroy
-  belongs_to :debtor_account, class_name: "Account", foreign_key: "debtor_account_id", dependent: :destroy
+  belongs_to :creditor_account, class_name: "Account", foreign_key: "creditor_account_id", dependent: :destroy, optional: true
+  belongs_to :debtor_account, class_name: "Account", foreign_key: "debtor_account_id", dependent: :destroy, optional: true
 end
