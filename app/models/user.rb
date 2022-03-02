@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :user_cues
   has_many :transactions
+  has_many :accounts
 end
