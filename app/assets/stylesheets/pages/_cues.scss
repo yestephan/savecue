@@ -1,0 +1,38 @@
+.cues-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cues-container-text {
+  justify-content: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  height: 50px;
+  font-size: 40px;
+}
+
+
+.card-cue-container {
+  justify-content: center;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  margin-top: 60px;
+}
+
+.card-cue {
+  width: 200px;
+  height: 210px;
+  transition-duration: 0.5s;
+  &:hover {
+    width: 200px;
+    height: 192px;
+  }
+}
+
+.link-to-text-color {
+  color: $black;
+}

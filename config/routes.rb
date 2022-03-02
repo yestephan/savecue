@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "/confirmation", to: "profiles#confirm"
 
   get "/cues", to: "cues#index"
+  get "/user_cue/update_city", to: 'user_cues#update_city'
 
   get "/user_cue/new", to: "user_cues#new"
   post "/user_cue", to: "user_cues#create"
