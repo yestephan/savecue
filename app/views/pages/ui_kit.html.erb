@@ -126,8 +126,11 @@
  <div class="buttons-container">
 <%= link_to "Sign up", "#", class: "btn-primary" %>
 <%= link_to "Login", "#", class: "btn-secondary" %>
-<%= link_to "Back", "#", class: "btn-small" %>
+<%# <%= link_to "Back", "#", class: "btn-small" %>
 
+<%= link_to "#", class: "btn-small" do %>
+<i class="fas fa-undo"></i>
+<% end %>
 
 
 
