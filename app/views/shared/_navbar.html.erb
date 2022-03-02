@@ -33,9 +33,15 @@
         </ul>
       </div>
     </div>
+
+    <%= link_to home_path, class: "navbar-brand" do %>
+      <%= image_tag "logo-icon.png", class: "logo-large", alt: "logo-large" %>
     <% end %>
-    <a class="navbar-brand" href="#">
-      <img class="logo-large" alt="logo-large" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png">
-    </a>
+
+  <% else %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo.png", class: "logo-xllarge", alt: "logo-large" %>
+    <% end %>
+  <% end %>
   </div>
 </div>
