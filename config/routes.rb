@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
   get "/profile/new", to: "profiles#new"
   post "/profile", to: "profiles#create"
+  get "/home", to: "profiles#home"
   get "/profile/:id", to: "profiles#show"
   patch "/profile", to: "profiles#update"
   get "/bank_info", to: "profiles#bank_info"
