@@ -7,10 +7,12 @@ User.destroy_all
 rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
 burger_cue = Cue.new({title: "Burger day!", description: "Save money each time you eat a burger", category: "burger"})
 spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
+starbucks_cue = Cue.new({title: "Starbucks day!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
 
 rain_cue.save
 burger_cue.save
 spenda_cue.save
+starbucks_cue.save
 
 # users/
 user = User.new({full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234"})

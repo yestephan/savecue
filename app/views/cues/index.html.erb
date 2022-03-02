@@ -1,2 +1,31 @@
-<h1>Cues#index</h1>
-<p>Find me in app/views/cues/index.html.erb</p>
+<div class="cues-container">
+  <div class="cues-container-text">
+    <h1>Welcome <strong><%= current_user.full_name %></strong></h1>
+    <h1>Let's setup your first cue</h1>
+  </div>
+  <div class="card-cue-container">
+        <% @cues.each do |cue| %>
+                <% if cue.title == "Rainy day!"%>
+                <div class="card-cue bg-purple">
+                <h1 class="emoji">🌧</h1>
+                <h4><%= link_to cue.title, user_cue_path(@user_cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
+                </div>
+                <% elsif cue.title == "Burger day!"%>
+                <div class="card-cue bg-barge">
+                <h1 class="emoji">🍔</h1>
+                <h4><%= link_to cue.title, user_cue_path(@user_cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
+                </div>
+                <% elsif cue.title == "Big spenda!"%>
+                <div class="card-cue bg-darker-yellow">
+                <h1 class="emoji">💸</h1>
+                <h4><%= link_to cue.title, user_cue_path(@user_cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
+                </div>
+                <% elsif cue.title == "Starbucks day!"%>
+                <div class="card-cue bg-orange">
+                <h1 class="emoji">☕️</h1>
+                <h4><%= link_to cue.title, user_cue_path(@user_cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
+                </div>
+                <% end %>
+        <% end %>
+  </div>
+</div>
