@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
+  
   def home
   end
 
@@ -19,5 +21,5 @@ class ProfilesController < ApplicationController
 
   def update
   end
-  
+
 end
