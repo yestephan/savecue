@@ -3,7 +3,8 @@ class AccountsController < ApplicationController
   before_action :set_account_types
 
   def index
-
+    @debtor_account = current_user.debtor_account
+    @creditor_account = current_user.creditor_account
   end
 
   def debtor

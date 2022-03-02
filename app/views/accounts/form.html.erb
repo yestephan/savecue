@@ -1,4 +1,8 @@
 <div class="container">
+  <%= link_to :back, class: "btn btn-secondary" do %>
+  Back
+  <% end %>
+
   <h2 class="login-container-text"><%= @page_title %></h2>
 
   <%= simple_form_for @account, url: @form_path do |f| %>
