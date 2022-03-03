@@ -1,49 +1,46 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account_types
+  # before_action :set_account_types
 
   def index
-    @debtor_account = current_user.debtor_account
-    @creditor_account = current_user.creditor_account
+    @debtor_account = Account.find_by(user_id: current_user, account_type: "debtor")
+    @creditor_account = Account.find_by(user_id: current_user, account_type: "creditor")
   end
 
   def debtor
-    @page_title = "Debtor account"
-    unless current_user.debtor_account.nil?
-      @account = current_user.debtor_account
+    if current_user.accounts.find_by(account_type: "debtor")
+      @page_title = "Edit your debit account"
+      @account = current_user.accounts.find_by(account_type: "debtor")
+      @account_type = "debtor"
       @form_path = accounts_path
     else
+      @page_title = "From where do we get that money?"
       @account = Account.new
+      @account_type = "debtor"
       @form_path = accounts_debtor_path
     end
-
     render :form
   end
 
   def creditor
-    @page_title = "Creditor account"
-    unless current_user.creditor_account.nil?
-      @account = current_user.creditor_account
+    if current_user.accounts.find_by(account_type: "creditor")
+      @page_title = "Edit your savings account"
+      @account = current_user.accounts.find_by(account_type: "creditor")
+      @account_type = "creditor"
       @form_path = accounts_path
     else
+      @page_title = "And where should the money go?"
       @account = Account.new
+      @account_type = "creditor"
       @form_path = accounts_creditor_path
     end
     render :form
   end
 
   def create
-    account_type = params[:account_type]
-
-    # create account
     @account = Account.new(account_params)
-    if @account.save
-      if account_type == "creditor"
-        current_user.creditor_account = @account
-      elsif
-        current_user.debtor_account = @account
-      end
-      current_user.save
+    @account.user = current_user
+    if @account.save!
       redirect_to accounts_path
     else
       @page_title = params[:account][:page_title]
@@ -76,6 +73,6 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:id, :name, :account_type, :iban)
+    params.require(:account).permit(:name, :iban)
   end
 end

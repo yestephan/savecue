@@ -7,6 +7,7 @@
     <%= f.hidden_field :id unless @account.id.nil? %>
     <%= f.hidden_field :page_title, value: @page_title %>
     <%= f.hidden_field :form_path, value: @form_path %>
+    <%= f.hidden_field :account_type, value: @account_type %>
     <div class="form-inputs">
       <div class="form-floating">
         <%= f.text_field :name,
@@ -14,9 +15,6 @@
                       placeholder: "account name",
                       class: "form-control" %>
         <%= f.label :name, "Account name" %>
-      </div>
-      <div>
-        <%= f.select :account_type, @account_types, {}, {class: "form-select"} %>
       </div>
       <div class="form-floating">
         <%= f.text_field :iban,
