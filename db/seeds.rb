@@ -8,30 +8,30 @@ User.destroy_all
 Account.destroy_all
 
 # # cues
-# rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
-# rain_cue.save!
-# coffee_cue = Cue.new({title: "Coffee break", description: "One break -> one saving", category: "coffee"})
-# coffee_cue.save!
-# spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
-# spenda_cue.save!
-# starbucks_cue = Cue.new({title: "Starbucks day!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
-# starbucks_cue.save!
+rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
+rain_cue.save!
+coffee_cue = Cue.new({title: "Coffee break", description: "One break -> one saving", category: "coffee"})
+coffee_cue.save!
+spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
+spenda_cue.save!
+starbucks_cue = Cue.new({title: "Starbucks day!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
+starbucks_cue.save!
+>>>>>>> master
 
 # p "4 save cues created 🌱"
 
-# # accounts
-# checking = Account.new({ name: "Checking", account_type: "checking", iban: "NL43INGB6631699223" })
-# checking.save!
-# savings = Account.new({ name: "Savings", account_type: "savings", iban: "NL86ABNA4643636556" })
-# savings.save!
-# p "Checking and Savings Account created"
-
 # # users
-# user = User.new({ full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234" })
-# user.debtor_account = checking
-# user.creditor_account = savings
-# user.save!
+user = User.new({ full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234" })
+user.save!
 
+# # accounts
+checking = Account.new({ name: "Checking", account_type: "checking", iban: "NL43INGB6631699223" })
+checking.user = user
+checking.save!
+savings = Account.new({ name: "Savings", account_type: "savings", iban: "NL86ABNA4643636556" })
+savings.user = user
+savings.save!
+p "Checking and Savings Account created"
 
 # # user cues
 # amsterdam_metadata = { location: "Amsterdam, NL" }

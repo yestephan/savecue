@@ -1,5 +1,9 @@
 .bt {
 	text-align: center;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	font-weight: 800;
+	font-size: 1.5rem;
 }
 
 .btn-primary {
@@ -8,9 +12,10 @@
 	border-radius: $border-radius;
 	color: #ffffff;
 	text-decoration: none;
-	&:hover {
-		opacity: 1;
-	}
+
+	// &:hover {
+	// 	opacity: 1;
+	// }
 }
 
 .btn-secondary {
