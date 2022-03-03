@@ -20,7 +20,7 @@ starbucks_cue.save!
 # p "4 save cues created 🌱"
 
 # # users
-user = User.new({ full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234" })
+user = User.new({ first_name: "Bibi", last_name: "Ferreira", email: "bibi@email.com", password: "test1234" })
 user.save!
 
 # # accounts
