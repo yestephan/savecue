@@ -43,7 +43,10 @@ auth_url = "https://api.mockbank.io/oauth/token"
 customers_url = "https://api.mockbank.io/customers"
 customer_name = "Bibi"
 customer_iban_debit = "NL43INGB6631699223"
+customer_iban_debit_name = "Debit"
 customer_iban_credit = "NL86ABNA4643636556"
+customer_iban_credit_name = "Savings"
+transaction_amount = -4
 
 
 
@@ -106,3 +109,29 @@ end
 
 
 p account_transactions[0]["amount"]
+
+
+# Generate a transaction
+auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+transactions_url = "#{customers_url}/#{customer_id}/transactions"
+transaction_body = {
+  "accountId": "#{account_id}",
+  "amount": -4,
+  "bookingDate": "2020-03-03",
+  "currency": "EUR",
+  "valueDate": "2020-03-03",
+  "creditorId": "creditorId",
+  "creditorName": "#{customer_iban_credit_name}",
+  "creditorAccount": {
+    "currency": "EUR",
+    "iban": "#{customer_iban_credit}",
+  },
+  "debtorAccount": {},
+  "remittanceInformationUnstructured": "Coffee"
+}
+
+transaction = HTTParty.post(transactions_url,
+                            body: transaction_body,
+                            headers: auth_headers
+                            )
+p transaction
