@@ -1,18 +1,18 @@
 require 'httparty'
 
-# Transaction.destroy_all
-# UserCue.destroy_all
-# Cue.destroy_all
-# User.destroy_all
+Transaction.destroy_all
+UserCue.destroy_all
+Cue.destroy_all
+User.destroy_all
 
 # cues
-# rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
-# burger_cue = Cue.new({title: "Burger day!", description: "Save money each time you eat a burger", category: "burger"})
-# spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
+rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
+coffee_cue = Cue.new({title: "Coffee break", description: "One break -> one saving", category: "coffee"})
+spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
 
-# rain_cue.save
-# burger_cue.save
-# spenda_cue.save
+rain_cue.save
+coffee_cue.save
+spenda_cue.save
 
 # users/
 # user = User.new({full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234"})
