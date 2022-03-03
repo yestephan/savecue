@@ -1,1 +1,12 @@
 // Specific CSS for your home-page
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-cue-cards{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
