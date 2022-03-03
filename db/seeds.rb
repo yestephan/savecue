@@ -52,3 +52,6 @@ end
 create_transactions(user, rain_amsterdam_cue, 3)
 create_transactions(user, burger_user_cue, 5)
 create_transactions(user, spenda_user_cue, 2)
+
+
+p "Seed success"
