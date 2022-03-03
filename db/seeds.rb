@@ -17,7 +17,7 @@ spenda_cue.save!
 starbucks_cue = Cue.new({title: "Starbucks day!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
 starbucks_cue.save!
 
-p "4 save cues created 🌱"
+# p "4 save cues created 🌱"
 
 # # users
 user = User.new({ full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234" })
@@ -32,8 +32,6 @@ savings.user = user
 savings.save!
 p "Checking and Savings Account created"
 
-
-
 # # user cues
 # amsterdam_metadata = { location: "Amsterdam, NL" }
 # rain_amsterdam_cue = UserCue.new({ user: user, cue: rain_cue, cue_amount: 5, metadata: amsterdam_metadata })
@@ -45,9 +43,6 @@ p "Checking and Savings Account created"
 # spenda_metadata = { limit: 50 }
 # spenda_user_cue = UserCue.new({ user: user, cue: spenda_cue, cue_amount: 5, metadata: spenda_metadata })
 # spenda_user_cue.save
-
-
-
 
 
 
