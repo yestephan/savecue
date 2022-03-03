@@ -1,34 +1,29 @@
 <div class="container">
   <h2>Bank Settings</h2>
-
   <div class="row">
     <h5>Debtor Account</h5>
   </div>
-
   <div class="row">
     <% unless @debtor_account.nil? %>
       <%= link_to accounts_debtor_path, class: "bt btn-secondary" do %>
-      <div class="row"><%= @debtor_account.name %></div>
-      <div class="row"><%= @debtor_account.iban %></div>
+        <div class="row"><%= @debtor_account.name %></div>
+        <div class="row"><%= @debtor_account.iban %></div>
       <% end %>
     <% else %>
       <%= link_to "Setup debtor account", accounts_debtor_path, class: "bt btn-secondary" %>
     <% end %>
   </div>
-
   <div class="row">
     <h5>Creditor Account</h5>
   </div>
-
   <div class="row">
     <% unless @creditor_account.nil? %>
       <%= link_to accounts_creditor_path, class: "bt btn-secondary" do %>
-      <div class="row"><%= @creditor_account.name %></div>
-      <div class="row"><%= @creditor_account.iban %></div>
+        <div class="row"><%= @creditor_account.name %></div>
+        <div class="row"><%= @creditor_account.iban %></div>
       <% end %>
     <% else %>
       <%= link_to "Setup creditor account", accounts_creditor_path, class: "bt btn-secondary" %>
     <% end %>
   </div>
-
 </div>
