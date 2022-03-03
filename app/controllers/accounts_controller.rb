@@ -29,7 +29,7 @@ class AccountsController < ApplicationController
       @account_type = "creditor"
       @form_path = accounts_path
     else
-      @page_title = "And where should the money go?"
+      @page_title = "Where should the money go?"
       @account = Account.new
       @account_type = "creditor"
       @form_path = accounts_creditor_path
@@ -73,6 +73,6 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :iban)
+    params.require(:account).permit(:id, :account_type, :name, :iban)
   end
 end
