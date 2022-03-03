@@ -1,5 +1,5 @@
 <div class="homepage">
-  <div class="container-fluid" style="background-image: url(<%= image_path('Frame.png')%>); background-size: contain; min-height: 100vh;">
+  <div class="container-fluid" style="background-image: url(<%= image_path('Frame.png')%>); background-size: cover; min-height: 100vh;">
     >
     <div class="container center-content">
       <div class="home-card bg-white w-75 text-center mb-3 ">
@@ -11,17 +11,9 @@
         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary w-100" %>
       </div>
       <div class=" w-75">
-        <%= link_to "Log in", new_user_session_path, class: "btn btn-primary w-100" %>
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-secondary w-100" %>
       </div>
     </div>
   </div>
-  <div class="container-cue-cards" style="background-image: url(<%= image_path('cuecards.png')%>); background-size: cover; min-height: 100vh;">
-  </div>
-  <div class="container-tagline" style="background-color: pink background-size: cover; height: 100vh;">
-    <div class="tagline bg-white w-75 text-center mb-3>
-      <h1 class="w-100">Make a rainy day<br>
-         save you some<br>
-         money!</h1>
-    </div>
-  </div>
+
 </div>
