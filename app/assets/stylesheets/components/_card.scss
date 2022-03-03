@@ -65,6 +65,9 @@
   border: $border;
   border-radius: $border-radius;
   justify-content: space-around;
+  // .emoji{
+  // font-size: 50;
+  // }
 }
 
 .card-transaction-img {
@@ -110,4 +113,8 @@
   border-radius: 8px;
   padding: 30px 0;
   margin-top: 120px;
+}
+
+.card-bank-setting-icon {
+  font-size: 80px;
 }
