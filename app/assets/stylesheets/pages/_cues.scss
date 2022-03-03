@@ -25,11 +25,15 @@
 
 .card-cue {
   width: 200px;
-  height: 210px;
+  height: 180px;
   transition-duration: 0.5s;
   &:hover {
     width: 200px;
     height: 192px;
+  }
+
+  h4 {
+    color: $black;
   }
 }
 
