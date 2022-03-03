@@ -6,24 +6,30 @@
   <div class="card-cue-container">
         <% @cues.each do |cue| %>
                 <% if cue.title == "Rainy day!"%>
-                <div class="card-cue bg-purple">
-                <h1 class="emoji">🌧</h1>
-                <h4><%= link_to cue.title, user_cue_path(@user_cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
-                </div>
+                <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-orange" do %>
+                  <div class="text-center link-to-text-color">
+                    <h1 class="emoji">☕️</h1>
+                    <h4><%= cue.title %></h4>
+                  </div>
+                <% end %>
                 <% elsif cue.title == "Burger day!"%>
-                <div class="card-cue bg-barge">
-                <h1 class="emoji">🍔</h1>
-                <h4><%= link_to cue.title, user_cue_path(@user_cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
-                </div>
+                 <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-barge"  do %>
+                  <div class="text-center">
+                    <h1 class="emoji">🌧</h1>
+                    <h4><%= cue.title %></h4>
+                  </div>
+                <% end %>
                 <% elsif cue.title == "Big spenda!"%>
-                <div class="card-cue bg-darker-yellow">
-                <h1 class="emoji">💸</h1>
-                <h4><%= link_to cue.title, user_cue_path(@user_cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
-                </div>
+                <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-purple"  do %>
+                  <div class="text-center">
+                  <h1 class="emoji">🌧</h1>
+                  <h4><%= cue.title %></h4>
+                  </div>
+                <% end %>
                 <% elsif cue.title == "Starbucks day!"%>
                 <div class="card-cue bg-orange">
                 <h1 class="emoji">☕️</h1>
-                <h4><%= link_to cue.title, user_cue_path(@user_cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
+                <h4><%= link_to cue.title, new_cue_user_cue_path(cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
                 </div>
                 <% end %>
         <% end %>
