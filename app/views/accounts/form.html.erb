@@ -9,14 +9,14 @@
     <%= f.hidden_field :form_path, value: @form_path %>
     <%= f.hidden_field :account_type, value: @account_type %>
     <div class="form-inputs">
-      <div class="form-floating mb-3">
+      <div class="form-floating">
         <%= f.text_field :name,
                       required: false,
                       placeholder: "account name",
                       class: "form-control" %>
         <%= f.label :name, "Account name" %>
       </div>
-      <div class="form-floating mb-3">
+      <div class="form-floating">
         <%= f.text_field :iban,
                       required: false,
                       placeholder: "iban",
