@@ -66,3 +66,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 gem 'httparty'
+
+# dotenv gem for security.
+gem 'dotenv-rails'
+
+# for image uploads
+gem 'cloudinary'

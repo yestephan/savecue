@@ -3,14 +3,14 @@
   <div class="container-fluid">
   <% if user_signed_in? %>
     <a class="navbar-toggler navbar-brand border-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      <%= render "shared/avatar" %>
     </a>
     <div class="offcanvas offcanvas-start border-black" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
       <div class="offcanvas-header">
         <div class="offcanvas-title" id="offcanvasNavbarLabel">
-          <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-          <h3 class="my-3"><%= current_user.full_name %></h3>
+          <%= render "shared/avatar" %>
+          <h3 class="my-3"><%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
         </div>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
@@ -25,6 +25,9 @@
           </li>
           <li class="nav-item">
             <%= link_to "Payment Settings", accounts_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Account Settings", edit_user_registration_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
