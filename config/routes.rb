@@ -21,8 +21,10 @@ Rails.application.routes.draw do
   get "/cues", to: "cues#index"
   get "/user_cue/update_city", to: 'user_cues#update_city'
 
+  get "/user_cues", to: "user_cues#index"
+
   get "/user_cue/new", to: "user_cues#new"
-  post "/user_cue", to: "user_cues#create"
+  post "/user_cues", to: "user_cues#create"
   get "/user_cues/:id", to: "user_cues#show"
   get "/user_cues/:id/transaction", to: "transactions#index"
   get "/user_cues/:id/edit", to: "user_cues#edit"
