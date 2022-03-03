@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "/confirmation", to: "profiles#confirm"
 
   get "/cues", to: "cues#index"
+  get "/user_cue/update_city", to: 'user_cues#update_city'
 
   get "/user_cue/new", to: "user_cues#new"
   post "/user_cue", to: "user_cues#create"
@@ -27,4 +28,16 @@ Rails.application.routes.draw do
   get "/user_cues/:id/edit", to: "user_cues#edit"
   patch "/user_cues/:id", to: "user_cues#update"
   post "/user_cues/:id/transactions", to: "transactions#create"
+
+  # Accounts
+  get "/accounts/debtor", to: "accounts#debtor"
+  post "/accounts/debtor", to: "accounts#create", defaults: {account_type: "debtor"}
+
+  get "/accounts/creditor", to: "accounts#creditor"
+  post "/accounts/creditor", to: "accounts#create", defaults: {account_type: "creditor"}
+
+
+  get "/accounts", to: "accounts#index"
+  patch "/accounts", to: "accounts#update"
+  delete "/accounts/:id", to:"accounts#destroy", as: "destroy_account"
 end

@@ -24,8 +24,7 @@
             <%= link_to "Profile Settings", profile_edit_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <!-- Will replace when we have the accounts done -->
-            <a class="nav-link" href="#">Payment settings</a>
+            <%= link_to "Payment Settings", accounts_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
