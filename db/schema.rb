@@ -10,20 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_155054) do
+ActiveRecord::Schema.define(version: 2022_03_03_114845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "name"
     t.string "account_type"
     t.string "iban"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "owner_name"
     t.string "account_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
@@ -52,11 +51,7 @@ ActiveRecord::Schema.define(version: 2022_03_02_155054) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "metadata"
-    t.bigint "creditor_account_id", null: false
-    t.bigint "debtor_account_id", null: false
-    t.index ["creditor_account_id"], name: "index_user_cues_on_creditor_account_id"
     t.index ["cue_id"], name: "index_user_cues_on_cue_id"
-    t.index ["debtor_account_id"], name: "index_user_cues_on_debtor_account_id"
     t.index ["user_id"], name: "index_user_cues_on_user_id"
   end
 
@@ -76,8 +71,6 @@ ActiveRecord::Schema.define(version: 2022_03_02_155054) do
   add_foreign_key "accounts", "users"
   add_foreign_key "transactions", "user_cues"
   add_foreign_key "transactions", "users"
-  add_foreign_key "user_cues", "accounts", column: "creditor_account_id"
-  add_foreign_key "user_cues", "accounts", column: "debtor_account_id"
   add_foreign_key "user_cues", "cues"
   add_foreign_key "user_cues", "users"
 end
