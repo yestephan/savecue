@@ -8,9 +8,7 @@ Rails.application.routes.draw do
 
   # Profiles
   get "/home", to: "profiles#home"
-  get "/profile/new", to: "profiles#new"
   get "/profile/edit", to: "profiles#edit"
-  post "/profile", to: "profiles#create"
   patch "/profile", to: "profiles#update"
   get "/profile/:id", to: "profiles#show"
 

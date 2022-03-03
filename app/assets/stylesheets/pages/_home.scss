@@ -1,12 +1,13 @@
 // Specific CSS for your home-page
 .home-container {
-	height: 100%;
+	height: 80vh;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	padding: 2rem;
-	gap: 2rem;
+	gap: 1.5rem;
 	justify-content: center;
+	align-items: center;
 }
 
 .center-content {

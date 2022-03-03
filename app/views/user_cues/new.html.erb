@@ -1,18 +1,16 @@
-<div class="user-cue-container">
-  <div class="user-cue-container-text">
-  <h2>How much do you save for each coffee break?</h2>
-  </div>
-  <%= simple_form_for [@cue, @user_cue] do |f| %>
-    <div class="form-floating mb-3">
+<div class="container">
+  <div class="inner-container">
+    <h1>How much do you save for each coffee break?</h1>
+    <%= simple_form_for [@cue, @user_cue] do |f| %>
+      <div class="form-floating">
         <%= f.input :cue_amount,
-                    label: 'Amount',
-                    required: true,
-                    class: "form-control",
-                    placeholder: "€" %>
+                      label: 'Amount',
+                      required: true,
+                      class: "form-control",
+                      placeholder: "€" %>
       </div>
-        <div class="form-actions">
-         <%= f.button :submit, "Next", class: "btn btn-primary" %>
-        </div>
-  <% end %>
+      <%= f.button :submit, "Next", class: "bt btn-primary" %>
+    <% end %>
+  </div>
   <%= render 'shared/flashes' %>
 </div>
