@@ -1,4 +1,14 @@
 // Specific CSS for your home-page
+.home-container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	gap: 2rem;
+	justify-content: center;
+}
+
 .center-content {
 	display: flex;
 	flex-direction: column;
