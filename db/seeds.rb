@@ -16,7 +16,6 @@ spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time y
 spenda_cue.save!
 starbucks_cue = Cue.new({title: "Starbucks day!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
 starbucks_cue.save!
->>>>>>> master
 
 # p "4 save cues created 🌱"
 
@@ -44,9 +43,6 @@ p "Checking and Savings Account created"
 # spenda_metadata = { limit: 50 }
 # spenda_user_cue = UserCue.new({ user: user, cue: spenda_cue, cue_amount: 5, metadata: spenda_metadata })
 # spenda_user_cue.save
-
-
-
 
 
 
