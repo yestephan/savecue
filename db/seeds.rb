@@ -1,9 +1,9 @@
 require 'httparty'
 
-Transaction.destroy_all
-UserCue.destroy_all
-Cue.destroy_all
-User.destroy_all
+# Transaction.destroy_all
+# UserCue.destroy_all
+# Cue.destroy_all
+# User.destroy_all
 
 # cues
 # rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
@@ -19,30 +19,31 @@ User.destroy_all
 # user.save
 
 # user cues
-amsterdam_metadata = {location: "Amsterdam, NL"}
-rain_amsterdam_cue = UserCue.new({user: user, cue: rain_cue, cue_amount: 5, metadata: amsterdam_metadata})
-rain_amsterdam_cue.creditor_account = savings
-rain_amsterdam_cue.debtor_account = checking
-rain_amsterdam_cue.save
+# amsterdam_metadata = {location: "Amsterdam, NL"}
+# rain_amsterdam_cue = UserCue.new({user: user, cue: rain_cue, cue_amount: 5, metadata: amsterdam_metadata})
+# rain_amsterdam_cue.creditor_account = savings
+# rain_amsterdam_cue.debtor_account = checking
+# rain_amsterdam_cue.save
 
-burger_user_cue = UserCue.new({user: user, cue: burger_cue, cue_amount: 2})
-burger_user_cue.creditor_account = savings
-burger_user_cue.debtor_account = checking
-burger_user_cue.save
+# burger_user_cue = UserCue.new({user: user, cue: burger_cue, cue_amount: 2})
+# burger_user_cue.creditor_account = savings
+# burger_user_cue.debtor_account = checking
+# burger_user_cue.save
 
-spenda_metadata = {limit: 50}
-spenda_user_cue = UserCue.new({user: user, cue: spenda_cue, metadata: spenda_metadata})
-spenda_user_cue.creditor_account = savings
-spenda_user_cue.debtor_account = checking
-spenda_user_cue.save
+# spenda_metadata = {limit: 50}
+# spenda_user_cue = UserCue.new({user: user, cue: spenda_cue, metadata: spenda_metadata})
+# spenda_user_cue.creditor_account = savings
+# spenda_user_cue.debtor_account = checking
+# spenda_user_cue.save
 
 
-# NL06 4815 1623 0000 0014 77
-# Debit Account
 
 
 auth_url = "https://api.mockbank.io/oauth/token"
 customers_url = "https://api.mockbank.io/customers"
+customer_name = "Bibi"
+customer_iban_debit = "NL43INGB6631699223"
+customer_iban_credit = "NL86ABNA4643636556"
 
 
 
@@ -56,15 +57,52 @@ mockbank_admin = HTTParty.post(auth_url,
                       headers: auth_headers)
 access_token = mockbank_admin["access_token"]
 
-# Get customers
+# Get customer ID
 auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
 customers = HTTParty.get(customers_url,
   headers: auth_headers
 )
 
-p customers.class
+customers = customers.parsed_response["data"].to_a
+customer = ""
+customers.each do |object|
+  customer = object if object["fullName"] == customer_name
+end
+customer_id = customer["externalId"]
 
-# Get customer id
+p "customer id: #{customer_id}"
+p "customer url: #{customers_url}"
+
+# Get user account id
+auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+accounts_url = "#{customers_url}/#{customer_id}/accounts"
+customer_accounts = HTTParty.get(accounts_url,
+                                 headers: auth_headers
+                                )
+
+customer_accounts = customer_accounts.parsed_response["data"].to_a
+account = ""
+customer_accounts.each do |a|
+  account = a if a["iban"] == customer_iban_debit
+end
+account_id = account["externalId"]
+
+p "account id: #{account_id}"
 
 
-# Get user accounts
+# Get account transactions
+auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+transactions_url = "#{customers_url}/#{customer_id}/transactions"
+transactions = HTTParty.get(transactions_url,
+                            headers: auth_headers
+                            )
+
+transactions = transactions.parsed_response["data"].to_a
+
+account_transactions = []
+transactions.each do |transaction|
+  account_transactions << transaction if transaction["accountId"] == account_id && transaction["creditorName"] == "McDonalds"
+end
+
+
+p account_transactions[0]["amount"]
