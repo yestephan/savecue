@@ -16,7 +16,9 @@ class UserCuesController < ApplicationController
     @user_cue.user = @user
     @user_cue.cue = @cue
     @user_cue.save!
-    redirect_to user_cue_path(@user_cue)
+    redirect_to accounts_debtor_path
+
+    # user_cue_path(@user_cue)
     # else
     #   render :new
     # end
