@@ -1,2 +1,18 @@
-<h1>UserCues#new</h1>
-<p>Find me in app/views/user_cues/new.html.erb</p>
+<div class="user-cue-container">
+  <div class="user-cue-container-text">
+  <h1>How much do you save for each coffee break?</h1>
+  </div>
+  <%= simple_form_for [@cue, @user_cue] do |f| %>
+    <div class="form-floating mb-3">
+        <%= f.input :cue_amount,
+                    label: 'Amount',
+                    required: true,
+                    class: "form-control",
+                    placeholder: "€" %>
+      </div>
+        <div class="form-actions">
+         <%= f.button :submit, "Next", class: "btn btn-primary" %>
+        </div>
+  <% end %>
+  <%= render 'shared/flashes' %>
+</div>
