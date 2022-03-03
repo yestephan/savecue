@@ -1,33 +1,45 @@
 // savecue--logo
 .logo-xllarge {
-  width: 200px;
+	width: 200px;
 }
-
 
 .navbar {
-  border-bottom: 3px solid $black;
+	border-bottom: 3px solid $black;
 }
 
+.navbar-light .navbar-nav .nav-link {
+	color: $black;
+}
 
 // avatar--with--logo
 .logo-large {
-  width: 56px;
-  border-radius: 50%;
+	width: 56px;
+	border-radius: 50%;
 }
 
 .avatar-large {
-  width: 56px;
-  border-radius: 50%;
+	width: 56px;
+	border-radius: 50%;
 }
 
 .border-none {
-  border: none;
+	border: none;
 }
 
 .border-black {
-  border: $border;
+	border: $border;
 }
 
 .border-top-black {
-  border-top: $border;
+	border-top: $border;
+}
+
+.offcanvas-header {
+	align-items: start;
+
+	.btn-close {
+		height: 1.5rem;
+		width: 1.5rem;
+		color: $black;
+	}
 }

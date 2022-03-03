@@ -1,19 +1,11 @@
 <div class="homepage">
   <div class="container-fluid" style="background-image: url(<%= image_path('Frame.png')%>); background-size: cover; min-height: 100vh;">
-    >
-    <div class="container center-content">
-      <div class="home-card bg-white w-75 text-center mb-3 ">
-        <h1 class="w-100">Shake that <br>
-           penny jar, start <br>
-           saving now!</h1>
+    <div class="home-container">
+      <div class="home-card bg-white text-center">
+        <h1>Shake that penny jar, start saving now!</h1>
       </div>
-      <div class=" w-75 mb-3">
-        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary w-100" %>
-      </div>
-      <div class=" w-75">
-        <%= link_to "Log in", new_user_session_path, class: "btn btn-secondary w-100" %>
-      </div>
+      <%= link_to "Sign up", new_user_registration_path, class: "bt btn-primary" %>
+      <%= link_to "Log in", new_user_session_path, class: "bt btn-secondary" %>
     </div>
   </div>
-
 </div>
