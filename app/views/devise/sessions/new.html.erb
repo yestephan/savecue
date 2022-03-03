@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="login-container-text">Log in</h2>
+  <h1>Log in</h1>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <div class="form-floating">
@@ -21,10 +21,7 @@
       </div>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
-    <div class="form-actions">
-      <%= f.button :submit, "Log in", class: "btn btn-primary login-medium mb-2" %>
-      <%= link_to "Sign up", cues_path, class: "btn btn-secondary login-medium" %>
-    </div>
+    <%= f.button :submit, "Log in", class: "bt btn-primary" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "bt btn-secondary" %>
   <% end %>
-  <%# <%= render "devise/shared/links" %>
 </div>
