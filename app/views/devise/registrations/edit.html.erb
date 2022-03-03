@@ -1,11 +1,9 @@
 <div class="container">
-
-  <h2>Account Settings</h2>
-
+  <h1>Account Settings</h1>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <div class="form-floating mb-3">
+      <div class="form-floating">
         <%= f.email_field :email,
                   required: true,
                   autofocus: true,
@@ -13,14 +11,12 @@
                   class: "form-control",
                   input_html: { autocomplete: "email" }%>
         <%= f.label :email, "Email" %>
+        <%= f.hint "Leave field blank if you don't want to change it." %>
       </div>
-
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
-
-      <div><small>leave it blank if you don't want to change it</small></div>
-      <div class="form-floating mb-3">
+      <div class="form-floating">
         <%= f.password_field :password,
                     required: true,
                     class: "form-control",
@@ -29,19 +25,16 @@
                     input_html: { autocomplete: "new-password" } %>
         <%= f.label :password, "Password" %>
       </div>
-
-      <div class="form-floating mb-3">
+      <div class="form-floating">
         <%= f.password_field :password_confirmation,
                     required: true,
                     class: "form-control",
                     placeholder: "confirm password",
                     input_html: { autocomplete: "new-password" } %>
         <%= f.label :password_confirmation, "Password confirmation" %>
+        <%= f.hint "We need your current password to confirm your changes." %>
       </div>
-
-
-      <div><small>we need your current password to confirm your changes</small></div>
-      <div class="form-floating mb-3">
+      <div class="form-floating">
         <%= f.password_field :current_password,
                       required: false,
                       class: "form-control",
@@ -49,18 +42,10 @@
                       input_html: { autocomplete: "current-password" } %>
         <%= f.label :current_password, "Password"%>
       </div>
-
-
-
     </div>
-
     <div class="form-actions">
-      <%= f.button :submit, "Update", class: "btn btn-primary" %>
+      <%= f.button :submit, "Update", class: "bt btn-primary" %>
     </div>
+    <%= link_to "Cancel my account", registration_path(resource_name), class: "bt btn-destructive", data: { confirm: "Are you sure?" }, method: :delete %>
   <% end %>
-
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
 </div>

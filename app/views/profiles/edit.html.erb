@@ -1,32 +1,32 @@
 <div class="container">
-  <h1>Edit Profile</h1>
-  <%= simple_form_for @profile, url: profile_path do |f| %>
-    <div class="form-inputs">
-      <div class="form-floating">
-        <%= f.text_field :first_name,
-                  required: true,
-                  autofocus: true,
-                  placeholder: "First name",
-                  class: "form-control",
-                  input_html: { autocomplete: "email" }%>
-        <%= f.label :first_name, "First name" %>
-      </div>
-      <div class="form-floating">
-        <%= f.text_field :last_name,
-                  required: true,
-                  autofocus: true,
-                  placeholder: "name@example.com",
-                  class: "form-control",
-                  input_html: { autocomplete: "email" }%>
-        <%= f.label :last_name, "Last name" %>
-      </div>
-      <div class="mb-3">
+  <div class="inner-container">
+    <h1>Edit Profile</h1>
+    <%= simple_form_for @profile, url: profile_path do |f| %>
+      <div class="form-inputs">
+        <div class="form-floating">
+          <%= f.text_field :first_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: "First name",
+                    class: "form-control",
+                    input_html: { autocomplete: "email" }%>
+          <%= f.label :first_name, "First name" %>
+        </div>
+        <div class="form-floating">
+          <%= f.text_field :last_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: "name@example.com",
+                    class: "form-control",
+                    input_html: { autocomplete: "email" }%>
+          <%= f.label :last_name, "Last name" %>
+        </div>
         <%= f.file_field :picture,
-                      required: false,
-                      class: "form-control",
-                      placeholder: "Image Upload" %>
+                        required: false,
+                        class: "form-control",
+                        placeholder: "Image Upload" %>
+        <%= f.button :submit, "Update", class: "bt btn-primary" %>
       </div>
-      <%= f.button :submit, "Update", class: "bt btn-primary" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
