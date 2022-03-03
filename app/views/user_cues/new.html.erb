@@ -2,7 +2,7 @@
   <div class="user-cue-container-text">
   <h1>How much do you save for each coffee break?</h1>
   </div>
-  <%= simple_form_for @user_cue do |f| %>
+  <%= simple_form_for [@cue, @user_cue] do |f| %>
     <div class="form-floating mb-3">
         <%= f.input :cue_amount,
                     label: 'Amount',

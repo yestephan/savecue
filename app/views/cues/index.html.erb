@@ -6,21 +6,21 @@
   <div class="card-cue-container">
         <% @cues.each do |cue| %>
                 <% if cue.title == "Rainy day!"%>
-                <%= link_to user_cue_new_path, class: "card-cue bg-orange" do %>
+                <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-orange" do %>
                   <div class="text-center link-to-text-color">
                     <h1 class="emoji">☕️</h1>
                     <h4><%= cue.title %></h4>
                   </div>
                 <% end %>
                 <% elsif cue.title == "Burger day!"%>
-                 <%= link_to user_cue_new_path, class: "card-cue bg-barge"  do %>
+                 <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-barge"  do %>
                   <div class="text-center">
                     <h1 class="emoji">🌧</h1>
                     <h4><%= cue.title %></h4>
                   </div>
                 <% end %>
                 <% elsif cue.title == "Big spenda!"%>
-                <%= link_to user_cue_new_path, class: "card-cue bg-purple"  do %>
+                <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-purple"  do %>
                   <div class="text-center">
                   <h1 class="emoji">🌧</h1>
                   <h4><%= cue.title %></h4>
@@ -29,7 +29,7 @@
                 <% elsif cue.title == "Starbucks day!"%>
                 <div class="card-cue bg-orange">
                 <h1 class="emoji">☕️</h1>
-                <h4><%= link_to cue.title, user_cue_new_path, style: "text-decoration: none;", class: "link-to-text-color" %></h4>
+                <h4><%= link_to cue.title, new_cue_user_cue_path(cue), style: "text-decoration: none;", class: "link-to-text-color" %></h4>
                 </div>
                 <% end %>
         <% end %>

@@ -1,5 +1,4 @@
 class UserCuesController < ApplicationController
-  before_action :authenticate_user!
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
@@ -7,12 +6,15 @@ class UserCuesController < ApplicationController
 
   def new
     @user_cue = UserCue.new
+    @cue = Cue.find(params[:cue_id])
   end
 
   def create
+    @cue = Cue.find(params[:cue_id])
     @user = current_user
     @user_cue = UserCue.new(usercue_params)
     @user_cue.user = @user
+    @user_cue.cue = @cue
     @user_cue.save!
     redirect_to user_cue_path(@user_cue)
     # else
