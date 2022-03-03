@@ -107,7 +107,6 @@ transactions.each do |transaction|
   account_transactions << transaction if transaction["accountId"] == account_id && transaction["creditorName"] == "McDonalds"
 end
 
-
 p account_transactions[0]["amount"]
 
 
