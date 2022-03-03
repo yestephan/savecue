@@ -7,37 +7,44 @@ User.destroy_all
 
 # cues
 rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
+rain_cue.save!
 coffee_cue = Cue.new({title: "Coffee break", description: "One break -> one saving", category: "coffee"})
+coffee_cue.save!
 spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
+starbucks_cue.save!
+starbucks_cue = Cue.new({title: "Starbucks day!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
+spenda_cue.save!
 
-rain_cue.save
-coffee_cue.save
-spenda_cue.save
+p "4 save cues created 🌱"
 
-# users/
-# user = User.new({full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234"})
-# user.save
+
+# accounts
+checking = Account.new({name: "Checking", account_type: "checking", iban: "NL43INGB6631699223"})
+checking.save!
+
+savings = Account.new({name: "Savings", account_type: "savings", iban: "NL86ABNA4643636556"})
+savings.save!
+
+p "Cheking and Savings Account created"
+
+# users
+user = User.new({ full_name: "Bibi Ferreira", email: "bibi@email.com", password: "test1234" })
+user.debtor_account = checking
+user.creditor_account = savings
+user.save!
+
 
 # user cues
-# amsterdam_metadata = {location: "Amsterdam, NL"}
-# rain_amsterdam_cue = UserCue.new({user: user, cue: rain_cue, cue_amount: 5, metadata: amsterdam_metadata})
-# rain_amsterdam_cue.creditor_account = savings
-# rain_amsterdam_cue.debtor_account = checking
-# rain_amsterdam_cue.save
+amsterdam_metadata = { location: "Amsterdam, NL" }
+rain_amsterdam_cue = UserCue.new({ user: user, cue: rain_cue, cue_amount: 5, metadata: amsterdam_metadata })
+rain_amsterdam_cue.save
 
-# burger_user_cue = UserCue.new({user: user, cue: burger_cue, cue_amount: 2})
-# burger_user_cue.creditor_account = savings
-# burger_user_cue.debtor_account = checking
-# burger_user_cue.save
+burger_user_cue = UserCue.new({ user: user, cue: burger_cue, cue_amount: 2})
+burger_user_cue.save
 
-# spenda_metadata = {limit: 50}
-# spenda_user_cue = UserCue.new({user: user, cue: spenda_cue, metadata: spenda_metadata})
-# spenda_user_cue.creditor_account = savings
-# spenda_user_cue.debtor_account = checking
-# spenda_user_cue.save
-
-
-
+spenda_metadata = { limit: 50 }
+spenda_user_cue = UserCue.new({ user: user, cue: spenda_cue, cue_amount: 5, metadata: spenda_metadata })
+spenda_user_cue.save
 
 auth_url = "https://api.mockbank.io/oauth/token"
 customers_url = "https://api.mockbank.io/customers"
@@ -47,7 +54,6 @@ customer_iban_debit_name = "Debit"
 customer_iban_credit = "NL86ABNA4643636556"
 customer_iban_credit_name = "Savings"
 transaction_amount = -4
-
 
 
 # Generate Access Token
