@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   helper_method :css_for_category
   helper_method :emoji_for_category
+  helper_method :info_for_category
 
   def home
     # It is 230 fixed it because we don't have transactions yet
@@ -34,6 +35,19 @@ class ProfilesController < ApplicationController
       "☀️"
     else
       "💰"
+    end
+  end
+
+  def info_for_category(category)
+    case category
+    when "rain"
+      "how much do you save for each rainy day"
+    when "coffee"
+      "how much do you save for each coffee break"
+    when "sunny"
+      "how much do you save for each sunny day"
+    else
+      "how much do you save for each big spenda"
     end
   end
 
