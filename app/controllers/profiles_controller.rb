@@ -16,11 +16,11 @@ class ProfilesController < ApplicationController
     when "rain"
       "bg-barge"
     when "coffee"
-      "bg-purple"
-    when "sunny"
-      "bg-orange"
+      "bg-coffee"
+    when "burger"
+      "bg-jade"
     else
-      "bg-darker-yellow"
+      "bg-money"
     end
   end
 

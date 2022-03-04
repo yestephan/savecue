@@ -10,6 +10,8 @@ $darker-yellow: #f9d94c;
 $orange: #ff7249;
 $barge: #fbead1;
 $purple: #8257f6;
+$jade: #b8e1df;
+$coffee: #c08147;
 
 // background color
 .bg-white {
@@ -34,4 +36,12 @@ $purple: #8257f6;
 
 .bg-barge {
 	background-color: $barge;
+}
+
+.bg-jade {
+	background-color: $jade;
+}
+
+.bg-coffee {
+	background-color: $coffee;
 }
