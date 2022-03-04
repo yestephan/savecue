@@ -18,12 +18,15 @@
 	border: $border;
 	border-radius: $border-radius;
 	width: 100%;
-	transition-duration: 0.2s;
+	transition-duration: 0.1s;
 	text-align: center;
 	text-decoration: none;
 	color: $black;
+	* {
+		margin: 0px;
+	}
 	&:hover {
-		height: 13rem;
+		transform: scale(1.03);
 		background-color: $blue;
 		color: $black;
 	}

@@ -62,7 +62,7 @@ class AccountsController < ApplicationController
   def update
     received_params = account_params
     @account = Account.find(received_params[:id])
-    if @account.update received_params
+    if @account.update(received_params)
       redirect_to accounts_path
     else
       @page_title = params[:account][:page_title]

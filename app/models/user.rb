@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :user_cues, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :accounts, dependent: :destroy
+  # has_one_attached :photo
 end
