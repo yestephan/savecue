@@ -8,6 +8,7 @@ class AccountsController < ApplicationController
   end
 
   def debtor
+    origin = params[:url_origin]
     if current_user.accounts.find_by(account_type: "debtor")
       @page_title = "Edit your debit account"
       @account = current_user.accounts.find_by(account_type: "debtor")
@@ -17,7 +18,11 @@ class AccountsController < ApplicationController
       @page_title = "From where do we get that money?"
       @account = Account.new
       @account_type = "debtor"
-      @form_path = accounts_debtor_path
+      if origin == "signup"
+        @form_path = signup_creditor_account_path
+      else
+        @form_path = accounts_debtor_path
+      end
     end
     render :form
   end
@@ -68,11 +73,11 @@ class AccountsController < ApplicationController
   end
 
   private
-  def set_account_types
-    @account_types = [["Savings", "savings"], ["Checking", "checking"]]
-  end
+  # def set_account_types
+  #   @account_types = [["Savings", "savings"], ["Checking", "checking"]]
+  # end
 
   def account_params
-    params.require(:account).permit(:id, :account_type, :name, :iban)
+    params.require(:account).permit(:id, :account_type, :name, :iban, :url_origin)
   end
 end
