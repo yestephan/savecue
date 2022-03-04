@@ -8,15 +8,11 @@
 .card-cue {
 	width: 100%;
 	transition-duration: 0.2s;
+	text-align: center;
+	text-decoration: none;
+	color: $black;
 	&:hover {
 		height: 13rem;
+		background-color: $blue;
 	}
-
-	h4 {
-		color: $black;
-	}
-}
-
-.link-to-text-color {
-	color: $black;
 }

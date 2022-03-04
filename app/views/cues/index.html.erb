@@ -4,7 +4,7 @@
     <% @cues.each do |cue| %>
       <% if cue.title == "Rainy day!"%>
         <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-orange" do %>
-          <div class="text-center link-to-text-color">
+          <div class="link-to-text-color">
             <h2 class="emoji">🌧</h2>
             <h3><%= cue.title %></h3>
           </div>
