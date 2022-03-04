@@ -7,14 +7,14 @@
   <div class="card-grid">
     <% @cues.each do |cue| %>
       <% if cue.title == "Rainy day!"%>
-        <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-orange" do %>
+        <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-barge" do %>
           <div class="link-to-text-color">
             <h2 class="emoji">🌧</h2>
             <h3><%= cue.title %></h3>
           </div>
         <% end %>
       <% elsif cue.title == "Burger day!"%>
-        <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-barge"  do %>
+        <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-jade"  do %>
           <div class="text-center">
             <h1 class="emoji">🍔</h1>
             <h3><%= cue.title %></h3>
@@ -27,8 +27,8 @@
             <h3><%= cue.title %></h3>
           </div>
         <% end %>
-      <% elsif cue.title == "Starbucks day!"%>
-        <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-darker-yellow"  do %>
+      <% elsif cue.title == "Starbucks"%>
+        <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-coffee"  do %>
           <div class="text-center">
             <h1 class="emoji">☕️</h1>
             <h3><%= cue.title %></h3>
