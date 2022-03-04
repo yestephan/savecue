@@ -78,10 +78,6 @@ class AccountsController < ApplicationController
   end
 
   private
-  # def set_account_types
-  #   @account_types = [["Savings", "savings"], ["Checking", "checking"]]
-  # end
-
   def account_params
     params.require(:account).permit(:id, :account_type, :name, :iban, :url_origin)
   end
