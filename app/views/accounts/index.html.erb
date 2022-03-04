@@ -1,34 +1,31 @@
 <div class="container">
   <h1>Bank Settings</h1>
-
-    <h3>Debtor Account</h3>
+  <h3>Debtor Account</h3>
   <%= link_to accounts_debtor_path, class: "card-account" do %>
     <h1 class="emoji" style="font-size: 2.25rem">🏦</h1>
     <div class="container-text">
-    <% if @debtor_account %>
-      <h3><%= @debtor_account.name %></h3>
-      <p><%= @debtor_account.iban %></p>
+      <% if @debtor_account %>
+        <h3><%= @debtor_account.name %></h3>
+        <p><%= @debtor_account.iban %></p>
       <% else  %>
-      <p> Set up your debtor account </p>
-       <% end %>
+        <p> Set up your debtor account </p>
+      <% end %>
     </div>
     <h2 style="font-size: 3rem;"><i></i>></h2>
   <% end %>
-
-  </div>
-
-  <div class="container">
+</div>
+<div class="container">
   <h3 class="bank-title">Creditor Account</h3>
   <%= link_to accounts_creditor_path, class: "card-account" do %>
     <h1 class="emoji" style="font-size: 2.25rem">🏦</h1>
     <div class="container-text">
-    <% if @creditor_account %>
-      <h3> <%= @creditor_account.name %></h3>
-      <p><%= @creditor_account.iban %></p>
-       <% end %>
+      <% if @creditor_account %>
+        <h3> <%= @creditor_account.name %></h3>
+        <p><%= @creditor_account.iban %></p>
+      <% else %>
         <p> Set up your creditor account </p>
+      <% end %>
     </div>
     <h2 style="font-size: 3rem"><i></i>></h2>
   <% end %>
-
-  </div>
+</div>
