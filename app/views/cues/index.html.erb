@@ -1,39 +1,36 @@
-<div class="cues-container">
-  <div class="cues-container-text">
-    <h2>Welcome 🎉</h2>
-    <h2>Let's setup your first cue</h2>
-  </div>
+<div class="container">
+  <h1><%= @first_time_msg %></h1>
   <div class="card-cue-container">
-        <% @cues.each do |cue| %>
-                <% if cue.title == "Rainy day!"%>
-                <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-orange" do %>
-                  <div class="text-center link-to-text-color">
-                    <h1 class="emoji">🌧</h1>
-                    <h4><%= cue.title %></h4>
-                  </div>
-                <% end %>
-                <% elsif cue.title == "Burger day!"%>
-                 <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-barge"  do %>
-                  <div class="text-center">
-                    <h1 class="emoji">🍔</h1>
-                    <h4><%= cue.title %></h4>
-                  </div>
-                <% end %>
-                <% elsif cue.title == "Big spenda!"%>
-                <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-purple"  do %>
-                  <div class="text-center">
-                  <h1 class="emoji">💸</h1>
-                  <h4><%= cue.title %></h4>
-                  </div>
-                <% end %>
-                <% elsif cue.title == "Starbucks day!"%>
-                  <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-darker-yellow"  do %>
-                    <div class="text-center">
-                    <h1 class="emoji">☕️</h1>
-                    <h4><%= cue.title %></h4>
-                    </div>
-                  <% end %>
-                <% end %>
+    <% @cues.each do |cue| %>
+      <% if cue.title == "Rainy day!"%>
+        <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-orange" do %>
+          <div class="link-to-text-color">
+            <h2 class="emoji">🌧</h2>
+            <h3><%= cue.title %></h3>
+          </div>
         <% end %>
+      <% elsif cue.title == "Burger day!"%>
+        <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-barge"  do %>
+          <div class="text-center">
+            <h1 class="emoji">🍔</h1>
+            <h3><%= cue.title %></h3>
+          </div>
+        <% end %>
+      <% elsif cue.title == "Big spenda!"%>
+        <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-purple"  do %>
+          <div class="text-center">
+            <h1 class="emoji">💸</h1>
+            <h3><%= cue.title %></h3>
+          </div>
+        <% end %>
+      <% elsif cue.title == "Starbucks day!"%>
+        <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-darker-yellow"  do %>
+          <div class="text-center">
+            <h1 class="emoji">☕️</h1>
+            <h3><%= cue.title %></h3>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>

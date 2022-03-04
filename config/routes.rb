@@ -26,9 +26,11 @@ Rails.application.routes.draw do
   # Accounts
   resources :accounts, only: [:index, :update, :destroy]
   get "/accounts/debtor", to: "accounts#debtor"
+  get "/signup/debtor-account", to: "accounts#debtor", defaults: {redirect_to: "signup/creditor-account"}
   post "/accounts/debtor", to: "accounts#create", defaults: {account_type: "debtor"}
   get "/accounts/creditor", to: "accounts#creditor"
-  post "/accounts/creditor", to: "accounts#create", defaults: {account_type: "creditor"}
+  get "/signup/creditor-account", to: "accounts#debtor", defaults: {redirect_to: "/home"}
+  post "/accounts/creditor", to: "accounts#create", defaults: { account_type: "creditor"}
 
 
 end
