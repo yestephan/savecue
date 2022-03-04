@@ -1,36 +1,37 @@
 // Define variables for your color scheme
 
 // basic
-$white: #FFFFFF;
-$pink: #FFD6CA;
-$black: #0A0A0A;
+$white: #ffffff;
+$pink: #ffd6ca;
+$black: #0a0a0a;
+$blue: #91bdfa;
 
-$darker-yellow: #F9D94C;
-$orange: #FF7249;
-$barge: #FBEAD1;
-$purple: #8257F6;
+$darker-yellow: #f9d94c;
+$orange: #ff7249;
+$barge: #fbead1;
+$purple: #8257f6;
 
 // background color
 .bg-white {
-  background-color: $white;
+	background-color: $white;
 }
 
 .bg-pink {
-  background-color: $pink;
+	background-color: $pink;
 }
 
 .bg-purple {
-  background-color: $purple;
+	background-color: $purple;
 }
 
 .bg-orange {
-  background-color: $orange;
+	background-color: $orange;
 }
 
 .bg-darker-yellow {
-  background-color: $darker-yellow;
+	background-color: $darker-yellow;
 }
 
 .bg-barge {
-  background-color: $barge;
+	background-color: $barge;
 }

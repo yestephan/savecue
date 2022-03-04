@@ -16,7 +16,13 @@ class UserCuesController < ApplicationController
     @user_cue.user = @user
     @user_cue.cue = @cue
     @user_cue.save!
-    redirect_to user_cue_path(@user_cue)
+    if current_user.accounts.find_by(account_type: "debtor")
+      redirect_to home_path
+    else
+      redirect_to signup_debtor_account_path
+    end
+
+    # user_cue_path(@user_cue)
     # else
     #   render :new
     # end
