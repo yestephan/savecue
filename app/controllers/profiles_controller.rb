@@ -1,7 +1,40 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
+  helper_method :css_for_category
+  helper_method :emoji_for_category
+
   def home
+    # It is 230 fixed it because we don't have transactions yet
+    @total_saved = 230
+    # List of all user cues from current user to be displayed
+    @user_cues = current_user.user_cues
+  end
+
+  def css_for_category(category)
+    case category
+    when "rain"
+      "bg-barge"
+    when "coffee"
+      "bg-purple"
+    when "sunny"
+      "bg-orange"
+    else
+      "bg-darker-yellow"
+    end
+  end
+
+  def emoji_for_category(category)
+    case category
+    when "rain"
+      "🌧"
+    when "coffee"
+      "☕️"
+    when "sunny"
+      "☀️"
+    else
+      "💰"
+    end
   end
 
   def edit

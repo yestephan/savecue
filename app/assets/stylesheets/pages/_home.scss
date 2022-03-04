@@ -16,8 +16,7 @@
 	align-items: center;
 }
 
-.container-cue-cards {
-	display: flex;
-	flex-direction: column;
-	margin: 0 auto;
+.button-container {
+  display: flex;
+  justify-content: space-between;
 }
