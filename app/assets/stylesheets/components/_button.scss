@@ -51,6 +51,10 @@
 	text-decoration: none;
 	background-image: url("arrow.png");
 	background-size: contain;
+	&:hover {
+		width: 3.25rem;
+		height: 3.25rem;
+	}
 }
 
 .btn-small {
