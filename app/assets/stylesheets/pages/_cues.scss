@@ -20,16 +20,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  margin-top: 60px;
+  // margin-top: 60px;
 }
 
 .card-cue {
-  width: 200px;
+  // width: 200px;
   height: 180px;
   transition-duration: 0.5s;
   &:hover {
-    width: 200px;
-    height: 192px;
+    // width: 200px;
+    // height: 192px;
   }
 
   h4 {
