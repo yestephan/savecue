@@ -5,7 +5,7 @@ class CuesController < ApplicationController
     @cues = Cue.all
     # If first time then pass this string: "Let's create your first cue"
     if origin == "signup"
-      @msg = "Welcome 🎉 Let's setup your first Savecue!"
+      @msg = "Welcome 🎉\nLet's setup your first Savecue!"
     else
       @msg = "Choose a cue"
     end
