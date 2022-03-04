@@ -17,30 +17,30 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
       <div class="form-floating">
+        <%= f.password_field :current_password,
+                      required: false,
+                      class: "form-control",
+                      placeholder: "Current password",
+                      input_html: { autocomplete: "current-password" } %>
+        <%= f.label :current_password, "Current password"%>
+        <%= f.hint "We need your current password to confirm your changes." %>
+      </div>
+      <div class="form-floating">
         <%= f.password_field :password,
                     required: true,
                     class: "form-control",
-                    placeholder: "password",
+                    placeholder: "New password",
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                     input_html: { autocomplete: "new-password" } %>
-        <%= f.label :password, "Password" %>
+        <%= f.label :password, "New Password" %>
       </div>
       <div class="form-floating">
         <%= f.password_field :password_confirmation,
                     required: true,
                     class: "form-control",
-                    placeholder: "confirm password",
+                    placeholder: "Confirm new password",
                     input_html: { autocomplete: "new-password" } %>
-        <%= f.label :password_confirmation, "Password confirmation" %>
-        <%= f.hint "We need your current password to confirm your changes." %>
-      </div>
-      <div class="form-floating">
-        <%= f.password_field :current_password,
-                      required: false,
-                      class: "form-control",
-                      placeholder: "password",
-                      input_html: { autocomplete: "current-password" } %>
-        <%= f.label :current_password, "Password"%>
+        <%= f.label :password_confirmation, "Repeat new password" %>
       </div>
     </div>
     <div class="form-actions">

@@ -16,16 +16,12 @@ class UserCuesController < ApplicationController
     @user_cue.user = @user
     @user_cue.cue = @cue
     @user_cue.save!
+
     if current_user.accounts.find_by(account_type: "debtor")
       redirect_to home_path
     else
-      redirect_to signup_debtor_account_path
+      redirect_to signup_debtor_account_path(url_origin: "signup")
     end
-
-    # user_cue_path(@user_cue)
-    # else
-    #   render :new
-    # end
   end
 
   def show
@@ -59,6 +55,6 @@ class UserCuesController < ApplicationController
   private
 
   def usercue_params
-    params.require(:user_cue).permit(:cue_amount, :meta_data)
+    params.require(:user_cue).permit(:cue_amount, :meta_data, :url_origin)
   end
 end
