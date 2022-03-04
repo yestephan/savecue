@@ -1,42 +1,22 @@
-.cues-container {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cues-container-text {
-  justify-content: left;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  height: 50px;
-  font-size: 40px;
-}
-
-
 .card-cue-container {
-  justify-content: center;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
-  margin-top: 60px;
+	width: 100%;
+	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
 .card-cue {
-  width: 200px;
-  height: 180px;
-  transition-duration: 0.5s;
-  &:hover {
-    width: 200px;
-    height: 192px;
-  }
+	width: 100%;
+	transition-duration: 0.2s;
+	&:hover {
+		height: 13rem;
+	}
 
-  h4 {
-    color: $black;
-  }
+	h4 {
+		color: $black;
+	}
 }
 
 .link-to-text-color {
-  color: $black;
+	color: $black;
 }
