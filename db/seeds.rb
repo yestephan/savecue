@@ -8,16 +8,16 @@ User.destroy_all
 Account.destroy_all
 
 # # cues
-rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain"})
+rain_cue = Cue.new({title: "Rainy day!", description: "Save money each time it's raining in your city", category: "rain", color: "#FFAA47", emoji: "U+1F648"})
 rain_cue.save!
 coffee_cue = Cue.new({title: "Coffee break", description: "One break -> one saving", category: "coffee"})
 coffee_cue.save!
-spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time you spend more than a certain ammount", category: "spenda"})
+spenda_cue = Cue.new({title: "Big spenda!", description: "Save money each time you spend more than a certain ammount", category: "spenda", color: "#FFAA47", emoji: "U+1F648"})
 spenda_cue.save!
-starbucks_cue = Cue.new({title: "Starbucks day!", description: "Save money each time you spend more than a certain ammount", category: "coffee"})
+starbucks_cue = Cue.new({title: "Starbucks day!", description: "Save money each time you spend more than a certain ammount", category: "spenda", color: "#FFAA47", emoji: "U+1F648"})
 starbucks_cue.save!
 
-# p "4 save cues created 🌱"
+p "4 save cues created 🌱"
 
 # # users
 user = User.new({ first_name: "Bibi", last_name: "Ferreira", email: "bibi@email.com", password: "test1234" })
@@ -33,16 +33,16 @@ savings.save!
 p "Checking and Savings Account created"
 
 # # user cues
-amsterdam_metadata = { location: "Amsterdam, NL" }
-rain_amsterdam_cue = UserCue.new({ user: user, cue: rain_cue, cue_amount: 5, metadata: amsterdam_metadata })
-rain_amsterdam_cue.save
+# amsterdam_metadata = { location: "Amsterdam, NL" }
+# rain_amsterdam_cue = UserCue.new({ user: user, cue: rain_cue, cue_amount: 5, metadata: amsterdam_metadata })
+# rain_amsterdam_cue.save
 
-starbucks_user_cue = UserCue.new({ user: user, cue: starbucks_cue, cue_amount: 2 })
-starbucks_user_cue.save
+# burger_user_cue = UserCue.new({ user: user, cue: burger_cue, cue_amount: 2 })
+# burger_user_cue.save
 
-spenda_metadata = { limit: 50 }
-spenda_user_cue = UserCue.new({ user: user, cue: spenda_cue, cue_amount: 5, metadata: spenda_metadata })
-spenda_user_cue.save
+# spenda_metadata = { limit: 50 }
+# spenda_user_cue = UserCue.new({ user: user, cue: spenda_cue, cue_amount: 5, metadata: spenda_metadata })
+# spenda_user_cue.save
 
 
 
