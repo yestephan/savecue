@@ -13,6 +13,13 @@
 	width: 100%;
 }
 
+.container-toggle {
+	display: flex;
+	width: 100%;
+	justify-content: flex-start;
+	gap: 1rem;
+}
+
 .simple_form {
 	display: flex;
 	flex-direction: column;

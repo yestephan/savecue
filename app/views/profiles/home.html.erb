@@ -1,32 +1,27 @@
 <div class="container">
-
-  <nav class="nav button-container">
-  <%= link_to "Dashboard", home_path, class: "btn-dashboard nav-link" %>
-  <%= link_to "Transactions", home_path, class: "btn-transactions nav-link" %>
+  <nav class="container-toggle">
+    <%= link_to "Dashboard", home_path, class: "btn-toggle active" %>
+    <%= link_to "Transactions", home_path, class: "btn-toggle" %>
   </nav>
-
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">
-      <h1 class="p-large"><%= number_to_currency(@total_saved, unit: '€', precision: 0, format: "%n%u") %></h1>
-      <h4>Amount saved</h4>
+    <h1 class="p-large"><%= number_to_currency(@total_saved, unit: '€', precision: 0, format: "%n%u") %></h1>
+    <h3>Amount saved</h3>
   </div>
-
   <!-- CUES -->
-  <div>
-    <h3>Savecues</h3>
-  </div>
-  <div class="card-cue-container">
-    <% @user_cues.each do |user_cue| %>
-    <div class="card-cue <%= css_for_category(user_cue.cue.category) %>">
-      <h1 class="emoji"><%= emoji_for_category(user_cue.cue.category) %></h1>
-      <h4><%= user_cue.cue.title %></h4>
-      <p class="p-small"><%= user_cue.cue.description.truncate(16) %></p>
-    </div>
-    <% end %>
-    <div class="card-cue bg-darker-yellow">
+  <div class="container-text" style="gap: 1rem">
+    <h3>Your savecues</h3>
+    <div class="card-grid">
+      <% @user_cues.each do |user_cue| %>
+        <div class="card-cue <%= css_for_category(user_cue.cue.category) %>">
+          <h1 class="emoji"><%= emoji_for_category(user_cue.cue.category) %></h1>
+          <h3><%= user_cue.cue.title %></h3>
+        </div>
+      <% end %>
+      <div class="card-cue bg-darker-yellow">
         <h1 class="emoji">+</h1>
-        <h4>Add cue</h4>
-        <p class="p-small">Save when it rains</p>
+        <h3>Add cue</h3>
+      </div>
     </div>
- </div>
+  </div>
 </div>
