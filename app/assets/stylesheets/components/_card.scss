@@ -1,11 +1,11 @@
 // card-cue style
 // card-container
-.card-cue-container {
+.card-grid {
+	width: 100%;
 	justify-content: center;
-	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-gap: 16px;
+	gap: 1rem;
 }
 
 // each cards
