@@ -16,11 +16,13 @@
         <div class="card-cue <%= css_for_category(user_cue.cue.category) %>">
           <h1 class="emoji"><%= emoji_for_category(user_cue.cue.category) %></h1>
           <h3><%= user_cue.cue.title %></h3>
+          <p><%= user_cue.cue.description %></p>
         </div>
       <% end %>
       <div class="card-cue bg-darker-yellow">
         <h1 class="emoji">+</h1>
         <h3>Add cue</h3>
+        <p>Start saving with more savecues!</p>
       </div>
     </div>
   </div>
