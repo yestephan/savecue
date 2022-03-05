@@ -8,7 +8,9 @@
 	padding: 0.5rem;
 	border-radius: $border-radius;
 	border: 3px solid $black;
+	transition-duration: 0.1s;
 
+	&:active,
 	&:hover {
 		transform: scale(1.05);
 		background-color: $blue;

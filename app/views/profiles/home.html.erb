@@ -19,11 +19,13 @@
           <p><%= user_cue.cue.description %></p>
         </div>
       <% end %>
-      <div class="card-cue bg-darker-yellow">
-        <h1 class="emoji">+</h1>
-        <h3>Add cue</h3>
-        <p>Start saving with more savecues!</p>
-      </div>
+      <%= link_to cues_path(url_origin: "home") do %>
+        <div class="card-cue bg-darker-yellow">
+          <h1 class="emoji">+</h1>
+          <h3>Add cue</h3>
+          <p>Start saving with more savecues!</p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
