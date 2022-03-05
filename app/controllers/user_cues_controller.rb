@@ -1,9 +1,6 @@
 class UserCuesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
-  def index
-  end
-
   def new
     @user_cue = UserCue.new
     @cue = Cue.find(params[:cue_id])

@@ -7,11 +7,12 @@
 	text-decoration: none;
 	padding: 0.5rem;
 	border-radius: $border-radius;
+	border: 3px solid $black;
 
 	&:hover {
+		transform: scale(1.05);
 		background-color: $blue;
 		color: $black;
-		border: 3px solid $black;
 		height: 3.75rem;
 	}
 }
@@ -25,18 +26,18 @@
 .btn-secondary {
 	background-color: $white;
 	color: black;
-	border: 3px solid $purple;
 }
 
 .btn-destructive {
 	width: 100%;
 	background-color: $white;
-	color: rgb(168, 48, 48);
-	border: 3px solid rgb(168, 48, 48);
+	color: $red;
+	border: 3px solid $red;
 
 	&:hover {
-		background-color: rgb(255, 67, 67);
+		background-color: $red;
 		color: $white;
+		border: 3px solid $red;
 	}
 }
 
@@ -56,45 +57,17 @@
 	}
 }
 
-.btn-small {
-	background-color: $white;
-	color: black;
-	border: 3px solid #8257f6;
-	padding: 12px 16px;
-	font-weight: lighter;
-	border-radius: $border-radius;
-	text-decoration: none;
-}
-
 .btn-toggle {
+	width: auto;
 	font-size: 1.25rem;
-	border-radius: $border-radius;
 	text-decoration: none;
 	color: $black;
 	background-color: $white;
-	border-radius: $border-radius;
-	border: 3px solid $purple;
 	padding: 0.75rem 1rem;
-	&:hover {
-		background-color: $blue;
-		border: 3px solid $black;
-		color: $black;
-	}
 }
 
 .active {
 	background-color: $purple;
 	border: 3px solid $black;
 	color: $white;
-}
-
-.btn-transactions {
-	width: 12rem;
-	height: 4rem;
-	background-color: $white;
-	color: black;
-	border: 3px solid #8257f6;
-	padding: 11px 15px;
-	border-radius: $border-radius;
-	text-decoration: none;
 }

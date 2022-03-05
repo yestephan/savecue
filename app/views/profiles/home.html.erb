@@ -1,7 +1,7 @@
 <div class="container">
-  <nav class="container-toggle">
-    <%= link_to "Dashboard", home_path, class: "btn-toggle active" %>
-    <%= link_to "Transactions", home_path, class: "btn-toggle" %>
+  <nav class="container-toggle" data-controller="">
+    <button class="bt btn-toggle active">Dashboard</button>
+    <button class="bt btn-toggle">Transactions</button>
   </nav>
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">

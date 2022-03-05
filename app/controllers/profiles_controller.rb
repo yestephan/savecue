@@ -41,12 +41,6 @@ class ProfilesController < ApplicationController
     @profile = current_user
   end
 
-  def show
-  end
-
-  def bank_info
-  end
-
   def confirm
   end
 
