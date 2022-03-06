@@ -1,5 +1,6 @@
 class CuesController < ApplicationController
   before_action :authenticate_user!
+
   def index
     origin = params[:url_origin]
     @cues = Cue.all
