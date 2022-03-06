@@ -20,8 +20,7 @@ Rails.application.routes.draw do
     resources :user_cues, only: [:new, :create]
   end
 
-  resources :user_cues, only: [:index, :show, :edit, :update]
-  get "/user_cue/update_city", to: 'user_cues#update_city'
+  resources :user_cues, only: [:show, :edit, :update]
 
   # Accounts
   resources :accounts, only: [:index, :update, :destroy]

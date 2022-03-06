@@ -1,8 +1,6 @@
 class UserCuesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-
-  def index
-  end
+  helper_method :info_for_category
 
   def new
     @user_cue = UserCue.new
@@ -52,6 +50,18 @@ class UserCuesController < ApplicationController
       meta_data
   end
 
+  def info_for_category(category)
+    case category
+    when "rain"
+      "how much do you save for each rainy day"
+    when "coffee"
+      "how much do you save for each coffee break"
+    when "sunny"
+      "how much do you save for each sunny day"
+    else
+      "how much do you save for each big spenda"
+    end
+  end
   private
 
   def usercue_params
