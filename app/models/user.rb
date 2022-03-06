@@ -8,4 +8,13 @@ class User < ApplicationRecord
   has_many :transactions, dependent: :destroy
   has_many :accounts, dependent: :destroy
   # has_one_attached :photo
+
+  def avatar_url
+    unless self.picture.nil?
+      image_path = Cloudinary::Utils.cloudinary_url(self.picture, width: 56, height: 56, crop: :fill, gravity: :face, default_image: "avatar_null.png")
+      image_path.sub('/production', '')
+    else
+      "avatar_null.png"
+    end
+  end
 end
