@@ -5,8 +5,6 @@ class ProfilesController < ApplicationController
   helper_method :info_for_category
 
   def home
-    # It is 230 fixed it because we don't have transactions yet
-    @total_saved = 0
     # List of all user cues from current user to be displayed
     @user_cues = current_user.user_cues
 
@@ -18,6 +16,12 @@ class ProfilesController < ApplicationController
     @customer_id = get_customer_id(@access_token)
     @account_id = get_account_id(@access_token, @customer_id, @savings_iban)
     @transactions = get_transactions(@access_token, @customer_id, @account_id)
+
+    @total_saved = 0
+    @transactions.each do |transaction|
+      @total_saved += transaction["amount"]
+    end
+
   end
 
 
