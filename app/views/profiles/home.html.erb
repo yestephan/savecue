@@ -8,6 +8,17 @@
     <h1 class="p-large"><%= number_to_currency(@total_saved, unit: '€', precision: 0, format: "%n%u") %></h1>
     <h3>Amount saved</h3>
   </div>
+  <!-- TEMP TRIGGER BTN -->
+  <div class="container-text">
+    <p><strong>Customer id:</strong> <%= @customer_id %></p>
+    <p><strong>Checking ibanNr:</strong> <%= @checking_iban %></p>
+    <p><strong>Savings name:</strong> <%= @savings_name %></p>
+    <p><strong>Savings ibanNr:</strong> <%= @savings_iban %></p>
+    <p><strong>Account id:</strong> <%= @account_id %></p>
+    <p><strong>Response id:</strong> <%= @response %></p>
+    <%# <p><strong>Transactions:</strong> <%= @transactions %>
+  </div>
+  <%= link_to "Drink coffee", new_transaction_path, class: "bt btn-secondary", method: :new_transaction %>
   <!-- CUES -->
   <div class="container-text" style="gap: 1rem" data-toggle-target="content">
     <h3>Your savecues</h3>
@@ -20,7 +31,7 @@
         </div>
       <% end %>
       <%= link_to cues_path(url_origin: "home") do %>
-        <div class="card-cue bg-darker-yellow">
+        <div class="card-cue bg-darker-yellow" style="height: 100%">
           <h1 class="emoji">+</h1>
           <h3>Add cue</h3>
           <p>Start saving with more savecues!</p>

@@ -10,14 +10,14 @@ Rails.application.routes.draw do
   get "/home", to: "profiles#home"
   get "/profile/edit", to: "profiles#edit"
   patch "/profile", to: "profiles#update"
-  get "/profile/:id", to: "profiles#show"
+  post "/home", to: "profiles#new_transaction", as: "new_transaction"
 
   # Confirmation route
-  get "/confirmation", to: "profiles#confirm"  #Generic confirmation route
+  get "/confirmation", to: "profiles#confirm" #Generic confirmation route
 
   # Cues and user_cues
   resources :cues, only: [:index] do
-    resources :user_cues, only: [:new, :create]
+    resources :user_cues, only: [:new, :create, :destroy]
   end
 
   resources :user_cues, only: [:show, :edit, :update]
