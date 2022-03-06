@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
     @checking_iban = Account.find_by(user: current_user, account_type: "checking").iban
     @savings_iban = Account.find_by(user: current_user, account_type: "savings").iban
     @savings_name = Account.find_by(user: current_user, account_type: "savings").name
-    @account_id = get_account_id(@access_token, @customer_id, @checking_iban)
+    @account_id = get_account_id(@access_token, @customer_id, @savings_iban)
     # Pass the correct cue.category details
     temp_cue = current_user.user_cues.first # Faking it now
     cue_category = Cue.find(temp_cue.cue_id).category
@@ -154,7 +154,6 @@ class ProfilesController < ApplicationController
     transactions_url = "#{@@customers_url}/#{customer_id}/transactions"
     transactions = HTTParty.get(transactions_url, headers: auth_headers).parsed_response["data"].to_a.reverse
     account_transactions = []
-    raise
     transactions.each do |transaction|
       unless transaction["remittanceInformationStructured"].nil?
         if transaction["accountId"] == account_id && transaction["remittanceInformationStructured"].downcase == "savecue"
@@ -171,7 +170,7 @@ class ProfilesController < ApplicationController
     transactions_url = "#{@@customers_url}/#{customer_id}/transactions"
     transaction_body = {
       "accountId": "#{account_id}",
-      "amount": -4,
+      "amount": 4,
       "bookingDate": "#{booking_date}",
       "currency": "EUR",
       "valueDate": "#{booking_date}",
