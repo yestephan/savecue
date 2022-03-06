@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
       @page_title = "Edit your debit account"
       @account = current_user.accounts.find_by(account_type: "debtor")
       @account_type = "debtor"
-      @form_path = accounts_path
+      @form_path = account_path(@account)
     else
       @page_title = "From where do we get that money?"
       @account = Account.new
@@ -29,7 +29,7 @@ class AccountsController < ApplicationController
       @page_title = "Edit your savings account"
       @account = current_user.accounts.find_by(account_type: "creditor")
       @account_type = "creditor"
-      @form_path = accounts_path
+      @form_path = account_path(@account)
     else
       @page_title = "Where should the money go?"
       @account = Account.new

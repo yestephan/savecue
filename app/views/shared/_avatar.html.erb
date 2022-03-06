@@ -1,5 +1,1 @@
-<% unless current_user.nil? || current_user.picture.nil? %>
-  <%= cl_image_tag(current_user.picture, :width => 56, :height => 56, :crop => :fill, class: 'avatar-large') %>
-<% else %>
-  <%= image_tag("avatar_null.png", class: "avatar-large") %>
-<% end %>
+<%= image_tag current_user.avatar_url, class: 'avatar-large' %>
