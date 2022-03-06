@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" data-controller="toggle">
   <nav class="container-toggle">
-    <%= link_to "Dashboard", home_path, class: "btn-toggle active" %>
-    <%= link_to "Transactions", home_path, class: "btn-toggle" %>
+    <button class="bt btn-toggle active" data-toggle-target="dashBtn" data-action="click->toggle#toggle">Dashboard</button>
+    <button class="bt btn-toggle" data-toggle-target="transBtn"  data-action="click->toggle#toggle">Transactions</button>
   </nav>
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">
@@ -9,7 +9,7 @@
     <h3>Amount saved</h3>
   </div>
   <!-- CUES -->
-  <div class="container-text" style="gap: 1rem">
+  <div class="container-text" style="gap: 1rem" data-toggle-target="cues">
     <h3>Your savecues</h3>
     <div class="card-grid">
       <% @user_cues.each do |user_cue| %>
@@ -19,11 +19,16 @@
           <p><%= user_cue.cue.description %></p>
         </div>
       <% end %>
-      <div class="card-cue bg-darker-yellow">
-        <h1 class="emoji">+</h1>
-        <h3>Add cue</h3>
-        <p>Start saving with more savecues!</p>
-      </div>
+      <%= link_to cues_path(url_origin: "home") do %>
+        <div class="card-cue bg-darker-yellow">
+          <h1 class="emoji">+</h1>
+          <h3>Add cue</h3>
+          <p>Start saving with more savecues!</p>
+        </div>
+      <% end %>
     </div>
+  </div>
+  <div class="container-text hidden" style="gap: 1rem;" data-toggle-target="transactions">
+    <h3>Transactions</h3>
   </div>
 </div>

@@ -1,67 +1,62 @@
 <!--================card================-->
 <h1>#card</h1>
-  <div class="card-cue-container">
+<div class="card-cue-container">
   <!--card-rainy-->
-    <div class="card-cue bg-barge">
-        <h1 class="emoji">🌧</h1>
-        <h4>Rainy day</h4>
-        <p class="p-small">information</p>
-    </div>
-
-    <!--card-starbucks-->
-    <div class="card-cue bg-purple">
-        <h1 class="emoji">☕️</h1>
-        <h4>Starbucks day</h4>
-        <p class="p-small">information</p>
-    </div>
-
-    <!--card-sunny-->
-    <div class="card-cue bg-orange">
-        <h1 class="emoji">☀️</h1>
-        <h4>Sunny day</h4>
-        <p class="p-small">information</p>
-    </div>
-
-    <!--card-wine-->
-    <div class="card-cue bg-darker-yellow">
-        <h1 class="emoji">🥂</h1>
-        <h4>Wine day</h4>
-        <p class="p-small">information</p>
-    </div>
- </div>
+  <div class="card-cue bg-barge">
+    <h1 class="emoji">🌧</h1>
+    <h4>Rainy day</h4>
+    <p class="p-small">information</p>
+  </div>
+  <!--card-starbucks-->
+  <div class="card-cue bg-purple">
+    <h1 class="emoji">☕️</h1>
+    <h4>Starbucks day</h4>
+    <p class="p-small">information</p>
+  </div>
+  <!--card-sunny-->
+  <div class="card-cue bg-orange">
+    <h1 class="emoji">☀️</h1>
+    <h4>Sunny day</h4>
+    <p class="p-small">information</p>
+  </div>
+  <!--card-wine-->
+  <div class="card-cue bg-darker-yellow">
+    <h1 class="emoji">🥂</h1>
+    <h4>Wine day</h4>
+    <p class="p-small">information</p>
+  </div>
+</div>
 <hr>
 <!--================total amount card================-->
 <h1>#card-total-amount</h1>
 <div class="card-total-amount bg-white">
-    <h1 class="p-large">230€</h1>
-    <h4>Amount saved</h4>
+  <h1 class="p-large">230€</h1>
+  <h4>Amount saved</h4>
 </div>
 <hr>
-
 <!--================transaction card================-->
 <!--no transaction-->
 <h1>#card-no-transaction</h1>
 <div class="card-no-transaction bg-white">
-    <h2>No transactions</h2>
+  <h2>No transactions</h2>
 </div>
 <hr>
 <!--transaction-->
 <h1>#card-transaction</h1>
 <div class="card-transaction bg-white">
-    <div class="card-transaction-img">
+  <div class="card-transaction-img">
     <h1 class="emoji">🌧</h1>
-    </div>
-    <div class="card-transaction-infos">
-      <h2>Rainy day</h2>
-      <p class="p-small">2022-03-20 Monday</p>
-    </div>
-    <div class="card-transaction-money">
+  </div>
+  <div class="card-transaction-infos">
+    <h2>Rainy day</h2>
+    <p class="p-small">2022-03-20 Monday</p>
+  </div>
+  <div class="card-transaction-money">
     <h2>+5€</h2>
-    </div>
+  </div>
 </div>
 <hr>
 <!--================navbar================-->
-
 <!--savecue logo-->
 <h1> #savecue logo</h1>
 <nav class="navbar navbar-light bg-white">
@@ -71,7 +66,6 @@
     </a>
   </div>
 </nav>
-
 <hr>
 <!--avatar--with--logo-->
 <h1>#avatar with logo</h1>
@@ -110,70 +104,56 @@
     </a>
   </div>
 </div>
-
-
-
 <hr>
 <!--================button================-->
 <h1>Buttons</h1>
-
- <div class="buttons-container">
-<%= link_to "Sign up", "#", class: "btn-primary" %>
-<%= link_to "Login", "#", class: "btn-secondary" %>
-
-<%= link_to "#", class: "btn-small" do %>
-<i class="fas fa-undo"></i>
-<% end %>
-
-<%= link_to "dashboard", "#", class: "btn-dashboard" %>
-<%= link_to "transactions", "#", class: "btn-transactions" %>
-
-
-<!--=============Bank account setting ===================-->
-<h1>#card-transaction</h1>
-<div class="card-transaction bg-white">
+<div class="buttons-container">
+  <%= link_to "Sign up", "#", class: "btn-primary" %>
+  <%= link_to "Login", "#", class: "btn-secondary" %>
+  <%= link_to "dashboard", "#", class: "btn-dashboard" %>
+  <%= link_to "transactions", "#", class: "btn-transactions" %>
+  <!--=============Bank account setting ===================-->
+  <h1>#card-transaction</h1>
+  <div class="card-transaction bg-white">
     <div class="card-transaction-img">
-    <h1 class="emoji">🌧</h1>
+      <h1 class="emoji">🌧</h1>
     </div>
     <div class="card-transaction-infos">
       <h2>Rainy day</h2>
       <p class="p-small">2022-03-20 Monday</p>
     </div>
     <div class="card-transaction-money">
-    <h2>+5€</h2>
+      <h2>+5€</h2>
     </div>
-</div>
-<hr>
-
-<!--=============Debtor account=================-->
-
-<h1>#card-debtor-account</h1>
-<div class="card-account bg-white">
+  </div>
+  <hr>
+  <!--=============Debtor account=================-->
+  <h1>#card-debtor-account</h1>
+  <div class="card-account bg-white">
     <div class="card-debtor-account-img">
-    <h1 class="emoji">🏦</h1>
+      <h1 class="emoji">🏦</h1>
     </div>
     <div class="card-debtor-account-infos">
       <h2>Debit</h2>
       <h4>NL43 INGB 6631 6992 23</h4>
     </div>
     <div class="card-debtor-account-icon">
-    <i></i>></h2>
-    </div>
+      <i></i>></h2>
+  </div>
 </div>
 <hr>
 <!--=============Creditor account=================-->
-
 <h1>#card-creditor-account</h1>
 <div class="card-creditor-account bg-white">
-    <div class="card-creditor-account-img">
+  <div class="card-creditor-account-img">
     <h1 class="emoji">🏦</h1>
-    </div>
-    <div class="card-creditor-account-infos">
-      <h2>Savings</h2>
-      <h4>NL43 INGB 6631 6992 23</h4>
-    </div>
-    <div class="card-creditor-account-icon">
+  </div>
+  <div class="card-creditor-account-infos">
+    <h2>Savings</h2>
+    <h4>NL43 INGB 6631 6992 23</h4>
+  </div>
+  <div class="card-creditor-account-icon">
     <i></i>></h2>
-    </div>
+</div>
 </div>
 <hr>

@@ -3,3 +3,13 @@
 		margin: 0px !important;
 	}
 }
+
+.active {
+	background-color: $purple;
+	border: 3px solid $black;
+	color: $white;
+}
+
+.hidden {
+	display: none;
+}
