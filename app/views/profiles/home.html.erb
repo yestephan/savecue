@@ -30,5 +30,25 @@
   </div>
   <div class="container-text hidden" style="gap: 1rem;" data-toggle-target="content">
     <h3>Transactions</h3>
+    <div class="container-text">
+      <p><strong>Access token:</strong> <%= @access_token %></p>
+      <p><strong>Customer id:</strong> <%= @customer_id %></p>
+      <p><strong>Checking ibanNr:</strong> <%= @checking_iban %></p>
+      <p><strong>Savings ibanNr:</strong> <%= @savings_iban %></p>
+      <p><strong>Account id:</strong> <%= @account_id %></p>
+      <%# <p><strong>Transactions:</strong> <%= @transactions %>
+    </div>
+    <div class="container-text container-list">
+      <% @transactions.each do |transaction| %>
+        <div class="card-account">
+          <h2 class="emoji" style="font-size: 2.25rem">☕️</h2>
+          <div class="container-text">
+            <h3><%= transaction["remittanceInformationUnstructured"] %></h3>
+            <p><%= transaction["bookingDate"] %></p>
+          </div>
+          <h3><%= transaction["amount"] %></h3>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
