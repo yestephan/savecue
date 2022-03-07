@@ -25,9 +25,9 @@
         </div>
         <%= f.button :submit, "Save", class: "bt btn-primary" %>
         <% unless @account.id.nil? %>
-          <div class="form-actions">
+
             <%= link_to "Remove account", account_path(@account), method: :delete, class: "bt btn-destructive" %>
-          </div>
+
         <% end %>
       </div>
     <% end %>
