@@ -23,7 +23,8 @@ class UserCuesController < ApplicationController
   end
 
   def show
-    @user_cue = UserCue.find_by(id: params[:id])
+    @user_cue = UserCue.find(params[:id])
+    @total_saved = 5
   end
 
   def edit
@@ -53,13 +54,14 @@ class UserCuesController < ApplicationController
   def info_for_category(category)
     case category
     when "rain"
-      "How much do you save for each rainy day"
+
+      "How much do you save for each rainy day?"
     when "coffee"
-      "How much do you save for each coffee break"
+      "How much do you save for each coffee break?"
     when "sunny"
-      "How much do you save for each sunny day"
+      "How much do you save for each sunny day?"
     else
-      "How much do you save for each big spenda"
+      "How much do you save for each big spenda?"
     end
   end
 

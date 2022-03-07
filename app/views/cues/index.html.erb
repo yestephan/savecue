@@ -6,6 +6,7 @@
   <% end %>
   <div class="card-grid">
     <% @cues.each do |cue| %>
+     <% if !UserCue.find_by(user_id: current_user, cue_id: cue.id) %>
       <% if cue.title == "Rainy day!"%>
         <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-barge" do %>
           <div class="link-to-text-color">
@@ -38,7 +39,9 @@
             <p><%= cue.description %></p>
           </div>
         <% end %>
+
       <% end %>
+    <% end %>
     <% end %>
   </div>
 </div>

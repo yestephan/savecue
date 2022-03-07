@@ -3,9 +3,9 @@
 	height: 3.75rem;
 	text-align: center;
 	font-weight: 800;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	text-decoration: none;
-	padding: 0.5rem;
+	padding: 0.6rem;
 	border-radius: $border-radius;
 	border: 3px solid $black;
 	transition-duration: 0.1s;
@@ -44,6 +44,10 @@
 	}
 }
 
+.btn-pink{
+	border: 3px solid $purple;
+  color: $black;
+}
 .btn-back {
 	width: 3.25rem;
 	height: 3.25rem;
