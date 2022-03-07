@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
 
   def home
     # It is 230 fixed it because we don't have transactions yet
-    @total_saved = 0
+    @total_saved = 5
     # List of all user cues from current user to be displayed
     @user_cues = current_user.user_cues
   end
@@ -96,20 +96,20 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # def emoji_for_category(category)
-  #   case category
-  #   when "rain"
-  #     "🌧"
-  #   when "coffee"
-  #     "☕️"
-  #   when "sunny"
-  #     "☀️"
-  #   when"burger"
-  #     "🍔"
-  #   else
-  #     "💰"
-  #   end
-  # end
+  def emoji_for_category(category)
+    case category
+    when "rain"
+      "🌧"
+    when "coffee"
+      "☕️"
+    when "sunny"
+      "☀️"
+    when"burger"
+      "🍔"
+    else
+      "💰"
+    end
+  end
 
   def info_for_category(category)
     case category

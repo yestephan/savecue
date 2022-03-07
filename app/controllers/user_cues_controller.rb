@@ -24,6 +24,7 @@ class UserCuesController < ApplicationController
 
   def show
     @user_cue = UserCue.find(params[:id])
+    @total_saved = 5
   end
 
   def edit
