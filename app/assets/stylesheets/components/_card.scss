@@ -35,21 +35,18 @@
 
 // card-total-amount style
 .card-total-amount {
-	// width: 430px;
-	height: 200px;
+	height: 15rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 24px 8px;
+	padding: 1.5rem 1rem;
 	border: $border;
 	border-radius: $border-radius;
 }
 
 //card-no-transaction
 .card-no-transaction {
-	width: 430px;
-	height: 150px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -96,8 +93,4 @@
 
 .card-title {
 	margin-top: -10px;
-}
-
-.card-cue-edit{
-  width: 100%;
 }
