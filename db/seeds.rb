@@ -45,8 +45,6 @@ p "Checking and Savings Account created"
 # spenda_user_cue.save
 
 
-
-<<<<<<< HEAD
 auth_url = "https://api.mockbank.io/oauth/token"
 customers_url = "https://api.mockbank.io/customers"
 customer_name = "Bibi Ferreira"
@@ -54,16 +52,6 @@ customer_iban_debit = "NL43INGB6631699223"
 customer_iban_debit_name = "Debit"
 customer_iban_credit = "NL86ABNA4643636556"
 customer_iban_credit_name = "Savings"
-=======
-
-# auth_url = "https://api.mockbank.io/oauth/token"
-# customers_url = "https://api.mockbank.io/customers"
-# customer_name = "Bibi"
-# customer_iban_debit = "NL43INGB6631699223"
-# customer_iban_debit_name = "Debit"
-# customer_iban_credit = "NL86ABNA4643636556"
-# customer_iban_credit_name = "Savings"
->>>>>>> master
 
 # Generate Access Token
 auth_query = { "client_id" => "stephanye", "client_secret" => "secret",
