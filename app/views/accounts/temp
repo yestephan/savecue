@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Bank Settings</h1>
-    <h3>Debtor Account</h3>
-  <%= link_to accounts_debtor_path, class: "card-account" do %>
+    <h3>Checking Account</h3>
+    <%= link_to accounts_checking_path, class: "card-account" do %>
 
     <h1 class="emoji" style="font-size: 2.25rem">🏦</h1>
     <div class="container-text">
@@ -13,8 +13,8 @@
   </div>
 
   <div class="container">
-  <h3>Creditor Account</h3>
-  <%= link_to accounts_debtor_path, class: "card-account" do %>
+  <h3>Savings Account</h3>
+  <%= link_to accounts_checking_path, class: "card-account" do %>
     <h1 class="emoji" style="font-size: 2.25rem">🏦</h1>
     <div class="container-text">
       <h3> Debit</h3>
@@ -27,14 +27,14 @@
 
 
   <div class="row">
-    <% unless @debtor_account.nil? %>
-      <%= link_to accounts_debtor_path, class: "card-creditor-account" do %>
+    <% unless @checking_account.nil? %>
+      <%= link_to accounts_checking_path, class: "card-savings-account" do %>
         <div class="card-transaction-img">
           <h1 class="emoji">🏦</h1>
           </div>
           <div class="card-bank-setting-infos">
-            <h2><%= @debtor_account.name %></h2>
-            <h4><%= @debtor_account.iban %></h4>
+            <h2><%= @checking_account.name %></h2>
+            <h4><%= @checking_account.iban %></h4>
           </div>
           <div class="card-bank-setting-icon">
           <i></i>></h2>
@@ -42,20 +42,20 @@
         </div>
       <% end %>
     <% else %>
-      <%= link_to "Setup debtor account", accounts_debtor_path, class: "bt btn-secondary" %>
+      <%= link_to "Setup checking account", accounts_checking_path, class: "bt btn-secondary" %>
     <% end %>
   </div>
   <div class="row">
-    <h4>Creditor Account</h4>
+    <h4>Savings Account</h4>
   </div>
   <div class="row">
-    <% unless @creditor_account.nil? %>
-      <%= link_to accounts_creditor_path, class: "bt btn-secondary" do %>
-        <div class="row"><%= @creditor_account.name %></div>
-        <div class="row"><%= @creditor_account.iban %></div>
+    <% unless @savings_account.nil? %>
+      <%= link_to accounts_savings_path, class: "bt btn-secondary" do %>
+        <div class="row"><%= @savings_account.name %></div>
+        <div class="row"><%= @savings_account.iban %></div>
       <% end %>
     <% else %>
-      <%= link_to "Setup creditor account", accounts_creditor_path, class: "bt btn-secondary" %>
+      <%= link_to "Setup savings account", accounts_savings_path, class: "bt btn-secondary" %>
     <% end %>
   </div>
 </div>

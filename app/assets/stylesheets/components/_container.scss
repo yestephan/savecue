@@ -20,6 +20,22 @@
 	gap: 1rem;
 }
 
+.container-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+
+	* {
+		margin: 0px;
+	}
+}
+
+.container-list {
+	gap: 1rem;
+}
+
+// Form
 .simple_form {
 	display: flex;
 	flex-direction: column;
