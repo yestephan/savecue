@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :user_cues, only: [:new, :create, :destroy]
   end
 
-  resources :user_cues, only: [:show, :edit, :update]
+  resources :user_cues, only: [:show, :edit, :update, :destroy]
 
   # Accounts
   resources :accounts, only: [:index, :update, :destroy]
