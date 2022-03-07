@@ -13,18 +13,4 @@ class CuesController < ApplicationController
       @back = home_path
       @msg = "Choose a cue"
     end
-
-    @cues.each do |cue|
-      if cue.selected == false
-        @cues = Cue.all
-     else
-        @msg_error = "The cue is already selected ! Please choose another cue!"
-     end
-    end
-  end
-
-  def select!
-    @cues = Cue.find_by
-    @cue.selected = true
-  end
 end
