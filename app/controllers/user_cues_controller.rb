@@ -5,6 +5,11 @@ class UserCuesController < ApplicationController
   def new
     @user_cue = UserCue.new
     @cue = Cue.find(params[:cue_id])
+    if current_user.savings_account.nil? || current_user.checking_account.nil?
+      @submit_title = "Next"
+    else
+      @submit_title = "Confirm"
+    end
   end
 
   def create
@@ -15,10 +20,12 @@ class UserCuesController < ApplicationController
     @user_cue.cue = @cue
     @user_cue.save!
 
-    if current_user.accounts.find_by(account_type: "checking")
-      redirect_to home_path
-    else
+    if current_user.checking_account.nil?
       redirect_to signup_checking_account_path(url_origin: "signup")
+    elsif current_user.savings_account.nil?
+      redirect_to signup_savings_account_path(url_origin: "signup")
+    else
+      redirect_to home_path
     end
   end
 
