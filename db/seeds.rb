@@ -8,13 +8,13 @@ User.destroy_all
 Account.destroy_all
 
 # # cues
-rain_cue = Cue.new({title: "Rainy day!", description: "It's raining, and you'r saving 😉", category: "rain", color: "#FFAA47", emoji: "U+1F648" })
+rain_cue = Cue.new({title: "Rainy day!", description: "It's raining, and you'r saving 😉", category: "rain", color: "bg-barge", emoji: "🌧" })
 rain_cue.save!
-spenda_cue = Cue.new({title: "Big spenda!", description: "You spend money ➡️ You save money!", category: "money", color: "#FFAA47", emoji: "U+1F648"})
+spenda_cue = Cue.new({title: "Big spenda!", description: "You spend money ➡️ You save money!", category: "money", color: "bg-purple", emoji: "💸"})
 spenda_cue.save!
-starbucks_cue = Cue.new({title: "Starbucks", description: "Starbucks coffee is great, saving is better.", category: "coffee", color: "#FFAA47", emoji: "U+1F648" })
+starbucks_cue = Cue.new({title: "Starbucks", description: "Starbucks coffee is great, saving is better.", category: "coffee", color: "bg-coffee", emoji: "☕️" })
 starbucks_cue.save!
-burger_cue = Cue.new({title: "Burger day!", description: "Super size your savings. One burger = 💰", category: "burger", color: "#FFAA47", emoji: "U+1F648" })
+burger_cue = Cue.new({title: "Burger day!", description: "Super size your savings. One burger = 💰", category: "burger", color: "bg-jade", emoji: "🍔" })
 burger_cue.save!
 
 p "4 Savecues created 🌱"

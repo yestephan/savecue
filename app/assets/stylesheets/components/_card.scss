@@ -25,7 +25,10 @@
 	* {
 		margin: 0px;
 	}
-	&:active,
+}
+
+a .card-cue {
+  &:active,
 	&:hover {
 		transform: scale(1.03);
 		background-color: $blue;
