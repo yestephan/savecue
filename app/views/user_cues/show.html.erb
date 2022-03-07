@@ -6,7 +6,11 @@
       <h1 class="emoji"><%= emoji_for_category(@user_cue.cue.category) %></h1>
       <h3><%= @user_cue.cue.title %></h3>
       <p class="p-small"><%= @user_cue.cue.description %></p>
+      <% unless @user_cue.metadata.nil? || @user_cue.metadata["location"].nil? %>
+      <p class="p-small"><%= @user_cue.metadata["location"] %></p>
+      <% end %>
     </div>
+
     <div class="card-total-amount bg-white">
       <h1 class="p-large"><%= @total_saved %> € </h1>
       <h3 class="text-center">Amount saved from this cue</h3>

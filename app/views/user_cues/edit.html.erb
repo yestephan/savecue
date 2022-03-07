@@ -5,12 +5,25 @@
     <h1><%= info_for_category(@user_cue.cue.category) %></h1>
     <%= simple_form_for @user_cue do |f| %>
       <div class="form-floating">
-        <%= f.input :cue_amount,
+        <%= f.number_field :cue_amount,
                       label: 'Amount',
                       required: true,
                       class: "form-control",
                       placeholder: "€" %>
+        <%= f.label :cue_amount, "Amount €" %>
       </div>
+
+      <% if @user_cue.cue.category == "rain" %>
+
+      <div>
+        <%= f.label :metadata, "Location" %>
+        <%= f.input :metadata,
+              label: false,
+              input_html: { data: { geocoder_target: "metadata", value: @location }, class: "d-none" },
+              wrapper_html: { data: { controller: "geocoder", value: @location, geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+      </div>
+      <% end %>
+
       <%= f.button :submit, "Next", class: "bt btn-primary" %>
     <% end %>
   </div>

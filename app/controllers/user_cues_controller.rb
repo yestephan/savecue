@@ -18,6 +18,11 @@ class UserCuesController < ApplicationController
     @user_cue = UserCue.new(usercue_params)
     @user_cue.user = @user
     @user_cue.cue = @cue
+
+    if @cue.category == "rain" && !params[:user_cue][:metadata].nil?
+      @user_cue.metadata = {"location":params[:user_cue][:metadata]}
+    end
+
     @user_cue.save!
 
     if current_user.checking_account.nil?
@@ -37,6 +42,9 @@ class UserCuesController < ApplicationController
   def edit
     @user = current_user
     @user_cue = UserCue.find(params[:id])
+    unless @user_cue.metadata.nil? || @user_cue.metadata["location"].nil?
+      @user_cue.metadata = @user_cue.metadata["location"]
+    end
   end
 
   def destroy
@@ -49,6 +57,11 @@ class UserCuesController < ApplicationController
   def update
     @user = current_user
     @user_cue = UserCue.find(params[:id])
+
+    if @user_cue.cue.category == "rain" && !params[:user_cue][:metadata].nil?
+      @user_cue.metadata = {"location":params[:user_cue][:metadata]}
+    end
+
     if @user_cue.update(usercue_params)
       redirect_to home_path
     else
