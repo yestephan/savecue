@@ -1,5 +1,5 @@
 class UserCuesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   helper_method :info_for_category
 
   def new
@@ -30,25 +30,29 @@ class UserCuesController < ApplicationController
   def edit
     @user = current_user
     @user_cue = UserCue.find(params[:id])
-    render :new
+  end
+
+  def destroy
+    @user = current_user
+    @user_cue = UserCue.find(params[:id])
+    @user_cue.destroy
+    redirect_to home_path
   end
 
   def update
     @user = current_user
     @user_cue = UserCue.find(params[:id])
     if @user_cue.update(usercue_params)
-      redirect_to profile_path
+      redirect_to home_path
     else
-      render :new
+      render :edit
     end
 
-    if  @user_cue.cue.title == rainy?
-      update_city(meta_data)
-    end
+    # update_city(meta_data) if @user_cue.cue.title == "rainy"?
   end
 
   def update_city(meta_data)
-      meta_data
+    meta_data
   end
 
   def info_for_category(category)

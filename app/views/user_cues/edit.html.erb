@@ -1,2 +1,18 @@
-<h1>UserCues#edit</h1>
-<p>Find me in app/views/user_cues/edit.html.erb</p>
+<div class="container">
+  <div class="inner-container no-margin">
+    <%= link_to :back, class: "bt btn-back" do %>
+    <% end %>
+    <h1><%= info_for_category(@user_cue.cue.category) %></h1>
+    <%= simple_form_for @user_cue do |f| %>
+      <div class="form-floating">
+        <%= f.input :cue_amount,
+                      label: 'Amount',
+                      required: true,
+                      class: "form-control",
+                      placeholder: "€" %>
+      </div>
+      <%= f.button :submit, "Next", class: "bt btn-primary" %>
+    <% end %>
+  </div>
+  <%= render 'shared/flashes' %>
+</div>
