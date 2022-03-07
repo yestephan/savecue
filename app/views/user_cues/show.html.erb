@@ -4,15 +4,12 @@
     <% end %>
     <div class="card-cue bg-barge">
       <h1 class="emoji"><%= emoji_for_category(@user_cue.cue.category) %></h1>
-      <h4><%= @user_cue.cue.title %></h4>
+      <h3><%= @user_cue.cue.title %></h3>
       <p class="p-small"><%= @user_cue.cue.description %></p>
     </div>
     <div class="card-total-amount bg-white">
-          <h1 class="p-large"><%= @total_saved %> € </h1>
+      <h1 class="p-large"><%= @total_saved %> € </h1>
       <h3 class="text-center">Amount saved from this cue</h3>
     </div>
-
-      <%= link_to "Edit cue", edit_user_cue_path(@user_cue), method: :delete, class: "bt btn-destructive btn-pink w-100" %>
-
-
-      <%= link_to "Cancel Cue", user_cue_path(@user_cue), method: :delete, data: { confirm: "Really?" }, class: "bt btn-destructive w-100" %>
+    <%= link_to "Edit cue", edit_user_cue_path(@user_cue), method: :delete, class: "bt btn-destructive btn-pink w-100" %>
+    <%= link_to "Cancel Cue", user_cue_path(@user_cue), method: :delete, data: { confirm: "Really?" }, class: "bt btn-destructive w-100" %>

@@ -17,4 +17,12 @@ class User < ApplicationRecord
       "avatar_null.png"
     end
   end
+
+  def checking_account
+    self.accounts.find_by(account_type: Account::TYPE_CHECKING)
+  end
+
+  def savings_account
+    self.accounts.find_by(account_type: Account::TYPE_SAVINGS)
+  end
 end

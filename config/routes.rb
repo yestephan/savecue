@@ -26,9 +26,9 @@ Rails.application.routes.draw do
   resources :accounts, only: [:index, :update, :destroy]
   get "/accounts/checking", to: "accounts#checking"
   get "/signup/checking-account", to: "accounts#checking", defaults: { redirect_to: "signup/savings-account"}
-  post "/accounts/checking", to: "accounts#create", defaults: { account_type: "checking" }
+  post "/accounts/checking", to: "accounts#create", defaults: { account_type: Account::TYPE_CHECKING }
   get "/accounts/savings", to: "accounts#savings"
   get "/signup/savings-account", to: "accounts#savings", defaults: {redirect_to: "/home" }
-  post "/accounts/savings", to: "accounts#create", defaults: { account_type: "savings" }
+  post "/accounts/savings", to: "accounts#create", defaults: { account_type: Account::TYPE_SAVINGS }
 
 end
