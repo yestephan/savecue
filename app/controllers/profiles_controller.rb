@@ -11,8 +11,17 @@ class ProfilesController < ApplicationController
 
     # List transactions
     current_user
-    @checking_iban = Account.find_by(user: current_user, account_type: "checking").iban
-    @savings_iban = Account.find_by(user: current_user, account_type: "savings").iban
+
+    checking_account = current_user.checking_account
+    unless checking_account.nil?
+      @checking_iban = checking_account.iban
+    end
+
+    savings_account = current_user.savings_account
+    unless savings_account.nil?
+      @savings_iban = savings_account.iban
+    end
+
     @access_token = get_access_token
     @customer_id = get_customer_id(@access_token)
     @account_id = get_account_id(@access_token, @customer_id, @savings_iban)
@@ -25,9 +34,18 @@ class ProfilesController < ApplicationController
   def new_transaction
     @access_token = get_access_token
     @customer_id = get_customer_id(@access_token)
-    @checking_iban = Account.find_by(user: current_user, account_type: "checking").iban
-    @savings_iban = Account.find_by(user: current_user, account_type: "savings").iban
-    @savings_name = Account.find_by(user: current_user, account_type: "savings").name
+
+    checking_account = current_user.checking_account
+    unless checking_account.nil?
+      @checking_iban = checking_account.iban
+    end
+
+    savings_account = current_user.savings_account
+    unless savings_account.nil?
+      @savings_iban = savings_account.iban
+      @savings_name = savings_account.name
+    end
+
     @account_id = get_account_id(@access_token, @customer_id, @savings_iban)
     # Pass the correct cue.category details
     temp_cue = current_user.user_cues.first # Faking it now
