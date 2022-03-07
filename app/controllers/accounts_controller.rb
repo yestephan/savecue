@@ -3,38 +3,38 @@ class AccountsController < ApplicationController
   # before_action :set_account_types
 
   def index
-    @debtor_account = Account.find_by(user_id: current_user, account_type: "debtor")
-    @creditor_account = Account.find_by(user_id: current_user, account_type: "creditor")
+    @checking_account = Account.find_by(user_id: current_user, account_type: "checking")
+    @savings_account = Account.find_by(user_id: current_user, account_type: "savings")
   end
 
-  def debtor
+  def checking
     origin = params[:url_origin]
-    if current_user.accounts.find_by(account_type: "debtor")
-      @page_title = "Edit your debit account"
-      @account = current_user.accounts.find_by(account_type: "debtor")
-      @account_type = "debtor"
-      @form_path = accounts_path
+    if current_user.accounts.find_by(account_type: "checking")
+      @page_title = "Edit your checking account"
+      @account = current_user.accounts.find_by(account_type: "checking")
+      @account_type = "checking"
+      @form_path = account_path(@account)
     else
       @page_title = "From where do we get that money?"
       @account = Account.new
-      @account_type = "debtor"
-      @form_path = accounts_debtor_path(url_origin: origin)
+      @account_type = "checking"
+      @form_path = accounts_checking_path(url_origin: origin)
     end
     render :form
   end
 
-  def creditor
+  def savings
     origin = params[:url_origin]
-    if current_user.accounts.find_by(account_type: "creditor")
+    if current_user.accounts.find_by(account_type: "savings")
       @page_title = "Edit your savings account"
-      @account = current_user.accounts.find_by(account_type: "creditor")
-      @account_type = "creditor"
-      @form_path = accounts_path
+      @account = current_user.accounts.find_by(account_type: "savings")
+      @account_type = "savings"
+      @form_path = account_path(@account)
     else
       @page_title = "Where should the money go?"
       @account = Account.new
-      @account_type = "creditor"
-      @form_path = accounts_creditor_path(url_origin: origin)
+      @account_type = "savings"
+      @form_path = accounts_savings_path(url_origin: origin)
     end
     render :form
   end
@@ -45,9 +45,9 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
     @account.user = current_user
     if @account.save!
-      if origin == "signup" && account_type == "debtor"
-        redirect_to signup_creditor_account_path(url_origin: "signup")
-      elsif origin == "signup" && account_type == "creditor"
+      if origin == "signup" && account_type == "checking"
+        redirect_to signup_savings_account_path(url_origin: "signup")
+      elsif origin == "signup" && account_type == "savings"
         redirect_to home_path
       else
         redirect_to accounts_path
