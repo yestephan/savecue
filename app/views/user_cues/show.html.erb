@@ -11,9 +11,9 @@
       <h3>Amount saved from this cue</h3>
       <h1 class="p-large"><%= number_to_currency(@total_saved, unit: '€', precision: 0, format: "%n%u") %></h1>
     </div>
-    <div class="card-cue bg-barge">
-      <%= link_to "Edit cue", edit_user_cue_path(@user_cue), method: :delete, class: "bt btn-destructive" %>
+    <div class=" btn-edit">
+      <%= link_to "Edit cue", edit_user_cue_path(@user_cue), method: :delete, class: "bt btn-destructive btn-pink" %>
     </div>
-    <div class="card-cue bg-barge">
+    <div class="btn-cancel">
       <%= link_to "Cancel Cue", user_cue_path(@user_cue), method: :delete, data: { confirm: "Really?" }, class: "bt btn-destructive" %>
     </div>
