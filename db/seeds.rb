@@ -45,66 +45,89 @@ p "Checking and Savings Account created"
 # spenda_user_cue.save
 
 
+auth_url = "https://api.mockbank.io/oauth/token"
+customers_url = "https://api.mockbank.io/customers"
+customer_name = "Bibi Ferreira"
+customer_iban_debit = "NL43INGB6631699223"
+customer_iban_debit_name = "Debit"
+customer_iban_credit = "NL86ABNA4643636556"
+customer_iban_credit_name = "Savings"
+
+# Generate Access Token
+auth_query = { "client_id" => "stephanye", "client_secret" => "secret",
+                "grant_type" => "password",
+                "username" => "contact@stephanye.io", "password" => "testmock" }
+auth_headers = { "content-type" => "application/json" }
+mockbank_admin = HTTParty.post(auth_url,
+                      query: auth_query,
+                      headers: auth_headers)
+access_token = mockbank_admin["access_token"]
+
+# Get customer ID
+auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+customers = HTTParty.get(customers_url,
+  headers: auth_headers
+)
+
+customers = customers.parsed_response["data"].to_a
+customer = ""
+customers.each do |object|
+  customer = object if object["fullName"] == customer_name
+end
+customer_id = customer["externalId"]
+
+p "customer id: #{customer_id}"
+p "customer url: #{customers_url}"
+
+# Get user account id
+auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+accounts_url = "#{customers_url}/#{customer_id}/accounts"
+customer_accounts = HTTParty.get(accounts_url,
+                                 headers: auth_headers
+                                )
+
+customer_accounts = customer_accounts.parsed_response["data"].to_a
+account = ""
+customer_accounts.each do |a|
+  account = a if a["iban"] == customer_iban_debit
+end
+account_id = account["externalId"]
+
+p "account id: #{account_id}"
 
 
-# auth_url = "https://api.mockbank.io/oauth/token"
-# customers_url = "https://api.mockbank.io/customers"
-# customer_name = "Bibi"
-# customer_iban_debit = "NL43INGB6631699223"
-# customer_iban_debit_name = "Debit"
-# customer_iban_credit = "NL86ABNA4643636556"
-# customer_iban_credit_name = "Savings"
+# Get account transactions
+auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+transactions_url = "#{customers_url}/#{customer_id}/transactions"
+transactions = HTTParty.get(transactions_url,
+                            headers: auth_headers
+                            )
 
-# # Generate Access Token
-# auth_query = { "client_id" => "stephanye", "client_secret" => "secret",
-#                 "grant_type" => "password",
-#                 "username" => "contact@stephanye.io", "password" => "testmock" }
-# auth_headers = { "content-type" => "application/json" }
-# mockbank_admin = HTTParty.post(auth_url,
-#                       query: auth_query,
-#                       headers: auth_headers)
-# access_token = mockbank_admin["access_token"]
-
-# # Get customer ID
-# auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
-# customers = HTTParty.get(customers_url,
-#   headers: auth_headers
-# )
-
-# customers = customers.parsed_response["data"].to_a
-# customer = ""
-# customers.each do |object|
-#   customer = object if object["fullName"] == customer_name
-# end
-# customer_id = customer["externalId"]
-
-# p "customer id: #{customer_id}"
-# p "customer url: #{customers_url}"
-
-# # Get user account id
-# auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
-# accounts_url = "#{customers_url}/#{customer_id}/accounts"
-# customer_accounts = HTTParty.get(accounts_url,
-#                                  headers: auth_headers
-#                                 )
-
-# customer_accounts = customer_accounts.parsed_response["data"].to_a
-# account = ""
-# customer_accounts.each do |a|
-#   account = a if a["iban"] == customer_iban_debit
-# end
-# account_id = account["externalId"]
-
-# p "account id: #{account_id}"
+<<<<<<< HEAD
+transactions = transactions.parsed_response["data"].to_a
+account_transactions = []
+transactions.each do |transaction|
+ if transaction["accountId"] == account_id
+  if transaction["creditorName"]
+    account_transactions << transaction if transaction["creditorName"].downcase == "starbucks"
+  end
+ end
+end
 
 
-# # Get account transactions
-# auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
-# transactions_url = "#{customers_url}/#{customer_id}/transactions"
-# transactions = HTTParty.get(transactions_url,
-#                             headers: auth_headers
-#                             )
+# This is the date condition
+dateNow = Time.now.strftime("%Y-%m-%d")
 
+# This is the filter condition that you can use for the work that you are using.
+filter = {"bookingDate" => "#{dateNow}"}
+# binding.pry
+results = account_transactions.select do |elem|
+  filter.all? do |key, value|
+    elem[key] == value
+  end
+end
+p results.count
+=======
 # transactions = transactions.parsed_response["data"].to_a
 
 
@@ -143,3 +166,4 @@ p "Checking and Savings Account created"
 #                             )
 # p transaction
 
+>>>>>>> master
