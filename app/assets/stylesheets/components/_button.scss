@@ -12,6 +12,7 @@
 
 	&:active,
 	&:hover {
+		border: 3px solid $black;
 		transform: scale(1.05);
 		background-color: $blue;
 		color: $black;
@@ -36,10 +37,10 @@
 	color: $red;
 	border: 3px solid $red;
 
-	&:hover {
+	&:hover,
+	&:active {
 		background-color: $red;
 		color: $white;
-		border: 3px solid $red;
 	}
 }
 
@@ -48,12 +49,12 @@
 	height: 3.25rem;
 	padding: 10px;
 	background-color: $white;
-	border: 3px solid $purple;
 	border-radius: $border-radius;
 	text-decoration: none;
 	background-image: url("arrow.png");
 	background-size: contain;
-	&:hover {
+	&:hover,
+	&:active {
 		width: 3.25rem;
 		height: 3.25rem;
 	}
