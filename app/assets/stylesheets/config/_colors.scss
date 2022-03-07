@@ -13,6 +13,7 @@ $barge: #fbead1;
 $purple: #8257f6;
 $jade: #b8e1df;
 $coffee: #c08147;
+$green: #c8e1b5;
 
 // background color
 .bg-white {
@@ -45,4 +46,12 @@ $coffee: #c08147;
 
 .bg-coffee {
 	background-color: $coffee;
+}
+
+.bg-green {
+	background-color: $green;
+}
+
+.bg-red {
+	background-color: $red;
 }

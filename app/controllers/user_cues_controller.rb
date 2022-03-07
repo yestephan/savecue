@@ -65,14 +65,13 @@ class UserCuesController < ApplicationController
   def info_for_category(category)
     case category
     when "rain"
-
       "How much do you save for each rainy day?"
     when "coffee"
       "How much do you save for each coffee break?"
-    when "sunny"
-      "How much do you save for each sunny day?"
-    else
-      "How much do you save for each big spenda?"
+    when "burger"
+      "How much do you save for each burger?"
+    when "money"
+      "How much do you save each time you spend more than 100€?"
     end
   end
 

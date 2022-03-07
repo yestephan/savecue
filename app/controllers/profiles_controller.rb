@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   def home
     # List of all user cues from current user to be displayed
     @user_cues = current_user.user_cues
-   
+
     # List transactions
     @access_token = helpers.get_access_token
     @customer_id = helpers.get_customer_id(@access_token)
@@ -50,7 +50,7 @@ class ProfilesController < ApplicationController
     end
     redirect_to home_path(response: @response)
   end
-  
+
   def edit
     @profile = current_user
   end
