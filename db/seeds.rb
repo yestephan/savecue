@@ -10,7 +10,7 @@ Account.destroy_all
 # # cues
 rain_cue = Cue.new({title: "Rainy day!", description: "It's raining, and you'r saving 😉", category: "rain", color: "#FFAA47", emoji: "U+1F648" })
 rain_cue.save!
-spenda_cue = Cue.new({title: "Big spenda!", description: "You spend money ➡️ You save money!", category: "money", color: "#FFAA47", emoji: "U+1F648" })
+spenda_cue = Cue.new({title: "Big spenda!", description: "You spend money ➡️ You save money!", category: "money", color: "#FFAA47", emoji: "U+1F648"})
 spenda_cue.save!
 starbucks_cue = Cue.new({title: "Starbucks", description: "Starbucks coffee is great, saving is better.", category: "coffee", color: "#FFAA47", emoji: "U+1F648" })
 starbucks_cue.save!
@@ -43,6 +43,7 @@ p "Checking and Savings Account created"
 # spenda_metadata = { limit: 50 }
 # spenda_user_cue = UserCue.new({ user: user, cue: spenda_cue, cue_amount: 5, metadata: spenda_metadata })
 # spenda_user_cue.save
+
 
 
 
@@ -106,12 +107,15 @@ p "Checking and Savings Account created"
 
 # transactions = transactions.parsed_response["data"].to_a
 
+
 # account_transactions = []
 # transactions.each do |transaction|
 #   account_transactions << transaction if transaction["accountId"] == account_id && transaction["creditorName"] == "McDonalds"
 # end
 
 # p account_transactions[0]["amount"]
+
+
 
 
 # # Generate a transaction
@@ -138,3 +142,4 @@ p "Checking and Savings Account created"
 #                             headers: auth_headers
 #                             )
 # p transaction
+
