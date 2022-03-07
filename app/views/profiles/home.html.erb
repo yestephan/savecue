@@ -17,6 +17,7 @@
           <h1 class="emoji"><%= emoji_for_category(user_cue.cue.category) %></h1>
           <h3><%= user_cue.cue.title %></h3>
           <p><%= user_cue.cue.description %></p>
+          <%= link_to "Show cue", user_cue_path(user_cue) %>
         </div>
       <% end %>
       <%= link_to cues_path(url_origin: "home") do %>

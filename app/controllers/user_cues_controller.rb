@@ -23,7 +23,7 @@ class UserCuesController < ApplicationController
   end
 
   def show
-    @user_cue = UserCue.find_by(id: params[:id])
+    @user_cue = UserCue.find(params[:id])
   end
 
   def edit
