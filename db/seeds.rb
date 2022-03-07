@@ -44,7 +44,6 @@ p "Checking and Savings Account created"
 # spenda_user_cue = UserCue.new({ user: user, cue: spenda_cue, cue_amount: 5, metadata: spenda_metadata })
 # spenda_user_cue.save
 
-
 auth_url = "https://api.mockbank.io/oauth/token"
 customers_url = "https://api.mockbank.io/customers"
 customer_name = "Bibi Ferreira"
@@ -85,7 +84,6 @@ accounts_url = "#{customers_url}/#{customer_id}/accounts"
 customer_accounts = HTTParty.get(accounts_url,
                                  headers: auth_headers
                                 )
-
 customer_accounts = customer_accounts.parsed_response["data"].to_a
 account = ""
 customer_accounts.each do |a|
@@ -96,14 +94,11 @@ account_id = account["externalId"]
 p "account id: #{account_id}"
 
 
-# Get account transactions
+# Get account transactions - Filtered
 auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
 transactions_url = "#{customers_url}/#{customer_id}/transactions"
 transactions = HTTParty.get(transactions_url,
-                            headers: auth_headers
-                            )
-
-<<<<<<< HEAD
+                            headers: auth_headers)
 transactions = transactions.parsed_response["data"].to_a
 account_transactions = []
 transactions.each do |transaction|
@@ -114,12 +109,10 @@ transactions.each do |transaction|
  end
 end
 
-
 # This is the date condition
-dateNow = Time.now.strftime("%Y-%m-%d")
-
+date_now = Time.now.strftime("%Y-%m-%d")
 # This is the filter condition that you can use for the work that you are using.
-filter = {"bookingDate" => "#{dateNow}"}
+filter = {"bookingDate" => "#{date_now}"}
 # binding.pry
 results = account_transactions.select do |elem|
   filter.all? do |key, value|
@@ -127,19 +120,6 @@ results = account_transactions.select do |elem|
   end
 end
 p results.count
-=======
-# transactions = transactions.parsed_response["data"].to_a
-
-
-# account_transactions = []
-# transactions.each do |transaction|
-#   account_transactions << transaction if transaction["accountId"] == account_id && transaction["creditorName"] == "McDonalds"
-# end
-
-# p account_transactions[0]["amount"]
-
-
-
 
 # # Generate a transaction
 # auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
@@ -165,5 +145,3 @@ p results.count
 #                             headers: auth_headers
 #                             )
 # p transaction
-
->>>>>>> master
