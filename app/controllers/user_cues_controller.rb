@@ -5,6 +5,11 @@ class UserCuesController < ApplicationController
   def new
     @user_cue = UserCue.new
     @cue = Cue.find(params[:cue_id])
+    if current_user.savings_account.nil? || current_user.checking_account.nil?
+      @submit_title = "Next"
+    else
+      @submit_title = "Confirm"
+    end
   end
 
   def create
@@ -15,15 +20,18 @@ class UserCuesController < ApplicationController
     @user_cue.cue = @cue
     @user_cue.save!
 
-    if current_user.accounts.find_by(account_type: "checking")
-      redirect_to home_path
-    else
+    if current_user.checking_account.nil?
       redirect_to signup_checking_account_path(url_origin: "signup")
+    elsif current_user.savings_account.nil?
+      redirect_to signup_savings_account_path(url_origin: "signup")
+    else
+      redirect_to home_path
     end
   end
 
   def show
-    @user_cue = UserCue.find_by(id: params[:id])
+    @user_cue = UserCue.find(params[:id])
+    @total_saved = 5
   end
 
   def edit
@@ -53,13 +61,14 @@ class UserCuesController < ApplicationController
   def info_for_category(category)
     case category
     when "rain"
-      "How much do you save for each rainy day"
+
+      "How much do you save for each rainy day?"
     when "coffee"
-      "How much do you save for each coffee break"
+      "How much do you save for each coffee break?"
     when "sunny"
-      "How much do you save for each sunny day"
+      "How much do you save for each sunny day?"
     else
-      "How much do you save for each big spenda"
+      "How much do you save for each big spenda?"
     end
   end
 
