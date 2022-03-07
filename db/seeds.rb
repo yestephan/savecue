@@ -17,7 +17,7 @@ starbucks_cue.save!
 burger_cue = Cue.new({title: "Burger day!", description: "Super size your savings. One burger = 💰", category: "burger", color: "#FFAA47", emoji: "U+1F648" })
 burger_cue.save!
 
-p "4 save cues created 🌱"
+p "4 Savecues created 🌱"
 
 # # users
 user = User.new({ first_name: "Bibi", last_name: "Ferreira", email: "bibi@email.com", password: "test1234" })
@@ -53,8 +53,6 @@ p "Checking and Savings Account created"
 # customer_iban_debit_name = "Debit"
 # customer_iban_credit = "NL86ABNA4643636556"
 # customer_iban_credit_name = "Savings"
-# transaction_amount = -4
-
 
 # # Generate Access Token
 # auth_query = { "client_id" => "stephanye", "client_secret" => "secret",

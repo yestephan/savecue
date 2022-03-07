@@ -15,10 +15,10 @@ class UserCuesController < ApplicationController
     @user_cue.cue = @cue
     @user_cue.save!
 
-    if current_user.accounts.find_by(account_type: "debtor")
+    if current_user.accounts.find_by(account_type: "checking")
       redirect_to home_path
     else
-      redirect_to signup_debtor_account_path(url_origin: "signup")
+      redirect_to signup_checking_account_path(url_origin: "signup")
     end
   end
 
@@ -54,6 +54,7 @@ class UserCuesController < ApplicationController
   def info_for_category(category)
     case category
     when "rain"
+
       "How much do you save for each rainy day?"
     when "coffee"
       "How much do you save for each coffee break?"
@@ -63,6 +64,7 @@ class UserCuesController < ApplicationController
       "How much do you save for each big spenda?"
     end
   end
+
   private
 
   def usercue_params

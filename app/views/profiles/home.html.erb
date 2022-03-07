@@ -1,27 +1,39 @@
 <div class="container" data-controller="toggle">
   <nav class="container-toggle">
-    <button class="bt btn-toggle active" data-toggle-target="dashBtn" data-action="click->toggle#toggle">Dashboard</button>
-    <button class="bt btn-toggle" data-toggle-target="transBtn"  data-action="click->toggle#toggle">Transactions</button>
+    <button class="bt btn-toggle active" data-toggle-target="toggleBtn" data-action="click->toggle#toggle" data-value="dashboard">Dashboard</button>
+    <button class="bt btn-toggle" data-toggle-target="toggleBtn"  data-action="click->toggle#toggle" data-value="transactions">Transactions</button>
   </nav>
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">
     <h1 class="p-large"><%= @total_saved %> € </h1>
     <h3>Amount saved</h3>
   </div>
+  <!-- TEMP TRIGGER BTN -->
+  <div class="container-text">
+    <p><strong>Customer id:</strong> <%= @customer_id %></p>
+    <p><strong>Checking ibanNr:</strong> <%= @checking_iban %></p>
+    <p><strong>Savings name:</strong> <%= @savings_name %></p>
+    <p><strong>Savings ibanNr:</strong> <%= @savings_iban %></p>
+    <p><strong>Account id:</strong> <%= @account_id %></p>
+    <p><strong>Response id:</strong> <%= @response %></p>
+    <%# <p><strong>Transactions:</strong> <%= @transactions %>
+  </div>
+  <%= link_to "Drink coffee", new_transaction_path, class: "bt btn-secondary", method: :new_transaction %>
   <!-- CUES -->
-  <div class="container-text" style="gap: 1rem" data-toggle-target="cues">
+  <div class="container-text" style="gap: 1rem" data-toggle-target="content">
     <h3>Your savecues</h3>
     <div class="card-grid">
       <% @user_cues.each do |user_cue| %>
+        <%= link_to user_cue_path(user_cue) do %>
         <div class="card-cue <%= css_for_category(user_cue.cue.category) %>">
           <h1 class="emoji"><%= emoji_for_category(user_cue.cue.category) %></h1>
           <h3><%= user_cue.cue.title %></h3>
           <p><%= user_cue.cue.description %></p>
-          <%= link_to "Show cue", user_cue_path(user_cue) %>
         </div>
       <% end %>
+       <% end %>
       <%= link_to cues_path(url_origin: "home") do %>
-        <div class="card-cue bg-darker-yellow">
+        <div class="card-cue bg-darker-yellow" style="height: 100%">
           <h1 class="emoji">+</h1>
           <h3>Add cue</h3>
           <p>Start saving with more savecues!</p>
@@ -29,7 +41,27 @@
       <% end %>
     </div>
   </div>
-  <div class="container-text hidden" style="gap: 1rem;" data-toggle-target="transactions">
+  <div class="container-text hidden" style="gap: 1rem;" data-toggle-target="content">
     <h3>Transactions</h3>
+    <div class="container-text">
+      <p><strong>Access token:</strong> <%= @access_token %></p>
+      <p><strong>Customer id:</strong> <%= @customer_id %></p>
+      <p><strong>Checking ibanNr:</strong> <%= @checking_iban %></p>
+      <p><strong>Savings ibanNr:</strong> <%= @savings_iban %></p>
+      <p><strong>Account id:</strong> <%= @account_id %></p>
+      <%# <p><strong>Transactions:</strong> <%= @transactions %>
+    </div>
+    <div class="container-text container-list">
+      <% @transactions.each do |transaction| %>
+        <div class="card-account">
+          <h2 class="emoji" style="font-size: 2.25rem">☕️</h2>
+          <div class="container-text">
+            <h3><%= transaction["remittanceInformationUnstructured"] %></h3>
+            <p><%= transaction["bookingDate"] %></p>
+          </div>
+          <h2>+<%= transaction["amount"] %></h2>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

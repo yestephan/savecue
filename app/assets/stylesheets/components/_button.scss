@@ -3,15 +3,16 @@
 	height: 3.75rem;
 	text-align: center;
 	font-weight: 800;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	text-decoration: none;
-	padding: 0.5rem;
+	padding: 0.6rem;
 	border-radius: $border-radius;
 	border: 3px solid $black;
 	transition-duration: 0.1s;
 
 	&:active,
 	&:hover {
+		border: 3px solid $black;
 		transform: scale(1.05);
 		background-color: $blue;
 		color: $black;
@@ -36,10 +37,10 @@
 	color: $red;
 	border: 3px solid $red;
 
-	&:hover {
+	&:hover,
+	&:active {
 		background-color: $red;
 		color: $white;
-		border: 3px solid $red;
 	}
 }
 
@@ -52,12 +53,12 @@
 	height: 3.25rem;
 	padding: 10px;
 	background-color: $white;
-	border: 3px solid $purple;
 	border-radius: $border-radius;
 	text-decoration: none;
 	background-image: url("arrow.png");
 	background-size: contain;
-	&:hover {
+	&:hover,
+	&:active {
 		width: 3.25rem;
 		height: 3.25rem;
 	}

@@ -62,49 +62,7 @@
 	}
 }
 
-//card-transaction
-.card-transaction {
-	overflow: hidden;
-	width: 430px;
-	height: 150px;
-	background: white;
-	display: flex;
-	align-items: center;
-	border: $border;
-	border-radius: $border-radius;
-	justify-content: space-around;
-}
-
-.card-transaction-img {
-	padding-left: 2px;
-}
-
-.card-transaction-infos {
-	h2 {
-		font-weight: bolder;
-	}
-}
-
-.card-transaction-money {
-	font-size: 12px;
-	line-height: 1.4;
-	opacity: 0.7;
-	margin-bottom: 0;
-	margin-top: 8px;
-	h2 {
-		font-weight: bolder;
-	}
-}
-
-.card-transaction-mark {
-	font-size: 15px;
-	line-height: 1.4;
-	opacity: 0.7;
-	margin-bottom: 0;
-	margin-top: 8px;
-}
-
-.home-card {
+.card-home {
 	border: $border;
 	border-radius: $border-radius;
 	padding: 2rem;
@@ -124,10 +82,10 @@
 	align-items: center;
 	width: 100%;
 	padding: 0.75rem 1rem;
-	border-radius: 0.5rem;
-	border: 3px solid $black;
+	border-radius: $border-radius;
+	border: $border;
 	background-color: $white;
-	gap: 0.75rem;
+	gap: 1rem;
 	color: $black;
 	margin-top: -15px;
 	&:hover {
@@ -136,18 +94,7 @@
 	}
 }
 
-.container-text {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 100%;
-
-	* {
-		margin: 0px;
-	}
-}
-
-.bank-title {
+.card-title {
 	margin-top: -10px;
 }
 
