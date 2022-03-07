@@ -50,7 +50,7 @@ class ProfilesController < ApplicationController
     end
     redirect_to home_path(response: @response)
   end
-
+  
   def edit
     @profile = current_user
   end
