@@ -48,7 +48,7 @@ class ProfilesController < ApplicationController
     when "burger"
       "bg-jade"
     else
-      "bg-money"
+      "bg-purple"
     end
   end
 
