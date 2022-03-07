@@ -3,21 +3,22 @@ class AccountsController < ApplicationController
   # before_action :set_account_types
 
   def index
-    @checking_account = Account.find_by(user_id: current_user, account_type: "checking")
-    @savings_account = Account.find_by(user_id: current_user, account_type: "savings")
+    @checking_account = current_user.checking_account
+    @savings_account = current_user.savings_account
   end
 
   def checking
     origin = params[:url_origin]
-    if current_user.accounts.find_by(account_type: "checking")
+    current_account = current_user.checking_account
+    unless current_account.nil?
       @page_title = "Edit your checking account"
-      @account = current_user.accounts.find_by(account_type: "checking")
-      @account_type = "checking"
+      @account = current_account
+      @account_type = Account::TYPE_CHECKING
       @form_path = account_path(@account)
     else
       @page_title = "From where do we get that money?"
       @account = Account.new
-      @account_type = "checking"
+      @account_type = Account::TYPE_CHECKING
       @form_path = accounts_checking_path(url_origin: origin)
     end
     render :form
@@ -25,15 +26,16 @@ class AccountsController < ApplicationController
 
   def savings
     origin = params[:url_origin]
-    if current_user.accounts.find_by(account_type: "savings")
+    current_account = current_user.savings_account
+    unless current_account.nil?
       @page_title = "Edit your savings account"
-      @account = current_user.accounts.find_by(account_type: "savings")
-      @account_type = "savings"
+      @account = current_account
+      @account_type = Account::TYPE_SAVINGS
       @form_path = account_path(@account)
     else
       @page_title = "Where should the money go?"
       @account = Account.new
-      @account_type = "savings"
+      @account_type = Account::TYPE_SAVINGS
       @form_path = accounts_savings_path(url_origin: origin)
     end
     render :form
@@ -45,9 +47,9 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
     @account.user = current_user
     if @account.save!
-      if origin == "signup" && account_type == "checking"
+      if origin == "signup" && account_type == Account::TYPE_CHECKING
         redirect_to signup_savings_account_path(url_origin: "signup")
-      elsif origin == "signup" && account_type == "savings"
+      elsif origin == "signup" && account_type == Account::TYPE_SAVINGS
         redirect_to home_path
       else
         redirect_to accounts_path

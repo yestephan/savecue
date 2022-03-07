@@ -4,13 +4,20 @@ class ProfilesController < ApplicationController
   def home
     # List of all user cues from current user to be displayed
     @user_cues = current_user.user_cues
-
+   
     # List transactions
-    current_user
-    @checking_iban = Account.find_by(user: current_user, account_type: "checking").iban
-    @savings_iban = Account.find_by(user: current_user, account_type: "savings").iban
     @access_token = helpers.get_access_token
     @customer_id = helpers.get_customer_id(@access_token)
+
+    checking_account = current_user.checking_account
+    unless checking_account.nil?
+      @checking_iban = checking_account.iban
+    end
+
+    savings_account = current_user.savings_account
+    unless savings_account.nil?
+      @savings_iban = savings_account.iban
+    end
     @account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
     @transactions = get_transactions(@access_token, @customer_id, @account_id)
     @response = params[:response]
@@ -19,12 +26,21 @@ class ProfilesController < ApplicationController
   end
 
   def new_transaction
-    @access_token = get_access_token
-    @customer_id = get_customer_id(@access_token)
-    @checking_iban = Account.find_by(user: current_user, account_type: "checking").iban
-    @savings_iban = Account.find_by(user: current_user, account_type: "savings").iban
-    @savings_name = Account.find_by(user: current_user, account_type: "savings").name
-    @savings_account_id = get_account_id(@access_token, @customer_id, @savings_iban)
+    @access_token = helpers.get_access_token
+    @customer_id = helpers.get_customer_id(@access_token)
+    checking_account = current_user.checking_account
+    unless checking_account.nil?
+      @checking_iban = checking_account.iban
+    end
+
+    savings_account = current_user.savings_account
+    unless savings_account.nil?
+      @savings_iban = savings_account.iban
+      @savings_name = savings_account.name
+    end
+    @savings_account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
+
+
     # Pass the correct cue.category details
     temp_cue = current_user.user_cues.first # Faking it now
     cue_category = Cue.find(temp_cue.cue_id).category
