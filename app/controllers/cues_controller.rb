@@ -13,4 +13,5 @@ class CuesController < ApplicationController
       @back = home_path
       @msg = "Choose a cue"
     end
+  end
 end
