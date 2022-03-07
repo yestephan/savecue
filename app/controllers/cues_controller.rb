@@ -1,5 +1,6 @@
 class CuesController < ApplicationController
   before_action :authenticate_user!
+  helper_method :select
 
   def index
     origin = params[:url_origin]
@@ -12,5 +13,4 @@ class CuesController < ApplicationController
       @back = home_path
       @msg = "Choose a cue"
     end
-  end
 end
