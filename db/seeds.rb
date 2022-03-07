@@ -44,9 +44,6 @@ p "Checking and Savings Account created"
 # spenda_user_cue = UserCue.new({ user: user, cue: spenda_cue, cue_amount: 5, metadata: spenda_metadata })
 # spenda_user_cue.save
 
-
-
-
 # auth_url = "https://api.mockbank.io/oauth/token"
 # customers_url = "https://api.mockbank.io/customers"
 # customer_name = "Bibi"
@@ -99,23 +96,34 @@ p "Checking and Savings Account created"
 
 
 # # Get account transactions
-# auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
-# transactions_url = "#{customers_url}/#{customer_id}/transactions"
-# transactions = HTTParty.get(transactions_url,
-#                             headers: auth_headers
-#                             )
+auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+transactions_url = "#{customers_url}/#{customer_id}/transactions"
+transactions = HTTParty.get(transactions_url,
+                            headers: auth_headers
+                            )
+transactions = transactions.parsed_response["data"].to_a
+account_transactions = []
+transactions.each do |transaction|
+ if transaction["accountId"] == account_id
+  if transaction["creditorName"]
+    account_transactions << transaction if transaction["creditorName"].downcase == "starbucks"
+  end
+ end
+end
 
-# transactions = transactions.parsed_response["data"].to_a
 
+# This is the date condition
+dateNow = Time.now.strftime("%Y-%m-%d")
 
-# account_transactions = []
-# transactions.each do |transaction|
-#   account_transactions << transaction if transaction["accountId"] == account_id && transaction["creditorName"] == "McDonalds"
-# end
-
-# p account_transactions[0]["amount"]
-
-
+# This is the filter condition that you can use for the work that you are using.
+filter = {"bookingDate" => "#{dateNow}"}
+# binding.pry
+results = account_transactions.select do |elem|
+  filter.all? do |key, value|
+    elem[key] == value
+  end
+end
+p results.count
 
 
 # # Generate a transaction
@@ -142,4 +150,3 @@ p "Checking and Savings Account created"
 #                             headers: auth_headers
 #                             )
 # p transaction
-
