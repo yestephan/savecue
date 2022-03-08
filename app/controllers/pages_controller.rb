@@ -8,5 +8,6 @@ class PagesController < ApplicationController
 
   def confirm
     @user = current_user
+
   end
 end
