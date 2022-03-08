@@ -1,48 +1,33 @@
 module ApplicationHelper
 
 # Cue Card and Cues'conditions.
-  def emoji_for_category(category)
-    case category
-    when "rain"
-      "🌧"
-    when "coffee"
-      "☕️"
-    when "money"
-      "💸"
-    when"burger"
-      "🍔"
-    else
-      "💰"
-    end
-  end
-
-  def css_for_category(category)
-    case category
-    when "rain"
-      "bg-barge"
-    when "coffee"
-      "bg-coffee"
-    when "burger"
-      "bg-jade"
-    else
-      "bg-money"
-    end
-  end
-
   def info_for_category(category)
     case category
     when "rain"
       "How much do you save for each rainy day?"
     when "coffee"
       "How much do you save for each coffee break?"
-    when "sunny"
-      "How much do you save for each sunny day?"
-    else
+    when "burger"
+      "How much do you save for each burger?"
+    when "money"
       "How much do you save for each big spenda?"
     end
   end
 
-
+  def metadata(category)
+    case category
+    when "coffee"
+      { creditorName: true,
+        condition: "starbucks" }
+    when "burger"
+      { creditorName: true,
+        condition: "mcdonalds" }
+    when "money"
+      { creditorName: false,
+        condition: 100 }
+    end
+  end
+  
   # Access token for Mockbank
   def get_access_token
     auth_url = "https://api.mockbank.io/oauth/token"
@@ -84,5 +69,19 @@ module ApplicationHelper
       account = element if element["iban"] == iban
     end
     return account["externalId"]
+  end
+  def link_back
+    url = request.original_url
+
+    checking = "checking-account"
+    saving = "savings-account"
+
+    if url.include? checking
+      "#{root_url}/cues/#{current_user.cues.first.id}/user_cues/new"
+    elsif url.include? saving
+      "#{root_url}/signup/checking-account?url_origin=signup"
+    else
+      home_path
+    end
   end
 end

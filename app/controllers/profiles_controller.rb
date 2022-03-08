@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
       @savings_iban = savings_account.iban
     end
     @account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
-    @transactions = get_transactions(@access_token, @customer_id, @account_id)
+    @transactions = get_all_savecue_transactions(@access_token, @customer_id, @account_id)
     @response = params[:response]
     # Counting totals
     @total_saved = count_total(@transactions)
@@ -85,7 +85,7 @@ class ProfilesController < ApplicationController
   customers_url = "https://api.mockbank.io/customers"
 
 
-  def get_transactions(access_token, customer_id, account_id)
+  def get_all_savecue_transactions(access_token, customer_id, account_id)
     customers_url = "https://api.mockbank.io/customers"
     auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
     transactions_url = "#{customers_url}/#{customer_id}/transactions"

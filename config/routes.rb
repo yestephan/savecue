@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post "/home", to: "profiles#new_transaction", as: "new_transaction"
 
   # Confirmation route
-  get "/confirmation", to: "profiles#confirm" #Generic confirmation route
+  get "/confirmation", to: "pages#confirm" #Generic confirmation route
 
   # Cues and user_cues
   resources :cues, only: [:index] do
