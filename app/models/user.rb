@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :user_cues, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :accounts, dependent: :destroy
+  has_many :cues, through: :user_cues
   # has_one_attached :photo
 
   def avatar_url

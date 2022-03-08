@@ -85,4 +85,18 @@ module ApplicationHelper
     end
     return account["externalId"]
   end
+  def link_back
+    url = request.original_url
+
+    checking = "checking-account"
+    saving = "savings-account"
+
+    if url.include? checking
+      "#{root_url}/cues/#{current_user.cues.first.id}/user_cues/new"
+    elsif url.include? saving
+      "#{root_url}/signup/checking-account?url_origin=signup"
+    else
+      home_path
+    end
+  end
 end
