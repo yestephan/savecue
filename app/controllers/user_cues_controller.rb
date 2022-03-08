@@ -17,6 +17,7 @@ class UserCuesController < ApplicationController
     @user_cue = UserCue.new(usercue_params)
     @user_cue.user = @user
     @user_cue.cue = @cue
+
     @user_cue.save!
 
     if current_user.checking_account.nil?
@@ -48,22 +49,17 @@ class UserCuesController < ApplicationController
   def update
     @user = current_user
     @user_cue = UserCue.find(params[:id])
+
     if @user_cue.update(usercue_params)
       redirect_to home_path
     else
       render :edit
     end
-
-    # update_city(meta_data) if @user_cue.cue.title == "rainy"?
-  end
-
-  def update_city(meta_data)
-    meta_data
   end
 
   private
 
   def usercue_params
-    params.require(:user_cue).permit(:cue_amount, :meta_data, :url_origin)
+    params.require(:user_cue).permit(:cue_amount, :meta_data, :url_origin, :location, :latitude, :longitude)
   end
 end
