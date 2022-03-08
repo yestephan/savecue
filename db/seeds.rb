@@ -19,8 +19,8 @@ spenda = Cue.new({ title: "Big spenda!",
                    color: "bg-red",
                    emoji: "💸" })
 spenda.save!
-starbucks = Cue.new({ title: "Starbucks",
-                      description: "Starbucks coffee is great, saving is better.",
+starbucks = Cue.new({ title: "Coffee break",
+                      description: "Coffee is great, saving is better.",
                       category: "coffee",
                       color: "bg-coffee",
                       emoji: "☕️" })

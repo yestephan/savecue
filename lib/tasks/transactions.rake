@@ -23,23 +23,28 @@ namespace :transactions do
         cue_category = user_cue.cue.category
 
         # Figure out the correct condition based on the category.
-        # if cue_category == "money"
-        # elsif
-        # end
-        # binding.pry
-        creditor_name = ""
-        case cue_category
-          when "coffee"
-            creditor_name = "starbucks"
-          when "burger"
-            creditor_name = "mcdonalds"
-          else
-        end
-        # Get the transactions that
-        nr_of_transactions = user.get_transactions_by_creditor(access_token, customer_id, account_id, creditor_name).count
-        nr_of_transactions.times do |_t|
-          response = user.create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
-          puts "Savings for #{response["remittanceInformationUnstructured"].capitalize}" if response
+        if cue_category == "money"
+          nr_of_transactions = user.get_transactions_by_amount(access_token, customer_id, account_id).count
+          nr_of_transactions.times do |_t|
+            response = user.create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
+            puts "Savings for #{response["remittanceInformationUnstructured"].capitalize}" if response
+          end
+        elsif cue_category == "rain"
+        else
+          creditor_name = ""
+          case cue_category
+            when "coffee"
+              creditor_name = "starbucks"
+            when "burger"
+              creditor_name = "mcdonalds"
+            else
+          end
+          # Get the transactions that correspond to either "burger" or "coffee" and trigger a transaction
+          nr_of_transactions = user.get_transactions_by_creditor(access_token, customer_id, account_id, creditor_name).count
+          nr_of_transactions.times do |_t|
+            response = user.create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
+            puts "Savings for #{response["remittanceInformationUnstructured"].capitalize}" if response
+          end
         end
       end
       puts "==========="
