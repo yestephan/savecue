@@ -50,7 +50,7 @@ class AccountsController < ApplicationController
       if origin == "signup" && account_type == Account::TYPE_CHECKING
         redirect_to signup_savings_account_path(url_origin: "signup")
       elsif origin == "signup" && account_type == Account::TYPE_SAVINGS
-        redirect_to home_path
+        redirect_to confirmation_path
       else
         redirect_to accounts_path
       end
