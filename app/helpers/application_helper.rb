@@ -1,38 +1,6 @@
 module ApplicationHelper
 
 # Cue Card and Cues'conditions.
-  def emoji_for_category(category)
-    case category
-    when "rain"
-      "🌧"
-    when "coffee"
-      "☕️"
-    when "money"
-      "💸"
-    when"burger"
-      "🍔"
-    when "money"
-      "💰"
-    else
-      "❌"
-    end
-  end
-
-  def css_for_category(category)
-    case category
-    when "rain"
-      "bg-barge"
-    when "coffee"
-      "bg-coffee"
-    when "burger"
-      "bg-jade"
-    when "money"
-      "bg-green"
-    else
-      "bg-red"
-    end
-  end
-
   def info_for_category(category)
     case category
     when "rain"

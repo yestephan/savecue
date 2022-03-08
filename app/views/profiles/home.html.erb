@@ -25,12 +25,7 @@
     <div class="card-grid">
       <% @user_cues.each do |user_cue| %>
         <%= link_to user_cue_path(user_cue) do %>
-          <div class="card-cue <%= css_for_category(user_cue.cue.category) %>">
-            <h1 class="emoji"><%= emoji_for_category(user_cue.cue.category) %></h1>
-            <h3><%= user_cue.cue.title %></h3>
-            <p><%= user_cue.cue.description %></p>
-            <h4>Your settings: <%= user_cue.cue_amount %> € </h4>
-          </div>
+          <%= render partial: "shared/cue_card", locals: {cue: user_cue.cue } %>
         <% end %>
       <% end %>
       <%= link_to cues_path(url_origin: "home") do %>
