@@ -6,10 +6,10 @@ module ApplicationHelper
     when "rain"
       { emoji: "🌧",
         title: "Rainy day" }
-    when "starbucks"
+    when "coffee"
       { emoji: "☕️",
         title: "Coffee break" }
-    when "mcdonalds"
+    when "burger"
       { emoji: "🍔",
         title: "Burger day" }
     when "money"

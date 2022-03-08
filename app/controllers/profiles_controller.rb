@@ -21,7 +21,6 @@ class ProfilesController < ApplicationController
 
     @account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
     @transactions = get_all_savecue_transactions(@access_token, @customer_id, @account_id)
-    @response = params[:response]
     # Counting totals
     @total_saved = count_total(@transactions)
   end

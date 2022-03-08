@@ -19,8 +19,8 @@ spenda = Cue.new({ title: "Big spenda!",
                    color: "bg-red",
                    emoji: "💸" })
 spenda.save!
-starbucks = Cue.new({ title: "Starbucks",
-                      description: "Starbucks coffee is great, saving is better.",
+starbucks = Cue.new({ title: "Coffee break",
+                      description: "Coffee is great, saving is better.",
                       category: "coffee",
                       color: "bg-coffee",
                       emoji: "☕️" })
@@ -82,5 +82,8 @@ checking = Account.new({ name: "Salary", account_type: Account::TYPE_CHECKING, i
 checking.save!
 savings = Account.new({ name: "Future", account_type: Account::TYPE_SAVINGS, iban: "NL15481516230000001509", user: mika })
 savings.save!
+rand_nr = rand(1..5)
+use_cue = UserCue.new({ user: mika, cue: spenda, cue_amount: rand_nr })
+use_cue.save!
 
 puts "Checking and Savings Account created for #{mika.first_name} #{mika.last_name}"
