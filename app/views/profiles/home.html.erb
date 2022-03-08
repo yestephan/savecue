@@ -41,9 +41,9 @@
     <div class="container-text container-list">
       <% @transactions.each do |transaction| %>
         <div class="card-account">
-          <h2 class="emoji" style="font-size: 2.25rem"><%= get_emoji(transaction["remittanceInformationUnstructured"]) %></h2>
+          <h2 class="emoji" style="font-size: 2.25rem"><%= get_category(transaction["remittanceInformationUnstructured"])[:emoji] %></h2>
           <div class="container-text">
-            <h3><%= transaction["remittanceInformationUnstructured"].capitalize %></h3>
+            <h3><%= get_category(transaction["remittanceInformationUnstructured"])[:title] %></h3>
             <p><%= transaction["bookingDate"] %></p>
           </div>
           <h3>+<%= transaction["amount"] %></h3>

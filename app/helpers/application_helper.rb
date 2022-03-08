@@ -1,16 +1,34 @@
 module ApplicationHelper
 
   # Emoji helper for transactions page! Please don't remote, if you do, check with Stephan first!
-  def get_emoji(tag)
+  def get_category(tag)
     case tag
     when "rain"
-      "🌧"
+      { emoji: "🌧",
+        title: "Rainy day" }
     when "starbucks"
-      "☕️"
+      { emoji: "☕️",
+        title: "Coffee break" }
     when "mcdonalds"
-      "🍔"
+      { emoji: "🍔",
+        title: "Burger day" }
     when "money"
-      "💸"
+      { emoji: "💸",
+        title: "Big spenda!" }
+    end
+  end
+
+  # Needed for the setup of cues
+  def info_for_category(category)
+    case category
+    when "rain"
+      "How much do you save for each rainy day?"
+    when "coffee"
+      "How much do you save for each coffee break?"
+    when "burger"
+      "How much do you save for each burger?"
+    when "money"
+      "How much do you save for each big spenda?"
     end
   end
 
