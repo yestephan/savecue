@@ -140,16 +140,16 @@ class ProfilesController < ApplicationController
     big_spenda_total = 0
 
     transactions.each do |transaction|
-      if transaction["remittanceInformationUnstructured"] == 'Starbucks'
-        starbuck_total += transaction["amount"]
-      elsif transaction["remittanceInformationUnstructured"] == 'burger'
-        burger_total += transaction["amount"]
+      if transaction["remittanceInformationUnstructured"] == 'starbucks'
+        starbuck_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"] == 'mcdonalds'
+        burger_total += transaction["amount"].to_f
       elsif transaction["remittanceInformationUnstructured"] == 'rainy'
-        rainy_total += transaction["amount"]
+        rainy_total += transaction["amount"].to_f
       elsif transaction["remittanceInformationUnstructured"] == 'spenda'
-        big_spenda_total += transaction["amount"]
+        big_spenda_total += transaction["amount"].to_f
       end
-      return { burger: burger_total, starbucks: starbuck_total, rainy: rainy_total, spenda: big_spenda_total }
     end
+    return { burger: burger_total, starbucks: starbuck_total, rainy: rainy_total, spenda: big_spenda_total }
   end
 end
