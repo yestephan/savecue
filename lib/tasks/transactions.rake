@@ -1,6 +1,6 @@
 namespace :transactions do
   desc "TODO"
-  task get_checking_transactions: :environment do
+  task trigger: :environment do
     User.all.each do |user|
       name = "#{user.first_name} #{user.last_name}"
       puts name

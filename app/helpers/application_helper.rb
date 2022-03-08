@@ -1,6 +1,24 @@
 module ApplicationHelper
 
-# Cue Card and Cues'conditions.
+  # Emoji helper for transactions page! Please don't remote, if you do, check with Stephan first!
+  def get_category(tag)
+    case tag
+    when "rain"
+      { emoji: "🌧",
+        title: "Rainy day" }
+    when "starbucks"
+      { emoji: "☕️",
+        title: "Coffee break" }
+    when "mcdonalds"
+      { emoji: "🍔",
+        title: "Burger day" }
+    when "money"
+      { emoji: "💸",
+        title: "Big spenda!" }
+    end
+  end
+
+  # Needed for the setup of cues
   def info_for_category(category)
     case category
     when "rain"
@@ -14,19 +32,6 @@ module ApplicationHelper
     end
   end
 
-  def metadata(category)
-    case category
-    when "coffee"
-      { creditorName: true,
-        condition: "starbucks" }
-    when "burger"
-      { creditorName: true,
-        condition: "mcdonalds" }
-    when "money"
-      { creditorName: false,
-        condition: 100 }
-    end
-  end
 
   # Access token for Mockbank
   def get_access_token
