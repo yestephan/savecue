@@ -41,12 +41,12 @@
     <div class="container-text container-list">
       <% @transactions.each do |transaction| %>
         <div class="card-account">
-          <h2 class="emoji" style="font-size: 2.25rem">☕️</h2>
+          <h2 class="emoji" style="font-size: 2.25rem"><%= get_emoji(transaction["remittanceInformationUnstructured"]) %></h2>
           <div class="container-text">
-            <h3><%= transaction["remittanceInformationUnstructured"] %></h3>
+            <h3><%= transaction["remittanceInformationUnstructured"].capitalize %></h3>
             <p><%= transaction["bookingDate"] %></p>
           </div>
-          <h2>+<%= transaction["amount"] %></h2>
+          <h3>+<%= transaction["amount"] %></h3>
         </div>
       <% end %>
     </div>
