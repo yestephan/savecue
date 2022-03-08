@@ -8,7 +8,7 @@ Account.destroy_all
 
 # Cues
 rain = Cue.new({ title: "Rainy day!",
-                 description: "It's raining, and you'r saving 😉",
+                 description: "It's raining, and you're saving 😉",
                  category: "rain",
                  color: "bg-barge",
                  emoji: "🌧" })
@@ -16,7 +16,7 @@ rain.save!
 spenda = Cue.new({ title: "Big spenda!",
                    description: "For every 50€ ➡️ You save money!",
                    category: "money",
-                   color: "bg-green",
+                   color: "bg-red",
                    emoji: "💸" })
 spenda.save!
 starbucks = Cue.new({ title: "Starbucks",
@@ -51,8 +51,11 @@ checking.save!
 savings = Account.new({ name: "Savings", account_type: Account::TYPE_SAVINGS, iban: "NL80481516230000001503", user: james })
 savings.save!
 
-puts "Checking and Savings Account created for #{bibi.first_name} #{bibi.last_name}"
-puts "Checking and Savings Account created for  #{james.first_name} #{james.last_name}"
+
+User.all.each do |user|
+  puts "Checking and Savings Account created for #{user.first_name} #{user.last_name}"
+end
+
 puts "============"
 
 # User cues
@@ -72,3 +75,12 @@ User.all.each do |user|
   end
   puts "============"
 end
+
+mika = User.new({ first_name: "Mika", last_name: "O'Yeah", email: "mika@email.com", password: "test1234" })
+mika.save!
+checking = Account.new({ name: "Salary", account_type: Account::TYPE_CHECKING, iban: "NL42481516230000001508", user: mika })
+checking.save!
+savings = Account.new({ name: "Future", account_type: Account::TYPE_SAVINGS, iban: "NL15481516230000001509", user: mika })
+savings.save!
+
+puts "Checking and Savings Account created for #{mika.first_name} #{mika.last_name}"

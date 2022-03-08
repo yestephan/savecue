@@ -18,6 +18,7 @@ class ProfilesController < ApplicationController
     unless savings_account.nil?
       @savings_iban = savings_account.iban
     end
+
     @account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
     @transactions = get_all_savecue_transactions(@access_token, @customer_id, @account_id)
     @response = params[:response]
@@ -25,31 +26,31 @@ class ProfilesController < ApplicationController
     @total_saved = count_total(@transactions)
   end
 
-  def new_transaction
-    @access_token = helpers.get_access_token
-    @customer_id = helpers.get_customer_id(@access_token)
-    checking_account = current_user.checking_account
-    unless checking_account.nil?
-      @checking_iban = checking_account.iban
-    end
+  # def new_transaction
+  #   @access_token = helpers.get_access_token
+  #   @customer_id = helpers.get_customer_id(@access_token)
+  #   checking_account = current_user.checking_account
+  #   unless checking_account.nil?
+  #     @checking_iban = checking_account.iban
+  #   end
 
-    savings_account = current_user.savings_account
-    unless savings_account.nil?
-      @savings_iban = savings_account.iban
-      @savings_name = savings_account.name
-    end
-    @savings_account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
+  #   savings_account = current_user.savings_account
+  #   unless savings_account.nil?
+  #     @savings_iban = savings_account.iban
+  #     @savings_name = savings_account.name
+  #   end
+  #   @savings_account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
 
 
-    # Pass the correct cue.category details
-    temp_cue = current_user.user_cues.first # Faking it now
-    cue_category = Cue.find(temp_cue.cue_id).category
-    response = create_transaction(@access_token, @customer_id, @savings_account_id, @savings_name, @savings_iban, cue_category)
-    if response.parsed_response["externalId"]
-      @response = response.parsed_response["externalId"]
-    end
-    redirect_to home_path(response: @response)
-  end
+  #   # Pass the correct cue.category details
+  #   temp_cue = current_user.user_cues.first # Faking it now
+  #   cue_category = Cue.find(temp_cue.cue_id).category
+  #   response = create_transaction(@access_token, @customer_id, @savings_account_id, @savings_name, @savings_iban, cue_category)
+  #   if response.parsed_response["externalId"]
+  #     @response = response.parsed_response["externalId"]
+  #   end
+  #   redirect_to home_path(response: @response)
+  # end
 
   def edit
     @profile = current_user
