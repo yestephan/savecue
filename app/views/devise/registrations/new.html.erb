@@ -5,6 +5,24 @@
       <%= f.error_notification %>
       <div class="form-inputs">
         <div class="form-floating">
+          <%= f.text_field :first_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: "First name",
+                    class: "form-control",
+                    input_html: { autocomplete: "first-name" }%>
+          <%= f.label :first_name, "First name" %>
+        </div>
+        <div class="form-floating">
+          <%= f.text_field :last_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: "Last name",
+                    class: "form-control",
+                    input_html: { autocomplete: "last-name" }%>
+          <%= f.label :last_name, "Last name" %>
+        </div>
+        <div class="form-floating">
           <%= f.email_field :email,
                     required: true,
                     autofocus: true,
