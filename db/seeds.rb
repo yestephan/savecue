@@ -8,20 +8,28 @@ Account.destroy_all
 
 # Cues
 rain = Cue.new({ title: "Rainy day!",
-                  description: "It's raining, and you'r saving 😉",
-                  category: "rain" })
+                 description: "It's raining, and you'r saving 😉",
+                 category: "rain",
+                 color: "bg-barge",
+                 emoji: "🌧" })
 rain.save!
 spenda = Cue.new({ title: "Big spenda!",
-                    description: "You spend money ➡️ You save money!",
-                    category: "money" })
+                   description: "You spend money ➡️ You save money!",
+                   category: "money",
+                   color: "bg-green",
+                   emoji: "💸" })
 spenda.save!
 starbucks = Cue.new({ title: "Starbucks",
                       description: "Starbucks coffee is great, saving is better.",
-                      category: "coffee" })
+                      category: "coffee",
+                      color: "bg-coffee",
+                      emoji: "☕️" })
 starbucks.save!
 burger = Cue.new({ title: "Burger day!",
                    description: "Super size your savings. One burger = 💰",
-                   category: "burger" })
+                   category: "burger",
+                   color: "bg-jade",
+                   emoji: "🍔" })
 burger.save!
 Cue.all.each do |cue|
   puts "#{cue.title} cue created 🌱"
@@ -56,6 +64,7 @@ User.all.each do |user|
   puts user.first_name
   puts user.user_cues.each{ |user_cue| puts user_cue.cue.title }
 end
+<<<<<<< HEAD
 
 auth_url = "https://api.mockbank.io/oauth/token"
 customers_url = "https://api.mockbank.io/customers"
@@ -157,3 +166,5 @@ p results.count
 #                             headers: auth_headers
 #                             )
 # p transaction
+=======
+>>>>>>> 2b8119bf2d53655869d71f4e426c8e6a2f6fe346
