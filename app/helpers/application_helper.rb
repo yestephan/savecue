@@ -11,8 +11,10 @@ module ApplicationHelper
       "💸"
     when"burger"
       "🍔"
-    else
+    when "money"
       "💰"
+    else
+      "❌"
     end
   end
 
@@ -24,8 +26,10 @@ module ApplicationHelper
       "bg-coffee"
     when "burger"
       "bg-jade"
+    when "money"
+      "bg-green"
     else
-      "bg-money"
+      "bg-red"
     end
   end
 
@@ -35,13 +39,27 @@ module ApplicationHelper
       "How much do you save for each rainy day?"
     when "coffee"
       "How much do you save for each coffee break?"
-    when "sunny"
-      "How much do you save for each sunny day?"
-    else
+    when "burger"
+      "How much do you save for each burger?"
+    when "money"
       "How much do you save for each big spenda?"
     end
   end
 
+  def metadata(category)
+    case category
+    when "coffee"
+      { creditorName: true,
+        condition: "starbucks" }
+    when "burger"
+      { creditorName: true,
+        condition: "mcdonalds" }
+    when "money"
+      { creditorName: false,
+        condition: 100 }
+    end
+  end
+  
   # Access token for Mockbank
   def get_access_token
     auth_url = "https://api.mockbank.io/oauth/token"

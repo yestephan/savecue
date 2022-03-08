@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   def home
     # List of all user cues from current user to be displayed
     @user_cues = current_user.user_cues
-   
+
     # List transactions
     @access_token = helpers.get_access_token
     @customer_id = helpers.get_customer_id(@access_token)
@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
       @savings_iban = savings_account.iban
     end
     @account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
-    @transactions = get_transactions(@access_token, @customer_id, @account_id)
+    @transactions = get_all_savecue_transactions(@access_token, @customer_id, @account_id)
     @response = params[:response]
     # Counting totals
     @total_saved = count_total(@transactions)
@@ -50,7 +50,7 @@ class ProfilesController < ApplicationController
     end
     redirect_to home_path(response: @response)
   end
-  
+
   def edit
     @profile = current_user
   end
@@ -83,7 +83,7 @@ class ProfilesController < ApplicationController
   customers_url = "https://api.mockbank.io/customers"
 
 
-  def get_transactions(access_token, customer_id, account_id)
+  def get_all_savecue_transactions(access_token, customer_id, account_id)
     customers_url = "https://api.mockbank.io/customers"
     auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
     transactions_url = "#{customers_url}/#{customer_id}/transactions"
