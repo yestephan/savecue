@@ -5,4 +5,9 @@ class PagesController < ApplicationController
 
   def ui_kit
   end
+
+  def confirm
+    @user = current_user
+
+  end
 end
