@@ -1,6 +1,5 @@
 class UserCuesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  helper_method :info_for_category
 
   def new
     @user_cue = UserCue.new
@@ -55,19 +54,6 @@ class UserCuesController < ApplicationController
       redirect_to home_path
     else
       render :edit
-    end
-  end
-
-  def info_for_category(category)
-    case category
-    when "rain"
-      "How much do you save for each rainy day?"
-    when "coffee"
-      "How much do you save for each coffee break?"
-    when "sunny"
-      "How much do you save for each sunny day?"
-    else
-      "How much do you save for each big spenda?"
     end
   end
 
