@@ -14,3 +14,4 @@ class CuesController < ApplicationController
       @msg = "Choose a cue"
     end
 end
+end
