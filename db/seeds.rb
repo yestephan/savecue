@@ -106,7 +106,6 @@ account_id = account["externalId"]
 
 p "account id: #{account_id}"
 
-
 # Get account transactions - Filtered
 auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
 transactions_url = "#{customers_url}/#{customer_id}/transactions"
