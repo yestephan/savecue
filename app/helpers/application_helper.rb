@@ -1,21 +1,33 @@
 module ApplicationHelper
 
 # Cue Card and Cues'conditions.
-
   def info_for_category(category)
     case category
     when "rain"
       "How much do you save for each rainy day?"
     when "coffee"
       "How much do you save for each coffee break?"
-    when "sunny"
-      "How much do you save for each sunny day?"
-    else
+    when "burger"
+      "How much do you save for each burger?"
+    when "money"
       "How much do you save for each big spenda?"
     end
   end
 
-
+  def metadata(category)
+    case category
+    when "coffee"
+      { creditorName: true,
+        condition: "starbucks" }
+    when "burger"
+      { creditorName: true,
+        condition: "mcdonalds" }
+    when "money"
+      { creditorName: false,
+        condition: 100 }
+    end
+  end
+  
   # Access token for Mockbank
   def get_access_token
     auth_url = "https://api.mockbank.io/oauth/token"
