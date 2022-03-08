@@ -45,6 +45,19 @@
 	border-radius: $border-radius;
 }
 
+// card-detail-amount style
+.card-detail-amount {
+	height: 13rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1.5rem 1rem;
+	border: $border;
+	border-radius: $border-radius;
+  background-color: $white;
+}
+
 //card-no-transaction
 .card-no-transaction {
 	display: flex;

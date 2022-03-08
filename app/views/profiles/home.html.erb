@@ -5,8 +5,13 @@
   </nav>
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">
-    <h1 class="p-large"><%= @total_saved %> € </h1>
-    <h3>Amount saved</h3>
+      <h1 class="p-large"><%= @total_saved %> € </h1>
+      <h3>Amount saved</h3>
+  </div>
+
+  <div class="show-detail-container" data-controller="toggle">
+    <button class="bt btn-toggle" data-toggle-target="toggleBtn" data-action="click->toggle#toggle">Hide detail</button>
+    <div id="chart_div" class="piechart card-detail-amount" data-toggle-target="content"></div>
   </div>
   <!-- TEMP TRIGGER BTN -->
   <div class="container-text">
@@ -65,3 +70,41 @@
     </div>
   </div>
 </div>
+
+  <!--install the google chart-->
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Cues');
+        data.addColumn('number', 'Amount');
+        data.addRows([
+          ['BigSpenda', 3],
+          ['Rainy Day', 1],
+          ['Starbucks', 1],
+          ['Burger Day', 1]
+        ]);
+
+        // Set chart options
+        // css style here
+        var options = {title:'See More Detail',
+                        width:320,
+                        height:200,
+                        colors:['#f9d94c','#ff7249','#8257f6','#b8e1df']
+                      }
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>

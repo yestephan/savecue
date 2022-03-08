@@ -12,6 +12,12 @@
 
 .center-content {
 	display: flex;
+  justify-content: space-between;
 	flex-direction: column;
 	align-items: center;
+}
+
+.card-detail-amount {
+  margin-top: 44px;
+  padding: auto;
 }
