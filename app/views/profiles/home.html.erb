@@ -5,15 +5,15 @@
   </nav>
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">
-    <h1 class="p-large"><%= number_to_currency(@total_saved, unit: '€', precision: 0, format: "%n%u") %></h1>
+    <h1 class="p-large"><%= @total_saved %> € </h1>
     <h3>Amount saved</h3>
   </div>
   <!-- TEMP TRIGGER BTN -->
   <div class="container-text">
+    <p><strong>Access token:</strong> <%= @access_token %></p>
     <p><strong>Customer id:</strong> <%= @customer_id %></p>
-    <p><strong>Checking ibanNr:</strong> <%= @checking_iban %></p>
-    <p><strong>Savings name:</strong> <%= @savings_name %></p>
-    <p><strong>Savings ibanNr:</strong> <%= @savings_iban %></p>
+    <p><strong>Checking iban:</strong> <%= @checking_iban %></p>
+    <p><strong>Savings iban:</strong> <%= @savings_iban %></p>
     <p><strong>Account id:</strong> <%= @account_id %></p>
     <p><strong>Response id:</strong> <%= @response %></p>
     <%# <p><strong>Transactions:</strong> <%= @transactions %>
@@ -24,11 +24,9 @@
     <h3>Your savecues</h3>
     <div class="card-grid">
       <% @user_cues.each do |user_cue| %>
-        <div class="card-cue <%= css_for_category(user_cue.cue.category) %>">
-          <h1 class="emoji"><%= emoji_for_category(user_cue.cue.category) %></h1>
-          <h3><%= user_cue.cue.title %></h3>
-          <p><%= user_cue.cue.description %></p>
-        </div>
+        <%= link_to user_cue_path(user_cue) do %>
+          <%= render partial: "shared/cue_card", locals: {cue: user_cue.cue } %>
+        <% end %>
       <% end %>
       <%= link_to cues_path(url_origin: "home") do %>
         <div class="card-cue bg-darker-yellow" style="height: 100%">
