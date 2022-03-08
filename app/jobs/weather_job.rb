@@ -1,7 +1,6 @@
 require 'date'
 
 class WeatherJob < ActiveJob::Base
-
   queue_as :default
 
   def perform

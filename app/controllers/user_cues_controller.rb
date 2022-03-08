@@ -17,7 +17,6 @@ class UserCuesController < ApplicationController
     @user_cue = UserCue.new(usercue_params)
     @user_cue.user = @user
     @user_cue.cue = @cue
-
     @user_cue.save!
 
     if current_user.checking_account.nil?
