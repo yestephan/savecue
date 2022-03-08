@@ -5,43 +5,10 @@
     <h1><%= s %></h1>
   <% end %>
   <div class="card-grid">
-    <% @cues.each do |cue| %>
-     <% if !UserCue.find_by(user_id: current_user, cue_id: cue.id) %>
-      <% if cue.title == "Rainy day!"%>
-        <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-barge" do %>
-          <div class="link-to-text-color">
-            <h2 class="emoji">🌧</h2>
-            <h3><%= cue.title %></h3>
-            <p><%= cue.description %></p>
-          </div>
-        <% end %>
-      <% elsif cue.title == "Burger day!"%>
-        <%= link_to new_cue_user_cue_path(cue.id), class: "card-cue bg-jade"  do %>
-          <div class="text-center">
-            <h1 class="emoji">🍔</h1>
-            <h3><%= cue.title %></h3>
-            <p><%= cue.description %></p>
-          </div>
-        <% end %>
-      <% elsif cue.title == "Big spenda!"%>
-        <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-purple"  do %>
-          <div class="text-center">
-            <h1 class="emoji">💸</h1>
-            <h3><%= cue.title %></h3>
-            <p><%= cue.description %></p>
-          </div>
-        <% end %>
-      <% elsif cue.title == "Starbucks"%>
-        <%= link_to new_cue_user_cue_path(cue), class: "card-cue bg-coffee"  do %>
-          <div class="text-center">
-            <h1 class="emoji">☕️</h1>
-            <h3><%= cue.title %></h3>
-            <p><%= cue.description %></p>
-          </div>
-        <% end %>
-
-      <% end %>
+  <% @cues.each do |cue| %>
+    <%= link_to new_cue_user_cue_path(cue) do %>
+      <%= render partial: "shared/cue_card", locals: {cue: cue } %>
     <% end %>
-    <% end %>
+  <% end %>
   </div>
 </div>
