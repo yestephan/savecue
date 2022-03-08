@@ -39,14 +39,22 @@
   <div class="container-text hidden" style="gap: 1rem;" data-toggle-target="content">
     <h3>Transactions</h3>
     <div class="container-text container-list">
-      <% @transactions.each do |transaction| %>
-        <div class="card-account">
-          <h2 class="emoji" style="font-size: 2.25rem"><%= get_category(transaction["remittanceInformationUnstructured"])[:emoji] %></h2>
-          <div class="container-text">
-            <h3><%= get_category(transaction["remittanceInformationUnstructured"])[:title] %></h3>
-            <p><%= transaction["bookingDate"] %></p>
+      <% unless @transactions.empty? %>
+        <% @transactions.each do |transaction| %>
+          <div class="card-account">
+            <h2 class="emoji" style="font-size: 2.25rem"><%= get_category(transaction["remittanceInformationUnstructured"])[:emoji] %></h2>
+            <div class="container-text">
+              <h3><%= get_category(transaction["remittanceInformationUnstructured"])[:title] %></h3>
+              <p><%= transaction["bookingDate"] %></p>
+            </div>
+            <h3>+<%= transaction["amount"] %></h3>
           </div>
-          <h3>+<%= transaction["amount"] %></h3>
+        <% end %>
+      <% else %>
+        <div class="card-account">
+          <div class="container-text" style="text-align: center">
+            <h3>No savings yet 😢</h3>
+          </div>
         </div>
       <% end %>
     </div>
