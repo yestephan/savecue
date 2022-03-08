@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   def home
     # List of all user cues from current user to be displayed
     @user_cues = current_user.user_cues
-   
+
     # List transactions
     @access_token = helpers.get_access_token
     @customer_id = helpers.get_customer_id(@access_token)
@@ -23,6 +23,8 @@ class ProfilesController < ApplicationController
     @response = params[:response]
     # Counting totals
     @total_saved = count_total(@transactions)
+    # Counting amount for each cues
+    @total_each_cue_saved = count_total_for_each_cue(@transactions)
   end
 
   def new_transaction
@@ -50,7 +52,7 @@ class ProfilesController < ApplicationController
     end
     redirect_to home_path(response: @response)
   end
-  
+
   def edit
     @profile = current_user
   end
@@ -129,5 +131,25 @@ class ProfilesController < ApplicationController
       total_saved += transaction["amount"]
     end
     return total_saved
+  end
+
+  def count_total_for_each_cue(transactions)
+    burger_total = 0
+    starbuck_total = 0
+    rainy_total = 0
+    big_spenda_total = 0
+
+    transactions.each do |transaction|
+      if transaction["remittanceInformationUnstructured"] == 'Starbucks'
+        starbuck_total += transaction["amount"]
+      elsif transaction["remittanceInformationUnstructured"] == 'burger'
+        burger_total += transaction["amount"]
+      elsif transaction["remittanceInformationUnstructured"] == 'rainy'
+        rainy_total += transaction["amount"]
+      elsif transaction["remittanceInformationUnstructured"] == 'spenda'
+        big_spenda_total += transaction["amount"]
+      end
+      return { burger: burger_total, starbucks: starbuck_total, rainy: rainy_total, spenda: big_spenda_total }
+    end
   end
 end

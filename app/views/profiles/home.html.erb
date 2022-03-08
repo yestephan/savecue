@@ -6,6 +6,7 @@
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">
       <h1 class="p-large"><%= @total_saved %> € </h1>
+      <%# <h1 data_amount = "" class="p-large"><%= @total_each_cue_saved € </h1> %>
       <h3>Amount saved</h3>
   </div>
 
@@ -70,6 +71,12 @@
     </div>
   </div>
 </div>
+ <div class="d-none" id="each_cue"
+ data-starbucks=<%= @total_each_cue_saved[:starbucks] %>
+ data-rainy=<%= @total_each_cue_saved[:rainy] %>
+ data-spenda=<%= @total_each_cue_saved[:spenda] %>
+ data-burger=<%= @total_each_cue_saved[:burger] %>
+  ></div>
 
   <!--install the google chart-->
   <!--Load the AJAX API-->
@@ -83,24 +90,31 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-
+        var dataEach = document.getElementById("each_cue")
+        var dataStarbucks = dataEach.dataset.starbucks
+        var dataRainy = dataEach.dataset.rainy
+        var dataSpenda = dataEach.dataset.spenda
+        var dataBurger = dataEach.dataset.burger
+        console.log(dataStarbucks)
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Cues');
         data.addColumn('number', 'Amount');
         data.addRows([
-          ['BigSpenda', 3],
-          ['Rainy Day', 1],
-          ['Starbucks', 1],
-          ['Burger Day', 1]
+          ['BigSpenda', Number(dataSpenda)],
+          ['Rainy Day',  Number(dataRainy)],
+          ['Starbucks',  Number(dataStarbucks)],
+          ['Burger Day',  Number(dataBurger)]
         ]);
-
         // Set chart options
         // css style here
-        var options = {title:'See More Detail',
-                        width:320,
-                        height:200,
-                        colors:['#f9d94c','#ff7249','#8257f6','#b8e1df']
+        var options = { 'backgroundColor': 'transparent',
+                        title: 'See more details',
+                        width:270,
+                        height:240,
+                        colors:['#f9d94c','#ff7249','#8257f6','#b8e1df'],
+                        legend:{ position: 'bottom'},
+                        titleTextStyle: { fontSize: 20 }
                       }
 
         // Instantiate and draw our chart, passing in some options.
