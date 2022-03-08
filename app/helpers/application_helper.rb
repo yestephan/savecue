@@ -27,7 +27,7 @@ module ApplicationHelper
         condition: 100 }
     end
   end
-  
+
   # Access token for Mockbank
   def get_access_token
     auth_url = "https://api.mockbank.io/oauth/token"
