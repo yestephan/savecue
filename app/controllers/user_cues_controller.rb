@@ -19,10 +19,6 @@ class UserCuesController < ApplicationController
     @user_cue.user = @user
     @user_cue.cue = @cue
 
-    if @cue.category == "rain" && !params[:user_cue][:metadata].nil?
-      @user_cue.metadata = {"location":params[:user_cue][:metadata]}
-    end
-
     @user_cue.save!
 
     if current_user.checking_account.nil?
@@ -42,9 +38,6 @@ class UserCuesController < ApplicationController
   def edit
     @user = current_user
     @user_cue = UserCue.find(params[:id])
-    unless @user_cue.metadata.nil? || @user_cue.metadata["location"].nil?
-      @user_cue.metadata = @user_cue.metadata["location"]
-    end
   end
 
   def destroy
@@ -58,27 +51,16 @@ class UserCuesController < ApplicationController
     @user = current_user
     @user_cue = UserCue.find(params[:id])
 
-    if @user_cue.cue.category == "rain" && !params[:user_cue][:metadata].nil?
-      @user_cue.metadata = {"location":params[:user_cue][:metadata]}
-    end
-
     if @user_cue.update(usercue_params)
       redirect_to home_path
     else
       render :edit
     end
-
-    # update_city(meta_data) if @user_cue.cue.title == "rainy"?
-  end
-
-  def update_city(meta_data)
-    meta_data
   end
 
   def info_for_category(category)
     case category
     when "rain"
-
       "How much do you save for each rainy day?"
     when "coffee"
       "How much do you save for each coffee break?"
@@ -92,6 +74,6 @@ class UserCuesController < ApplicationController
   private
 
   def usercue_params
-    params.require(:user_cue).permit(:cue_amount, :meta_data, :url_origin)
+    params.require(:user_cue).permit(:cue_amount, :meta_data, :url_origin, :location, :latitude, :longitude)
   end
 end

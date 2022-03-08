@@ -5,7 +5,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 export default class extends Controller {
   static values = { apiKey: String }
 
-  static targets = ["metadata"]
+  static targets = ["location", "latitude", "longitude"]
 
   connect() {
     this.geocoder = new MapboxGeocoder({
@@ -15,14 +15,17 @@ export default class extends Controller {
     this.geocoder.addTo(this.element);
     this.geocoder.on("result", event => this.#setInputValue(event));
     this.geocoder.on("clear", () => this.#clearInputValue());
-    this.geocoder.setPlaceholder(this.metadataTarget.value);
+    this.geocoder.setPlaceholder(this.locationTarget.value);
   }
 
   #setInputValue(event) {
-    this.metadataTarget.value = event.result["place_name"];
+    console.log(event);
+    this.locationTarget.value = event.result["place_name"];
+    this.latitudeTarget.value = event.result["center"][0];
+    this.longitudeTarget.value = event.result["center"][1];
   }
 
   #clearInputValue() {
-    this.metadataTarget.value = "";
+    this.locationTarget.value = "";
   }
 }
