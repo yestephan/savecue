@@ -49,13 +49,13 @@ module ApplicationHelper
   def metadata(category)
     case category
     when "coffee"
-      { debtorName: true,
+      { creditorName: true,
         condition: "starbucks" }
     when "burger"
-      { debtorName: true,
+      { creditorName: true,
         condition: "mcdonalds" }
     when "money"
-      { debtorName: false,
+      { creditorName: false,
         condition: 100 }
     end
   end
