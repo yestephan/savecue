@@ -19,23 +19,27 @@ namespace :transactions do
 
       user.user_cues.each do |user_cue|
         transactions = []
-        cue_category = user_cue.cue.category
         cue_amount = user_cue.cue_amount
+        cue_category = user_cue.cue.category
+
         # Figure out the correct condition based on the category.
+        # if cue_category == "money"
+        # elsif
+        # end
+        # binding.pry
+        creditor_name = ""
         case cue_category
           when "coffee"
-            cue_category = "starbucks"
+            creditor_name = "starbucks"
           when "burger"
-            cue_category = "mcdonalds"
+            creditor_name = "mcdonalds"
           else
         end
-        # Filter transactions by the ones that happened the day before.
-        transactions << user.get_transactions(access_token, customer_id, account_id, cue_category)
-        transactions.each do |transaction|
-          unless transaction.empty?
-            response = user.create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
-            puts response["remittanceInformationUnstructured"] if response
-          end
+        # Get the transactions that
+        nr_of_transactions = user.get_transactions_by_creditor(access_token, customer_id, account_id, creditor_name).count
+        nr_of_transactions.times do |_t|
+          response = user.create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
+          puts "Savings for #{response["remittanceInformationUnstructured"].capitalize}" if response
         end
       end
       puts "==========="

@@ -71,7 +71,7 @@ class User < ApplicationRecord
     end
 
     # Get transactions from specified account
-    def get_transactions(access_token, customer_id, account_id, condition)
+    def get_transactions_by_creditor(access_token, customer_id, account_id, creditor_name)
       yesterday = (Time.now - 1.day).strftime("%Y-%m-%d")
       customers_url = "https://api.mockbank.io/customers"
       auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
@@ -81,7 +81,7 @@ class User < ApplicationRecord
       transactions.each do |transaction|
         # Could be changed into a proc
         unless transaction["creditorName"].nil? || transaction.nil?
-          if transaction["accountId"] == account_id && transaction["creditorName"].downcase == condition && transaction["bookingDate"] == yesterday
+          if transaction["accountId"] == account_id && transaction["creditorName"].downcase == creditor_name && transaction["bookingDate"] == yesterday
             account_transactions << transaction
           end
         end
