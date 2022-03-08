@@ -14,7 +14,7 @@ rain = Cue.new({ title: "Rainy day!",
                  emoji: "🌧" })
 rain.save!
 spenda = Cue.new({ title: "Big spenda!",
-                   description: "You spend money ➡️ You save money!",
+                   description: "For every 50€ ➡️ You save money!",
                    category: "money",
                    color: "bg-green",
                    emoji: "💸" })
@@ -62,6 +62,9 @@ User.all.each do |user|
   use_cue.save!
   rand_nr = rand(1..5)
   use_cue = UserCue.new({ user: user, cue: starbucks, cue_amount: rand_nr })
+  use_cue.save!
+  rand_nr = rand(1..5)
+  use_cue = UserCue.new({ user: user, cue: spenda, cue_amount: rand_nr })
   use_cue.save!
   puts user.first_name
   user.user_cues.each do |user_cue|
