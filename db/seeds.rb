@@ -34,6 +34,7 @@ burger.save!
 Cue.all.each do |cue|
   puts "#{cue.title} cue created 🌱"
 end
+puts "============"
 
 # Users and Accounts created
 bibi = User.new({ first_name: "Bibi", last_name: "Ferreira", email: "bibi@email.com", password: "test1234" })
@@ -50,8 +51,9 @@ checking.save!
 savings = Account.new({ name: "Savings", account_type: Account::TYPE_SAVINGS, iban: "NL80481516230000001503", user: james })
 savings.save!
 
-p "Checking and Savings Account created for #{bibi.first_name} #{bibi.last_name}"
-p "Checking and Savings Account created for  #{james.first_name} #{james.last_name}"
+puts "Checking and Savings Account created for #{bibi.first_name} #{bibi.last_name}"
+puts "Checking and Savings Account created for  #{james.first_name} #{james.last_name}"
+puts "============"
 
 # User cues
 User.all.each do |user|
@@ -62,5 +64,8 @@ User.all.each do |user|
   use_cue = UserCue.new({ user: user, cue: starbucks, cue_amount: rand_nr })
   use_cue.save!
   puts user.first_name
-  puts user.user_cues.each{ |user_cue| puts user_cue.cue.title }
+  user.user_cues.each do |user_cue|
+    puts "#{user_cue.cue.title} cue setup"
+  end
+  puts "============"
 end
