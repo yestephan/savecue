@@ -16,13 +16,13 @@
   <!-- CUES -->
   <div class="container-text" style="gap: 1rem" data-toggle-target="content">
     <h3>Your savecues</h3>
-    <div class="card-grid">
+    <div class="row">
       <% @user_cues.each do |user_cue| %>
-        <%= link_to user_cue_path(user_cue) do %>
+        <%= link_to user_cue_path(user_cue), class: "col-6 p-2" do %>
           <%= render partial: "shared/cue_card", locals: {cue: user_cue.cue } %>
         <% end %>
       <% end %>
-      <%= link_to cues_path(url_origin: "home") do %>
+      <%= link_to cues_path(url_origin: "home"), class: "col-6 p-2" do %>
         <div class="card-cue bg-darker-yellow" style="height: 100%">
           <h1 class="emoji">➕</h1>
           <h3>Add cue</h3>
