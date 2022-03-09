@@ -36,7 +36,29 @@ class UserCuesController < ApplicationController
 
   def show
     @user_cue = UserCue.find(params[:id])
-    @total_saved = 5
+    @user_cues = current_user.user_cues
+
+    # List transactions
+    @access_token = helpers.get_access_token
+    @customer_id = helpers.get_customer_id(@access_token)
+
+    checking_account = current_user.checking_account
+    unless checking_account.nil?
+      @checking_iban = checking_account.iban
+    end
+
+    savings_account = current_user.savings_account
+    unless savings_account.nil?
+      @savings_iban = savings_account.iban
+    end
+
+    @account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
+    @transactions = get_all_savecue_transactions(@access_token, @customer_id, @account_id)
+    # Counting totals
+    @total_saved = count_total(@transactions)
+    # Counting amount for each cues
+    @total_each_cue_saved = count_total_for_each_cue(@transactions)
+    @total_amount_cue = @total_each_cue_saved[@user_cue.name.to_s]
   end
 
   def edit

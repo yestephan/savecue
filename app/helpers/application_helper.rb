@@ -99,4 +99,27 @@ module ApplicationHelper
       home_path
     end
   end
+
+  def count_total_for_each_cue(transactions)
+    burger_total = 0
+    coffee_total = 0
+    rain_total = 0
+    big_spenda_total = 0
+    cloudy_total = 0
+
+    transactions.each do |transaction|
+      if transaction["remittanceInformationUnstructured"].downcase == 'coffee'
+        coffee_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'burger'
+        burger_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'rain'
+        rain_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'money'
+        big_spenda_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'cloudy'
+        cloudy_total += transaction["amount"].to_f
+      end
+    end
+    return { burger: burger_total, coffee: coffee_total, rain: rain_total, spenda: big_spenda_total, cloudy: cloudy_total }
+  end
 end
