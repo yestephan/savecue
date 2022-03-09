@@ -18,38 +18,40 @@ class ProfilesController < ApplicationController
     unless savings_account.nil?
       @savings_iban = savings_account.iban
     end
+
     @account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
     @transactions = get_all_savecue_transactions(@access_token, @customer_id, @account_id)
-    @response = params[:response]
     # Counting totals
     @total_saved = count_total(@transactions)
+    # Counting amount for each cues
+    @total_each_cue_saved = count_total_for_each_cue(@transactions)
   end
 
-  def new_transaction
-    @access_token = helpers.get_access_token
-    @customer_id = helpers.get_customer_id(@access_token)
-    checking_account = current_user.checking_account
-    unless checking_account.nil?
-      @checking_iban = checking_account.iban
-    end
+  # def new_transaction
+  #   @access_token = helpers.get_access_token
+  #   @customer_id = helpers.get_customer_id(@access_token)
+  #   checking_account = current_user.checking_account
+  #   unless checking_account.nil?
+  #     @checking_iban = checking_account.iban
+  #   end
 
-    savings_account = current_user.savings_account
-    unless savings_account.nil?
-      @savings_iban = savings_account.iban
-      @savings_name = savings_account.name
-    end
-    @savings_account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
+  #   savings_account = current_user.savings_account
+  #   unless savings_account.nil?
+  #     @savings_iban = savings_account.iban
+  #     @savings_name = savings_account.name
+  #   end
+  #   @savings_account_id = helpers.get_account_id(@access_token, @customer_id, @savings_iban)
 
 
-    # Pass the correct cue.category details
-    temp_cue = current_user.user_cues.first # Faking it now
-    cue_category = Cue.find(temp_cue.cue_id).category
-    response = create_transaction(@access_token, @customer_id, @savings_account_id, @savings_name, @savings_iban, cue_category)
-    if response.parsed_response["externalId"]
-      @response = response.parsed_response["externalId"]
-    end
-    redirect_to home_path(response: @response)
-  end
+  #   # Pass the correct cue.category details
+  #   temp_cue = current_user.user_cues.first # Faking it now
+  #   cue_category = Cue.find(temp_cue.cue_id).category
+  #   response = create_transaction(@access_token, @customer_id, @savings_account_id, @savings_name, @savings_iban, cue_category)
+  #   if response.parsed_response["externalId"]
+  #     @response = response.parsed_response["externalId"]
+  #   end
+  #   redirect_to home_path(response: @response)
+  # end
 
   def edit
     @profile = current_user
@@ -129,5 +131,25 @@ class ProfilesController < ApplicationController
       total_saved += transaction["amount"]
     end
     return total_saved
+  end
+
+  def count_total_for_each_cue(transactions)
+    burger_total = 0
+    starbuck_total = 0
+    rainy_total = 0
+    big_spenda_total = 0
+
+    transactions.each do |transaction|
+      if transaction["remittanceInformationUnstructured"].downcase == 'starbucks' || transaction["remittanceInformationUnstructured"].downcase == 'coffee'
+        starbuck_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'mcdonalds' || transaction["remittanceInformationUnstructured"].downcase == 'burger'
+        burger_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'rainy'
+        rainy_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'spenda'
+        big_spenda_total += transaction["amount"].to_f
+      end
+    end
+    return { burger: burger_total, starbucks: starbuck_total, rainy: rainy_total, spenda: big_spenda_total }
   end
 end

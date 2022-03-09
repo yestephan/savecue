@@ -1,7 +1,7 @@
 
 <div class="navbar navbar-light bg-white">
   <div class="container-fluid">
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.accounts.count >= 2 %>
     <a class="navbar-toggler navbar-brand border-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <%= render "shared/avatar" %>
     </a>
