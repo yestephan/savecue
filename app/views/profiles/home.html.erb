@@ -8,8 +8,9 @@
     <h1 class="p-large"><%= @total_saved %> € </h1>
     <h3>Amount saved</h3>
   </div>
+  <!-- PIE CHART -->
   <div class="show-detail-container" data-controller="toggle">
-    <button class="bt btn-toggle" data-toggle-target="toggleBtn" data-action="click->toggle#toggle">Hide detail</button>
+    <button class="bt btn-toggle" style="margin-bottom: 1rem" data-toggle-target="toggleBtn" data-action="click->toggle#toggle">Hide detail</button>
     <div id="chart_div" class="piechart card-detail-amount" data-toggle-target="content"></div>
   </div>
   <!-- CUES -->
@@ -57,10 +58,11 @@
   </div>
 </div>
 <div class="d-none" id="each_cue"
- data-starbucks=<%= @total_each_cue_saved[:starbucks] %>
- data-rainy=<%= @total_each_cue_saved[:rainy] %>
+ data-coffee=<%= @total_each_cue_saved[:coffee] %>
+ data-rain=<%= @total_each_cue_saved[:rain] %>
  data-spenda=<%= @total_each_cue_saved[:spenda] %>
  data-burger=<%= @total_each_cue_saved[:burger] %>
+ data-coffee=<%= @total_each_cue_saved[:coffee] %>
   ></div>
 <!--install the google chart-->
 <!--Load the AJAX API-->
@@ -74,20 +76,22 @@
 
   function drawChart() {
     var dataEach = document.getElementById("each_cue")
-    var dataStarbucks = dataEach.dataset.starbucks
-    var dataRainy = dataEach.dataset.rainy
+    var dataStarbucks = dataEach.dataset.coffee
+    var dataRainy = dataEach.dataset.rain
     var dataSpenda = dataEach.dataset.spenda
     var dataBurger = dataEach.dataset.burger
+    var dataCloudy = dataEach.dataset.cloudy
     console.log(dataStarbucks)
     // Create the data table.
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Cues');
     data.addColumn('number', 'Amount');
     data.addRows([
-      ['BigSpenda', Number(dataSpenda)],
+      ['Big Spenda', Number(dataSpenda)],
       ['Rainy Day',  Number(dataRainy)],
-      ['Starbucks',  Number(dataStarbucks)],
-      ['Burger Day',  Number(dataBurger)]
+      ['Coffee',  Number(dataStarbucks)],
+      ['Burger Day',  Number(dataBurger)],
+      ['Cloudy Day',  Number(dataCloudy)]
     ]);
     // Set chart options
     // css style here
@@ -95,7 +99,7 @@
                     title: 'See more details',
                     width:270,
                     height:240,
-                    colors:['#f9d94c','#ff7249','#8257f6','#b8e1df'],
+                    colors:['#f9d94c','#ff7249','#8257f6','#b8e1df', '#dedede'],
                     legend:{ position: 'bottom'},
                     titleTextStyle: { fontSize: 20 }
                   }

@@ -51,12 +51,12 @@ a .card-cue {
 
 // card-detail-amount style
 .card-detail-amount {
-	height: 13rem;
+	// height: 13rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 1.5rem 1rem;
+	padding: 1rem 1rem;
 	border: $border;
 	border-radius: $border-radius;
 	background-color: $white;
