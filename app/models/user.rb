@@ -70,8 +70,8 @@ class User < ApplicationRecord
       return account["externalId"]
     end
 
-    # Get transactions from specified account
-    def get_transactions(access_token, customer_id, account_id, condition)
+    # Get transactions sent to a specific creditor
+    def get_transactions_by_creditor(access_token, customer_id, account_id, creditor_name)
       yesterday = (Time.now - 1.day).strftime("%Y-%m-%d")
       customers_url = "https://api.mockbank.io/customers"
       auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
@@ -81,7 +81,26 @@ class User < ApplicationRecord
       transactions.each do |transaction|
         # Could be changed into a proc
         unless transaction["creditorName"].nil? || transaction.nil?
-          if transaction["accountId"] == account_id && transaction["creditorName"].downcase == condition && transaction["bookingDate"] == yesterday
+          if transaction["accountId"] == account_id && transaction["creditorName"].downcase == creditor_name && transaction["bookingDate"] == yesterday
+            account_transactions << transaction
+          end
+        end
+      end
+      return account_transactions
+    end
+
+    # Get transactions sent to a specific creditor
+    def get_transactions_by_amount(access_token, customer_id, account_id)
+      yesterday = (Time.now - 1.day).strftime("%Y-%m-%d")
+      customers_url = "https://api.mockbank.io/customers"
+      auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
+      transactions_url = "#{customers_url}/#{customer_id}/transactions"
+      transactions = HTTParty.get(transactions_url, headers: auth_headers).parsed_response["data"].to_a.reverse
+      account_transactions = []
+      transactions.each do |transaction|
+        # Could be changed into a proc
+        unless transaction["amount"].nil? || transaction.nil?
+          if transaction["accountId"] == account_id && transaction["amount"].abs >= 50 && transaction["bookingDate"] == yesterday
             account_transactions << transaction
           end
         end
