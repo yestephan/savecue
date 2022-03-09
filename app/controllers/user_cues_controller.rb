@@ -56,7 +56,11 @@ class UserCuesController < ApplicationController
     @user_cue = UserCue.find(params[:id])
 
     if @user_cue.update(usercue_params)
+      if current_user.accounts.count < 2
+        redirect_to "#{root_url}/signup/checking-account?url_origin=signup"
+      else
       redirect_to home_path
+      end
     else
       render :edit
     end
