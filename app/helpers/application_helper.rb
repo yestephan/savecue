@@ -27,7 +27,7 @@ module ApplicationHelper
         condition: 100 }
     end
   end
-  
+
   # Access token for Mockbank
   def get_access_token
     auth_url = "https://api.mockbank.io/oauth/token"
@@ -79,7 +79,7 @@ module ApplicationHelper
     if url.include? checking
       "#{root_url}/cues/#{current_user.cues.first.id}/user_cues/new"
     elsif url.include? saving
-      "#{root_url}/signup/checking-account?url_origin=signup"
+      "#{root_url}/signup/checking-account?url_origin=signup" 
     else
       home_path
     end

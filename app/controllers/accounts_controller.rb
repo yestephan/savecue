@@ -65,7 +65,11 @@ class AccountsController < ApplicationController
     received_params = account_params
     @account = Account.find(received_params[:id])
     if @account.update(received_params)
+      if current_user.accounts.count < 2
+        redirect_to "#{root_url}/signup/savings-account?url_origin=signup"
+      else
       redirect_to accounts_path
+      end
     else
       @page_title = params[:account][:page_title]
       @form_path = params[:account][:form_path]
