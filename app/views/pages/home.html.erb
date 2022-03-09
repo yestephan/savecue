@@ -4,8 +4,13 @@
       <div class="card-home bg-white text-center">
         <h1>Shake that penny jar, start saving now!</h1>
       </div>
+      
+      <% if user_signed_in? %>
+      <%= link_to "Dashboard", home_path, class: "bt btn-primary" %>
+      <% else %>
       <%= link_to "Sign up", new_user_registration_path, class: "bt btn-primary" %>
       <%= link_to "Log in", new_user_session_path, class: "bt btn-secondary" %>
+      <% end %>
     </div>
   </div>
 </div>
