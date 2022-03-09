@@ -8,12 +8,13 @@ $blue: #91bdfa;
 $red: #ec5656;
 
 $darker-yellow: #f9d94c;
-$orange: #ff7249;
+$orange: #ff8762;
 $barge: #fbead1;
 $purple: #8257f6;
 $jade: #b8e1df;
 $coffee: #c08147;
 $green: #c8e1b5;
+$grey: #dedede;
 
 // background color
 .bg-white {
@@ -54,4 +55,12 @@ $green: #c8e1b5;
 
 .bg-red {
 	background-color: $red;
+}
+
+.bg-orange {
+	background-color: $orange;
+}
+
+.bg-grey {
+	background-color: $grey;
 }

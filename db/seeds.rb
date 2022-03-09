@@ -8,13 +8,19 @@ Account.destroy_all
 
 # Cues
 rain = Cue.new({ title: "Rainy day!",
-                 description: "It's raining, and you're saving 😉",
+                 description: "It's raining, and you're saving!",
                  category: "rain",
                  color: "bg-barge",
                  emoji: "🌧" })
 rain.save!
+cloudy = Cue.new({ title: "Cloudy day!",
+                 description: "Dark clouds 😔 Money saved 😊",
+                 category: "cloudy",
+                 color: "bg-grey",
+                 emoji: "☁️" })
+cloudy.save!
 spenda = Cue.new({ title: "Big spenda!",
-                   description: "For every 50€ ➡️ You save money!",
+                   description: "For every 50€ ➡ You save money!",
                    category: "money",
                    color: "bg-red",
                    emoji: "💸" })
@@ -26,7 +32,7 @@ starbucks = Cue.new({ title: "Coffee break",
                       emoji: "☕️" })
 starbucks.save!
 burger = Cue.new({ title: "Burger day!",
-                   description: "Super size your savings. One burger = 💰",
+                   description: "Super size your savings. One burger = €",
                    category: "burger",
                    color: "bg-jade",
                    emoji: "🍔" })

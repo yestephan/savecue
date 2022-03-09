@@ -135,21 +135,24 @@ class ProfilesController < ApplicationController
 
   def count_total_for_each_cue(transactions)
     burger_total = 0
-    starbuck_total = 0
-    rainy_total = 0
+    coffee_total = 0
+    rain_total = 0
     big_spenda_total = 0
+    cloudy_total = 0
 
     transactions.each do |transaction|
-      if transaction["remittanceInformationUnstructured"].downcase == 'starbucks' || transaction["remittanceInformationUnstructured"].downcase == 'coffee'
-        starbuck_total += transaction["amount"].to_f
-      elsif transaction["remittanceInformationUnstructured"].downcase == 'mcdonalds' || transaction["remittanceInformationUnstructured"].downcase == 'burger'
+      if transaction["remittanceInformationUnstructured"].downcase == 'coffee'
+        coffee_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'burger'
         burger_total += transaction["amount"].to_f
-      elsif transaction["remittanceInformationUnstructured"].downcase == 'rainy'
-        rainy_total += transaction["amount"].to_f
-      elsif transaction["remittanceInformationUnstructured"].downcase == 'spenda'
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'rain'
+        rain_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'money'
         big_spenda_total += transaction["amount"].to_f
+      elsif transaction["remittanceInformationUnstructured"].downcase == 'cloudy'
+        cloudy_total += transaction["amount"].to_f
       end
     end
-    return { burger: burger_total, starbucks: starbuck_total, rainy: rainy_total, spenda: big_spenda_total }
+    return { burger: burger_total, coffee: coffee_total, rain: rain_total, spenda: big_spenda_total, cloudy: cloudy_total }
   end
 end

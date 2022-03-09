@@ -1,6 +1,12 @@
 namespace :transactions do
   desc "TODO"
   task trigger: :environment do
+
+    # Check for rainy day
+    Rain.perform
+    # Check for cloudy day
+    Cloudy.perform
+    # Check for other cues
     User.all.each do |user|
       name = "#{user.first_name} #{user.last_name}"
       puts name
@@ -17,6 +23,7 @@ namespace :transactions do
       customer_id = user.get_customer_id(access_token)
       account_id = user.get_account_id(access_token, customer_id, checking_iban)
 
+
       user.user_cues.each do |user_cue|
         transactions = []
         cue_amount = user_cue.cue_amount
@@ -29,7 +36,7 @@ namespace :transactions do
             response = user.create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
             puts "Savings for #{response["remittanceInformationUnstructured"].capitalize}" if response
           end
-        elsif cue_category == "rain"
+        # elsif cue_category == "rain"
         else
           creditor_name = ""
           case cue_category
