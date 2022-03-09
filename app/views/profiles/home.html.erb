@@ -5,19 +5,14 @@
   </nav>
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">
-    <h1 class="p-large"><%= @total_saved %> € </h1>
-    <h3>Amount saved</h3>
+      <h1 class="p-large"><%= @total_saved %> € </h1>
+      <h3>Amount saved</h3>
   </div>
-  <!-- TEMP TRIGGER BTN -->
-  <!-- <div class="container-text"> -->
-  <!-- <p><strong>Access token:</strong> <%= @access_token %></p>
-    <p><strong>Customer id:</strong> <%= @customer_id %></p>
-    <p><strong>Checking iban:</strong> <%= @checking_iban %></p>
-    <p><strong>Savings iban:</strong> <%= @savings_iban %></p>
-    <p><strong>Account id:</strong> <%= @account_id %></p>
-    <p><strong>Response id:</strong> <%= @response %></p> -->
-  <!-- </div> -->
-  <%#= link_to "Drink coffee", new_transaction_path, class: "bt btn-secondary", method: :new_transaction %>
+
+  <div class="show-detail-container" data-controller="toggle">
+    <button class="bt btn-toggle" data-toggle-target="toggleBtn" data-action="click->toggle#toggle">Hide detail</button>
+    <div id="chart_div" class="piechart card-detail-amount" data-toggle-target="content"></div>
+  </div>
   <!-- CUES -->
   <div class="container-text" style="gap: 1rem" data-toggle-target="content">
     <h3>Your savecues</h3>
@@ -42,7 +37,9 @@
       <% unless @transactions.empty? %>
         <% @transactions.each do |transaction| %>
           <div class="card-account">
-            <h2 class="emoji" style="font-size: 2.25rem"><%= get_category(transaction["remittanceInformationUnstructured"])[:emoji] %></h2>
+            <h2 class="emoji" style="font-size: 2.25rem">
+              <%= get_category(transaction["remittanceInformationUnstructured"])[:emoji] %>
+            </h2>
             <div class="container-text">
               <h3><%= get_category(transaction["remittanceInformationUnstructured"])[:title] %></h3>
               <p><%= transaction["bookingDate"] %></p>
@@ -60,3 +57,54 @@
     </div>
   </div>
 </div>
+ <div class="d-none" id="each_cue"
+ data-starbucks=<%= @total_each_cue_saved[:starbucks] %>
+ data-rainy=<%= @total_each_cue_saved[:rainy] %>
+ data-spenda=<%= @total_each_cue_saved[:spenda] %>
+ data-burger=<%= @total_each_cue_saved[:burger] %>
+  ></div>
+
+  <!--install the google chart-->
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var dataEach = document.getElementById("each_cue")
+        var dataStarbucks = dataEach.dataset.starbucks
+        var dataRainy = dataEach.dataset.rainy
+        var dataSpenda = dataEach.dataset.spenda
+        var dataBurger = dataEach.dataset.burger
+        console.log(dataStarbucks)
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Cues');
+        data.addColumn('number', 'Amount');
+        data.addRows([
+          ['BigSpenda', Number(dataSpenda)],
+          ['Rainy Day',  Number(dataRainy)],
+          ['Starbucks',  Number(dataStarbucks)],
+          ['Burger Day',  Number(dataBurger)]
+        ]);
+        // Set chart options
+        // css style here
+        var options = { 'backgroundColor': 'transparent',
+                        title: 'See more details',
+                        width:270,
+                        height:240,
+                        colors:['#f9d94c','#ff7249','#8257f6','#b8e1df'],
+                        legend:{ position: 'bottom'},
+                        titleTextStyle: { fontSize: 20 }
+                      }
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>

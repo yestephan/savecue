@@ -18,6 +18,9 @@ module ApplicationHelper
     when "money"
       { emoji: "💸",
         title: "Big spenda!" }
+    else
+      { emoji: "😵",
+        title: "Strange transaction!" }
     end
   end
 
