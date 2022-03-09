@@ -95,9 +95,9 @@ module ApplicationHelper
       "#{root_url}cues/#{current_user.cues.first.id}/user_cues/new"
     elsif url.include? saving
       "#{root_url}signup/checking-account?url_origin=signup"
-    elsif url.include? edit_checking
+    elsif url == "#{root_url}/accounts"
       accounts_checking_path
-    elsif url.include? edit_savings
+    elsif url == "#{root_url}/accounts"
       accounts_savings_path
     elsif current_page?(new_cue_user_cue_path(/\d/))
       "#{root_url}home"
