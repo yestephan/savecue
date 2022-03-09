@@ -2,12 +2,18 @@ class UserCuesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def new
-    @user_cue = UserCue.new
     @cue = Cue.find(params[:cue_id])
+    @user_cue = current_user.user_cues.find {|user_cue| user_cue.cue == @cue}
+    if @user_cue.nil?
+      @user_cue = UserCue.new
+    end
     if current_user.savings_account.nil? || current_user.checking_account.nil?
       @submit_title = "Next"
     else
       @submit_title = "Confirm"
+    end
+    unless @user_cue.id.nil?
+      render :edit
     end
   end
 
