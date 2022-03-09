@@ -99,7 +99,7 @@ module ApplicationHelper
       accounts_checking_path
     elsif url.include? edit_savings
       accounts_savings_path
-    elsif current_page?(new_cue_user_cue_path)
+    elsif current_page?(new_cue_user_cue_path(/\d/))
       "#{root_url}home"
     else
       home_path

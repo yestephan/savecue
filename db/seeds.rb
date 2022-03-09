@@ -22,15 +22,15 @@ cloudy.save!
 spenda = Cue.new({ title: "Big spenda!",
                    description: "For every 50€ ➡ You save money!",
                    category: "money",
-                   color: "bg-red",
+                   color: "bg-purple-light",
                    emoji: "💸" })
 spenda.save!
-starbucks = Cue.new({ title: "Coffee break",
+coffee = Cue.new({ title: "Coffee break",
                       description: "Coffee is great, saving is better.",
                       category: "coffee",
                       color: "bg-coffee",
                       emoji: "☕️" })
-starbucks.save!
+coffee.save!
 burger = Cue.new({ title: "Burger day!",
                    description: "Super size your savings. One burger = €",
                    category: "burger",
@@ -70,7 +70,7 @@ User.all.each do |user|
   use_cue = UserCue.new({ user: user, cue: burger, cue_amount: rand_nr })
   use_cue.save!
   rand_nr = rand(1..5)
-  use_cue = UserCue.new({ user: user, cue: starbucks, cue_amount: rand_nr })
+  use_cue = UserCue.new({ user: user, cue: coffee, cue_amount: rand_nr })
   use_cue.save!
   rand_nr = rand(1..5)
   use_cue = UserCue.new({ user: user, cue: spenda, cue_amount: rand_nr })
