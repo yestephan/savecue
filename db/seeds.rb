@@ -34,9 +34,15 @@ coffee.save!
 burger = Cue.new({ title: "Burger day!",
                    description: "Super size your savings. One burger = €",
                    category: "burger",
-                   color: "bg-jade",
+                   color: "bg-orange",
                    emoji: "🍔" })
 burger.save!
+wine = Cue.new({ title: "Wine evening",
+                   description: "One glass a day, one saving a day.",
+                   category: "wine",
+                   color: "bg-jade",
+                   emoji: "🥂" })
+wine.save!
 Cue.all.each do |cue|
   puts "#{cue.title} cue created 🌱"
 end

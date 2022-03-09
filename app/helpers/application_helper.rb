@@ -18,6 +18,9 @@ module ApplicationHelper
     when "money"
       { emoji: "💸",
         title: "Big spenda!" }
+    when "wine"
+      { emoji: "🥂",
+        title: "Wine evening" }
     else
       { emoji: "😵",
         title: "Strange transaction!" }
@@ -28,15 +31,17 @@ module ApplicationHelper
   def info_for_category(category)
     case category
     when "rain"
-      "How much do you save for each rainy day?"
+      "It just rained 🌧 How much are you saving?"
     when "cloudy"
-      "How much do you save for each cloudy day?"
+      "Gloomy day! ☁️ How much are you saving?"
     when "coffee"
-      "How much do you save for each coffee break?"
+      "One cup of holiness ☕️ saves you how much?"
     when "burger"
-      "How much do you save for each burger?"
+      "That was a nice burger 🍔, how much are you saving?"
     when "money"
-      "How much do you save for each big spenda?"
+      "Hey big spenda! 💸 How much are you saving each time?"
+    when "wine"
+      "One glass of 🍷 saves you how much?"
     end
   end
 
