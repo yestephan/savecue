@@ -8,7 +8,7 @@
     <h1 class="p-large"><%= @total_saved %> € </h1>
     <h3>Amount saved</h3>
   </div>
-
+  <!-- PIE CHART -->
   <div class="show-detail-container" data-controller="toggle">
     <button class="bt btn-toggle" style="margin-bottom: 1rem" data-toggle-target="toggleBtn" data-action="click->toggle#toggle">Hide detail</button>
     <div id="chart_div" class="piechart card-detail-amount" data-toggle-target="content"></div>
@@ -16,13 +16,13 @@
   <!-- CUES -->
   <div class="container-text" style="gap: 1rem" data-toggle-target="content">
     <h3>Your savecues</h3>
-    <div class="row">
+    <div class="card-grid">
       <% @user_cues.each do |user_cue| %>
-        <%= link_to user_cue_path(user_cue), class: "col-6 p-2" do %>
+        <%= link_to user_cue_path(user_cue) do %>
           <%= render partial: "shared/cue_card", locals: {cue: user_cue.cue } %>
         <% end %>
       <% end %>
-      <%= link_to cues_path(url_origin: "home"), class: "col-6 p-2" do %>
+      <%= link_to cues_path(url_origin: "home") do %>
         <div class="card-cue bg-darker-yellow" style="height: 100%">
           <h1 class="emoji">➕</h1>
           <h3>Add cue</h3>
@@ -62,6 +62,7 @@
  data-rain=<%= @total_each_cue_saved[:rain] %>
  data-spenda=<%= @total_each_cue_saved[:spenda] %>
  data-burger=<%= @total_each_cue_saved[:burger] %>
+ data-coffee=<%= @total_each_cue_saved[:coffee] %>
   ></div>
 <!--install the google chart-->
 <!--Load the AJAX API-->
