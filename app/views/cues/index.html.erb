@@ -6,7 +6,7 @@
   <% end %>
   <div class="row">
   <% @cues.each do |cue| %>
-    <%= link_to new_cue_user_cue_path(cue), class: "col-6 p-1" do %>
+    <%= link_to new_cue_user_cue_path(cue), class: "col-6 p-2" do %>
       <%= render partial: "shared/cue_card", locals: {cue: cue } %>
     <% end %>
   <% end %>
