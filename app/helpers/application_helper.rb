@@ -6,6 +6,9 @@ module ApplicationHelper
     when "rain"
       { emoji: "🌧",
         title: "Rainy day" }
+    when "cloudy"
+      { emoji: "☁️",
+        title: "Cloudy day" }
     when "coffee"
       { emoji: "☕️",
         title: "Coffee break" }
@@ -23,6 +26,8 @@ module ApplicationHelper
     case category
     when "rain"
       "How much do you save for each rainy day?"
+    when "cloudy"
+      "How much do you save for each cloudy day?"
     when "coffee"
       "How much do you save for each coffee break?"
     when "burger"

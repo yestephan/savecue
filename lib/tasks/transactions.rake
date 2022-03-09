@@ -1,6 +1,12 @@
 namespace :transactions do
   desc "TODO"
   task trigger: :environment do
+
+    # Check for rainy day
+    Rain.perform
+    # Check for cloudy day
+    Cloudy.perform
+    # Check for other cues
     User.all.each do |user|
       name = "#{user.first_name} #{user.last_name}"
       puts name

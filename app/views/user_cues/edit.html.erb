@@ -12,18 +12,16 @@
                       placeholder: "€" %>
         <%= f.label :cue_amount, "Amount €" %>
       </div>
-
-      <% if @user_cue.cue.category == "rain" %>
-      <div data-controller="geocoder" data-geocoder-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        <%= f.hidden_field :latitude, data: {geocoder_target: "latitude"} %>
-        <%= f.hidden_field :longitude, data: {geocoder_target: "longitude"} %>
-        <%= f.label :location, "Location" %>
-        <%= f.input :location,
+      <% if @user_cue.cue.category == "rain" || @user_cue.cue.category == "cloudy" %>
+        <div data-controller="geocoder" data-geocoder-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          <%= f.hidden_field :latitude, data: {geocoder_target: "latitude"} %>
+          <%= f.hidden_field :longitude, data: {geocoder_target: "longitude"} %>
+          <%= f.label :location, "Location" %>
+          <%= f.input :location,
               label: false,
               input_html: { data: { geocoder_target: "location"}, placeholder: @user_cue.location, class: "d-none" } %>
-      </div>
+        </div>
       <% end %>
-
       <%= f.button :submit, "Next", class: "bt btn-primary" %>
     <% end %>
   </div>

@@ -1,4 +1,4 @@
-class Weather
+class Rain
   def self.perform
     locations = query_all_locations
     # check all locations with rain and create an array with their names
@@ -8,7 +8,7 @@ class Weather
       if did_it_rain
         raining_locations.append(location)
       end
-      p "Did it rain in #{location}? #{did_it_rain}"
+      p "Dit it rain in #{location}? #{did_it_rain}"
     end
 
     # iterate through the raining locations and create a transaction for each user_cue related to them
@@ -68,7 +68,23 @@ class Weather
 
   def self.create_transaction(user_cue)
     # Can't create transactions right now
-    p user_cue.user
-    p "Create a transaction for the user_cue #{user_cue}"
+    user = user_cue.user
+    checking_account = user.checking_account
+    checking_iban = checking_account.iban if checking_account
+    checking_name = checking_account.name if checking_account
+
+    savings_account = user.savings_account
+    savings_iban = savings_account.iban if savings_account
+    savings_name = savings_account.name if savings_account
+
+    access_token = user.get_access_token
+    customer_id = user.get_customer_id(access_token)
+    account_id = user.get_account_id(access_token, customer_id, checking_iban)
+
+    cue_amount = user_cue.cue_amount
+    cue_category = user_cue.cue.category
+
+    response = user.create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
+    puts "Savings for #{response["remittanceInformationUnstructured"].capitalize}" if response
   end
 end
