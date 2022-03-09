@@ -1,21 +1,22 @@
 <div class="container" data-controller="toggle">
   <nav class="container-toggle">
     <button class="bt btn-toggle active" data-toggle-target="toggleBtn" data-action="click->toggle#toggle" data-value="dashboard">Dashboard</button>
-    <button class="bt btn-toggle" data-toggle-target="toggleBtn"  data-action="click->toggle#toggle" data-value="transactions">Transactions</button>
+    <button class="bt btn-toggle" data-toggle-target="toggleBtn" data-action="click->toggle#toggle" data-value="savecue">Savecues</button>
+    <button class="bt btn-toggle" data-toggle-target="toggleBtn"  data-action="click->toggle#toggle" data-value="savings">Savings</button>
   </nav>
   <!-- SUMMARY -->
-  <div class="card-total-amount bg-white">
-    <h1 class="p-large"><%= @total_saved %> € </h1>
-    <h3>Amount saved</h3>
-  </div>
-  <!-- PIE CHART -->
-  <div class="show-detail-container" data-controller="toggle">
-    <button class="bt btn-toggle" style="margin-bottom: 1rem" data-toggle-target="toggleBtn" data-action="click->toggle#toggle">Hide detail</button>
-    <div id="chart_div" class="piechart card-detail-amount" data-toggle-target="content"></div>
+  <div class="container-text" style="gap: 1rem" data-toggle-target="content" data-value="dashboard">
+    <h1>Dashboard</h1>
+    <div class="card-total-amount bg-white">
+      <h1 class="p-large"><%= @total_saved %> € </h1>
+      <h3>Amount saved</h3>
+    </div>
+    <!-- PIE CHART -->
+    <div id="chart_div" class="piechart card-detail-amount"></div>
   </div>
   <!-- CUES -->
-  <div class="container-text" style="gap: 1rem" data-toggle-target="content">
-    <h3>Your savecues</h3>
+  <div class="container-text hidden" style="gap: 1rem" data-toggle-target="content" data-value="savecue">
+    <h1>Savecues</h1>
     <div class="card-grid">
       <% @user_cues.each do |user_cue| %>
         <%= link_to user_cue_path(user_cue) do %>
@@ -31,8 +32,9 @@
       <% end %>
     </div>
   </div>
-  <div class="container-text hidden" style="gap: 1rem;" data-toggle-target="content">
-    <h3>Transactions</h3>
+  <!-- Savings -->
+  <div class="container-text hidden" style="gap: 1rem;" data-toggle-target="content" data-value="savings">
+    <h1>Savings</h1>
     <div class="container-text container-list">
       <% unless @transactions.empty? %>
         <% @transactions.each do |transaction| %>
