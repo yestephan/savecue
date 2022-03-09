@@ -35,7 +35,6 @@ module ApplicationHelper
     end
   end
 
-
   # Access token for Mockbank
   def get_access_token
     auth_url = "https://api.mockbank.io/oauth/token"
@@ -78,6 +77,7 @@ module ApplicationHelper
     end
     return account["externalId"]
   end
+
   def link_back
     url = request.original_url
 
@@ -85,9 +85,11 @@ module ApplicationHelper
     saving = "savings-account"
 
     if url.include? checking
-      "#{root_url}/cues/#{current_user.cues.first.id}/user_cues/new"
+      "#{root_url}cues/#{current_user.cues.first.id}/user_cues/new"
     elsif url.include? saving
-      "#{root_url}/signup/checking-account?url_origin=signup"
+      "#{root_url}signup/checking-account?url_origin=signup"
+    elsif current_page?(new_cue_user_cue_path)
+      "#{root_url}home"
     else
       home_path
     end
