@@ -1,5 +1,7 @@
 <div class="container">
   <div class="inner-container">
+    <%= link_to "javascript:history.back()", class: "bt btn-back" do %>
+    <% end %>
     <h1>Let's sign you up for savecue!</h1>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -49,6 +51,7 @@
           <%= f.label :password_confirmation, "Password confirmation" %>
         </div>
         <%= f.button :submit, "Sign up", class: "bt btn-primary" %>
+        <%= link_to "Log in", new_user_session_path, class: "bt btn-secondary" %>
       </div>
     <% end %>
   </div>

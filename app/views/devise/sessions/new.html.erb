@@ -1,4 +1,6 @@
 <div class="container">
+  <%= link_to "javascript:history.back()", class: "bt btn-back" do %>
+    <% end %>
   <h1>Log in</h1>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
