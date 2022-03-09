@@ -8,16 +8,6 @@
     <h1 class="p-large"><%= @total_saved %> € </h1>
     <h3>Amount saved</h3>
   </div>
-  <!-- TEMP TRIGGER BTN -->
-  <!-- <div class="container-text"> -->
-  <!-- <p><strong>Access token:</strong> <%= @access_token %></p>
-    <p><strong>Customer id:</strong> <%= @customer_id %></p>
-    <p><strong>Checking iban:</strong> <%= @checking_iban %></p>
-    <p><strong>Savings iban:</strong> <%= @savings_iban %></p>
-    <p><strong>Account id:</strong> <%= @account_id %></p>
-    <p><strong>Response id:</strong> <%= @response %></p> -->
-  <!-- </div> -->
-  <%#= link_to "Drink coffee", new_transaction_path, class: "bt btn-secondary", method: :new_transaction %>
   <!-- CUES -->
   <div class="container-text" style="gap: 1rem" data-toggle-target="content">
     <h3>Your savecues</h3>
@@ -42,7 +32,9 @@
       <% unless @transactions.empty? %>
         <% @transactions.each do |transaction| %>
           <div class="card-account">
-            <h2 class="emoji" style="font-size: 2.25rem"><%= get_category(transaction["remittanceInformationUnstructured"])[:emoji] %></h2>
+            <h2 class="emoji" style="font-size: 2.25rem">
+              <%= get_category(transaction["remittanceInformationUnstructured"])[:emoji] %>
+            </h2>
             <div class="container-text">
               <h3><%= get_category(transaction["remittanceInformationUnstructured"])[:title] %></h3>
               <p><%= transaction["bookingDate"] %></p>
