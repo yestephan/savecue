@@ -5,10 +5,9 @@
   </nav>
   <!-- SUMMARY -->
   <div class="card-total-amount bg-white">
-      <h1 class="p-large"><%= @total_saved %> € </h1>
-      <h3>Amount saved</h3>
+    <h1 class="p-large"><%= @total_saved %> € </h1>
+    <h3>Amount saved</h3>
   </div>
-
   <div class="show-detail-container" data-controller="toggle">
     <button class="bt btn-toggle" data-toggle-target="toggleBtn" data-action="click->toggle#toggle">Hide detail</button>
     <div id="chart_div" class="piechart card-detail-amount" data-toggle-target="content"></div>
@@ -16,13 +15,13 @@
   <!-- CUES -->
   <div class="container-text" style="gap: 1rem" data-toggle-target="content">
     <h3>Your savecues</h3>
-    <div class="row">
+    <div class="card-grid">
       <% @user_cues.each do |user_cue| %>
-        <%= link_to user_cue_path(user_cue), class: "col-6 p-2" do %>
+        <%= link_to user_cue_path(user_cue) do %>
           <%= render partial: "shared/cue_card", locals: {cue: user_cue.cue } %>
         <% end %>
       <% end %>
-      <%= link_to cues_path(url_origin: "home"), class: "col-6 p-2" do %>
+      <%= link_to cues_path(url_origin: "home") do %>
         <div class="card-cue bg-darker-yellow" style="height: 100%">
           <h1 class="emoji">➕</h1>
           <h3>Add cue</h3>
@@ -57,54 +56,52 @@
     </div>
   </div>
 </div>
- <div class="d-none" id="each_cue"
+<div class="d-none" id="each_cue"
  data-starbucks=<%= @total_each_cue_saved[:starbucks] %>
  data-rainy=<%= @total_each_cue_saved[:rainy] %>
  data-spenda=<%= @total_each_cue_saved[:spenda] %>
  data-burger=<%= @total_each_cue_saved[:burger] %>
   ></div>
+<!--install the google chart-->
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});
 
-  <!--install the google chart-->
-  <!--Load the AJAX API-->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.charts.setOnLoadCallback(drawChart);
 
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
+  function drawChart() {
+    var dataEach = document.getElementById("each_cue")
+    var dataStarbucks = dataEach.dataset.starbucks
+    var dataRainy = dataEach.dataset.rainy
+    var dataSpenda = dataEach.dataset.spenda
+    var dataBurger = dataEach.dataset.burger
+    console.log(dataStarbucks)
+    // Create the data table.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Cues');
+    data.addColumn('number', 'Amount');
+    data.addRows([
+      ['BigSpenda', Number(dataSpenda)],
+      ['Rainy Day',  Number(dataRainy)],
+      ['Starbucks',  Number(dataStarbucks)],
+      ['Burger Day',  Number(dataBurger)]
+    ]);
+    // Set chart options
+    // css style here
+    var options = { 'backgroundColor': 'transparent',
+                    title: 'See more details',
+                    width:270,
+                    height:240,
+                    colors:['#f9d94c','#ff7249','#8257f6','#b8e1df'],
+                    legend:{ position: 'bottom'},
+                    titleTextStyle: { fontSize: 20 }
+                  }
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var dataEach = document.getElementById("each_cue")
-        var dataStarbucks = dataEach.dataset.starbucks
-        var dataRainy = dataEach.dataset.rainy
-        var dataSpenda = dataEach.dataset.spenda
-        var dataBurger = dataEach.dataset.burger
-        console.log(dataStarbucks)
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Cues');
-        data.addColumn('number', 'Amount');
-        data.addRows([
-          ['BigSpenda', Number(dataSpenda)],
-          ['Rainy Day',  Number(dataRainy)],
-          ['Starbucks',  Number(dataStarbucks)],
-          ['Burger Day',  Number(dataBurger)]
-        ]);
-        // Set chart options
-        // css style here
-        var options = { 'backgroundColor': 'transparent',
-                        title: 'See more details',
-                        width:270,
-                        height:240,
-                        colors:['#f9d94c','#ff7249','#8257f6','#b8e1df'],
-                        legend:{ position: 'bottom'},
-                        titleTextStyle: { fontSize: 20 }
-                      }
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>

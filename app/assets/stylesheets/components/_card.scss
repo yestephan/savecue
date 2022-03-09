@@ -1,11 +1,11 @@
 // card-cue style
 // card-container
 .card-grid {
-	// width: 100%;
-	// justify-content: center;
-	// display: grid;
-	// grid-template-columns: 1fr 1fr;
-	// gap: 1rem;
+	width: 100%;
+	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
 }
 
 // each cards
@@ -18,7 +18,7 @@
 	border: $border;
 	border-radius: $border-radius;
 	width: 100%;
-  height: 100%;
+	height: 100%;
 	text-align: center;
 	text-decoration: none;
 	color: $black;
@@ -29,7 +29,7 @@
 }
 
 a .card-cue {
-  &:active,
+	&:active,
 	&:hover {
 		transform: scale(1.03);
 		background-color: $blue;
@@ -59,7 +59,7 @@ a .card-cue {
 	padding: 1.5rem 1rem;
 	border: $border;
 	border-radius: $border-radius;
-  background-color: $white;
+	background-color: $white;
 }
 
 //card-no-transaction
