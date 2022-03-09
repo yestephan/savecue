@@ -140,7 +140,7 @@ class ProfilesController < ApplicationController
     big_spenda_total = 0
 
     transactions.each do |transaction|
-      if transaction["remittanceInformationUnstructured"].downcase == 'starbucks'
+      if transaction["remittanceInformationUnstructured"].downcase == 'starbucks' || transaction["remittanceInformationUnstructured"].downcase == 'coffee'
         starbuck_total += transaction["amount"].to_f
       elsif transaction["remittanceInformationUnstructured"].downcase == 'mcdonalds' || transaction["remittanceInformationUnstructured"].downcase == 'burger'
         burger_total += transaction["amount"].to_f
