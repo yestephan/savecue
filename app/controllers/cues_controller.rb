@@ -19,4 +19,3 @@ class CuesController < ApplicationController
     end
   end
 end
-end
