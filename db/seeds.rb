@@ -16,7 +16,7 @@ rain.save!
 cloudy = Cue.new({ title: "Cloudy day!",
                  description: "Dark clouds 😔 Money saved 😊",
                  category: "cloudy",
-                 color: "bg-orange",
+                 color: "bg-grey",
                  emoji: "☁️" })
 cloudy.save!
 spenda = Cue.new({ title: "Big spenda!",
