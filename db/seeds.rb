@@ -34,15 +34,9 @@ coffee.save!
 burger = Cue.new({ title: "Burger day!",
                    description: "Super size your savings. One burger = €",
                    category: "burger",
-                   color: "bg-orange",
+                   color: "bg-jade",
                    emoji: "🍔" })
 burger.save!
-wine = Cue.new({ title: "Wine evening",
-                   description: "One glass a day, one saving a day.",
-                   category: "wine",
-                   color: "bg-jade",
-                   emoji: "🥂" })
-wine.save!
 Cue.all.each do |cue|
   puts "#{cue.title} cue created 🌱"
 end
@@ -56,11 +50,11 @@ checking.save!
 savings = Account.new({ name: "Savings", account_type: Account::TYPE_SAVINGS, iban: "NL86ABNA4643636556", user: bibi })
 savings.save!
 
-james = User.new({ first_name: "James", last_name: "Maddison", email: "james@email.com", password: "test1234" })
-james.save!
-checking = Account.new({ name: "Checking", account_type: Account::TYPE_CHECKING, iban: "NL69481516230000001507", user: james })
+stephan = User.new({ first_name: "Stephan", last_name: "Ye", email: "stephan@email.com", password: "test1234" })
+stephan.save!
+checking = Account.new({ name: "Checking", account_type: Account::TYPE_CHECKING, iban: "NL69481516230000001507", user: stephan })
 checking.save!
-savings = Account.new({ name: "Savings", account_type: Account::TYPE_SAVINGS, iban: "NL80481516230000001503", user: james })
+savings = Account.new({ name: "Savings", account_type: Account::TYPE_SAVINGS, iban: "NL80481516230000001503", user: stephan })
 savings.save!
 
 
@@ -72,13 +66,16 @@ puts "============"
 
 # User cues
 User.all.each do |user|
-  rand_nr = rand(1..5)
+  # rand_nr = rand(1..5)
+  rand_nr = 2
   use_cue = UserCue.new({ user: user, cue: burger, cue_amount: rand_nr })
   use_cue.save!
-  rand_nr = rand(1..5)
+  # rand_nr = rand(1..5)
+  rand_nr = 3
   use_cue = UserCue.new({ user: user, cue: coffee, cue_amount: rand_nr })
   use_cue.save!
-  rand_nr = rand(1..5)
+  # rand_nr = rand(1..5)
+  rand_nr = 8
   use_cue = UserCue.new({ user: user, cue: spenda, cue_amount: rand_nr })
   use_cue.save!
   puts user.first_name
