@@ -56,7 +56,7 @@ checking.save!
 savings = Account.new({ name: "Savings", account_type: Account::TYPE_SAVINGS, iban: "NL86ABNA4643636556", user: bibi })
 savings.save!
 
-stephan = User.new({ first_name: "Stephan", last_name: "Ye", email: "stephan@email.com", password: "test1234" })
+stephan = User.new({ first_name: "Stephan", last_name: "Ye", email: "stephan@email.com", password: "test1234", picture: "stephan_yveu8d" })
 stephan.save!
 checking = Account.new({ name: "Checking", account_type: Account::TYPE_CHECKING, iban: "NL69481516230000001507", user: stephan })
 checking.save!
