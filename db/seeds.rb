@@ -81,8 +81,8 @@ User.all.each do |user|
   use_cue = UserCue.new({ user: user, cue: coffee, cue_amount: rand_nr })
   use_cue.save!
   # rand_nr = rand(1..5)
-  rand_nr = 8
-  use_cue = UserCue.new({ user: user, cue: spenda, cue_amount: rand_nr })
+  rand_nr = 5
+  use_cue = UserCue.new({ user: user, cue: wine, cue_amount: rand_nr })
   use_cue.save!
   puts user.first_name
   user.user_cues.each do |user_cue|
