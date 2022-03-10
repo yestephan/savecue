@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .home-container {
-	height: 80vh;
+	height: 100vh;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -15,4 +15,43 @@
 	justify-content: space-between;
 	flex-direction: column;
 	align-items: center;
+}
+
+.container-h {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 1rem;
+	padding-bottom: 6rem;
+}
+
+.test-home {
+	position: relative;
+	background-color: $purple;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.avatar-img {
+		height: 12rem;
+		width: 12rem;
+		object-fit: cover;
+		position: absolute;
+	}
+
+	.logo-img {
+		width: 25rem;
+		height: auto;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.container-h {
+		width: 480px;
+		margin: 0 auto;
+		gap: 1rem;
+	}
 }
