@@ -5,14 +5,14 @@
 
     <%= render partial: "shared/cue_card", locals: {cue: @user_cue.cue } %>
 
-    <div class="row">
-      <div class="card-total-amount bg-white col-6">
-        <h2 class="p-large"><%= @total_amount_cue %> € </h2>
-        <h3 class="text-center">Amount saved from this cue</h3>
+    <div class="card-grid">
+      <div class="card-total-amount bg-white" style="height: auto">
+        <h2><%= @total_amount_cue %> € </h2>
+        <h3 class="text-center">Saved</h3>
       </div>
-      <div class="card-total-amount bg-white col-6">
-        <h2 class="p-large"><%= @user_cue.cue_amount %> € </h2>
-        <h3 class="text-center">Amount setup from this cue</h3>
+      <div class="card-total-amount bg-white" style="height: auto">
+        <h2><%= @user_cue.cue_amount %> € </h2>
+        <h3 class="text-center">Setup</h3>
       </div>
     </div>
 
