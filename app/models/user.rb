@@ -100,7 +100,7 @@ class User < ApplicationRecord
       transactions.each do |transaction|
         # Could be changed into a proc
         unless transaction["amount"].nil? || transaction.nil?
-          if transaction["accountId"] == account_id && transaction["amount"].abs >= 50 && transaction["bookingDate"] == yesterday
+          if transaction["accountId"] == account_id && transaction["amount"].abs >= 20 && transaction["bookingDate"] == yesterday
             account_transactions << transaction
           end
         end
@@ -111,7 +111,7 @@ class User < ApplicationRecord
     # Trigger transaction
     def create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
       customers_url = "https://api.mockbank.io/customers"
-      booking_date = Time.now.strftime("%Y-%m-%d")
+      booking_date = (Time.now).strftime("%Y-%m-%d")
       auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
       transactions_url = "#{customers_url}/#{customer_id}/transactions"
       transaction_body = {
