@@ -20,7 +20,7 @@ cloudy = Cue.new({ title: "Cloudy day!",
                  emoji: "☁️" })
 cloudy.save!
 spenda = Cue.new({ title: "Big spenda!",
-                   description: "For every 50€ ➡ You save money!",
+                   description: "For every €50 ➡ You save money!",
                    category: "money",
                    color: "bg-purple-light",
                    emoji: "💸" })
@@ -34,9 +34,15 @@ coffee.save!
 burger = Cue.new({ title: "Burger day!",
                    description: "Super size your savings. One burger = €",
                    category: "burger",
-                   color: "bg-jade",
+                   color: "bg-orange",
                    emoji: "🍔" })
 burger.save!
+wine = Cue.new({ title: "Wine evening",
+                   description: "One glass, one saving",
+                   category: "wine",
+                   color: "bg-jade",
+                   emoji: "🥂" })
+wine.save!
 Cue.all.each do |cue|
   puts "#{cue.title} cue created 🌱"
 end

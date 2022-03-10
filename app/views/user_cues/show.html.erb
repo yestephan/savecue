@@ -2,14 +2,33 @@
   <div class="inner-container">
     <%= link_to :back, class: "bt btn-back" do %>
     <% end %>
-
     <%= render partial: "shared/cue_card", locals: {cue: @user_cue.cue } %>
-
-    <div class="card-total-amount bg-white">
-      <h1 class="p-large"><%= @total_saved %> € </h1>
-      <h3 class="text-center">Amount saved from this cue</h3>
+    <div class="card-grid">
+      <div class="card-total-amount bg-white" style="height: auto">
+        <div class="container-text" style="text-align: center">
+          <h2>
+            <% unless @total_amount_cue == nil %>
+              €<%= @total_amount_cue.round() %>
+            <% else %>
+              €0
+            <% end %>
+          </h2>
+          <p>Saved</p>
+        </div>
+      </div>
+      <div class="card-total-amount bg-white" style="height: auto">
+        <div class="container-text" style="text-align: center">
+          <h2>
+            <% unless @user_cue.cue_amount == nil %>
+              €<%= @user_cue.cue_amount.round() %>
+            <% else %>
+              €0
+            <% end %>
+          </h2>
+          <p>Saved each time</p>
+        </div>
+      </div>
     </div>
-
     <%= link_to "Edit cue", edit_user_cue_path(@user_cue), class: "bt btn-destructive btn-pink w-100" %>
     <%= link_to "Cancel Cue", user_cue_path(@user_cue), method: :delete, data: { confirm: "Really?" }, class: "bt btn-destructive w-100" %>
   </div>
