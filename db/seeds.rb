@@ -20,7 +20,7 @@ cloudy = Cue.new({ title: "Cloudy day!",
                  emoji: "☁️" })
 cloudy.save!
 spenda = Cue.new({ title: "Big spenda!",
-                   description: "For every 50€ ➡ You save money!",
+                   description: "For every €50 ➡ You save money!",
                    category: "money",
                    color: "bg-purple-light",
                    emoji: "💸" })
