@@ -49,7 +49,7 @@ end
 puts "============"
 
 # Users and Accounts created
-bibi = User.new({ first_name: "Bibi", last_name: "Ferreira", email: "bibi@email.com", password: "test1234" })
+bibi = User.new({ first_name: "Bibi", last_name: "Ferreira", email: "bibi@email.com", password: "test1234", picture: "bibi_ytlbhy" })
 bibi.save!
 checking = Account.new({ name: "Checking", account_type: Account::TYPE_CHECKING, iban: "NL43INGB6631699223", user: bibi })
 checking.save!
