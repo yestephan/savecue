@@ -1,16 +1,20 @@
-<div class="homepage">
-  <div class="container-fluid" style="background-image: url(<%= image_path('back.png')%>); background-size: cover; min-height: 100vh;">
-    <div class="home-container">
+<div style="background-image: url(<%= image_path('back.png')%>); background-size: cover; min-height: 100vh;">
+  <div class="home-container">
+    <div class="container-h">
       <div class="card-home bg-white text-center">
         <h1>Shake that penny jar, start saving now!</h1>
       </div>
-
       <% if user_signed_in? && current_user.accounts.count >= 2 %>
-      <%= link_to "Dashboard", home_path, class: "bt btn-primary" %>
+        <%= link_to "Dashboard", home_path, class: "bt btn-primary" %>
       <% else %>
-      <%= link_to "Sign up", new_user_registration_path, class: "bt btn-primary" %>
-      <%= link_to "Log in", new_user_session_path, class: "bt btn-secondary" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "bt btn-primary" %>
+        <%= link_to "Log in", new_user_session_path, class: "bt btn-secondary" %>
       <% end %>
+    </div>
+  </div>
+  <div class="test-home">
+    <div>
+      <img src="<%= image_path('logo.png')%>" alt="">
     </div>
   </div>
 </div>
