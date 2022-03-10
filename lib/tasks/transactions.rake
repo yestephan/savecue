@@ -36,7 +36,6 @@ namespace :transactions do
             response = user.create_saving(access_token, customer_id, account_id, name, savings_iban, checking_iban, cue_amount, cue_category)
             puts "Savings for #{response["remittanceInformationUnstructured"].capitalize}" if response
           end
-        # elsif cue_category == "rain"
         else
           creditor_name = ""
           case cue_category
@@ -44,6 +43,8 @@ namespace :transactions do
               creditor_name = "starbucks"
             when "burger"
               creditor_name = "mcdonalds"
+            when "wine"
+              creditor_name = "wine"
             else
           end
           # Get the transactions that correspond to either "burger" or "coffee" and trigger a transaction

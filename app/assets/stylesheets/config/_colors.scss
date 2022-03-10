@@ -11,6 +11,7 @@ $darker-yellow: #f9d94c;
 $orange: #ff8762;
 $barge: #fbead1;
 $purple: #8257f6;
+$purple-light: #aa8cfc;
 $jade: #b8e1df;
 $coffee: #c08147;
 $green: #c8e1b5;
@@ -63,4 +64,7 @@ $grey: #dedede;
 
 .bg-grey {
 	background-color: $grey;
+}
+.bg-purple-light {
+	background-color: $purple-light;
 }
