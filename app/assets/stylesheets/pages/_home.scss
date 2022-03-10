@@ -22,6 +22,7 @@
 	flex-direction: column;
 	width: 100%;
 	gap: 1rem;
+	padding-bottom: 6rem;
 }
 
 .test-home {
@@ -37,9 +38,8 @@
 	.avatar-img {
 		height: 12rem;
 		width: 12rem;
-		object-fit: contain;
+		object-fit: cover;
 		position: absolute;
-		background-color: red;
 	}
 
 	.logo-img {
