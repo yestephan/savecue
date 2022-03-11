@@ -43,12 +43,19 @@
 	}
 
 	.logo-img {
-		width: 25rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		width: 100%;
 		height: auto;
 	}
 }
 
 @media only screen and (min-width: 600px) {
+	.fix-home {
+		width: 600px;
+		margin: 0 auto;
+	}
+
 	.container-h {
 		width: 480px;
 		margin: 0 auto;
