@@ -60,12 +60,12 @@ class ProfilesController < ApplicationController
   # Scope Variables
   customers_url = "https://api.mockbank.io/customers"
 
-
   def get_all_savecue_transactions(access_token, customer_id, account_id)
     customers_url = "https://api.mockbank.io/customers"
     auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
     transactions_url = "#{customers_url}/#{customer_id}/transactions"
-    transactions = HTTParty.get(transactions_url, headers: auth_headers).parsed_response["data"].to_a.reverse
+    transactions = HTTParty.get(transactions_url, headers: auth_headers).parsed_response["data"].to_a
+    raise
     account_transactions = []
     transactions.each do |transaction|
       unless transaction["remittanceInformationStructured"].nil?
