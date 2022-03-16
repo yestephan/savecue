@@ -65,7 +65,6 @@ class ProfilesController < ApplicationController
     auth_headers = { "Authorization" => "Bearer #{access_token}", "content-type" => "application/json"}
     transactions_url = "#{customers_url}/#{customer_id}/transactions"
     transactions = HTTParty.get(transactions_url, headers: auth_headers).parsed_response["data"].to_a
-    raise
     account_transactions = []
     transactions.each do |transaction|
       unless transaction["remittanceInformationStructured"].nil?
